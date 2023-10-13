@@ -2,57 +2,110 @@ package myboot.app2.test;
 
 import myboot.app2.dao.CVRepository;
 import myboot.app2.model.CV;
+import myboot.app2.model.Person;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import javax.persistence.EntityManager;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
+
 @DataJpaTest
 class TestCVRepository {
 
+
     @Autowired
-    private TestEntityManager entityManager;
+    private EntityManager entityManager;
 
     @Autowired
     private CVRepository cvRepository;
 
-    @Test
-    void testSaveCV() {
-        CV cv = new CV();
+    private CV cv;
+    private Person person;
 
-        cv = cvRepository.save(cv);
+    @BeforeEach
+    public void setUp() throws ParseException {
+        person = new Person();
+        person.setFirstName("John");
+        person.setLastName("Doe");
+        person.setEmail("john.doe@example.com");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        person.setBirthDate(birthday);
+        person.setPassword("JohnsPassword");
+        entityManager.persist(person);
 
-        assertNotNull(cv.getId());
+        cv = new CV();
+        cv.setPerson(person);
+        entityManager.persist(cv);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        entityManager.remove(cv);
+        entityManager.remove(person);
     }
 
     @Test
-    void testFindById() {
-        CV cv = new CV();
-        cv = entityManager.persist(cv);
-
-        CV foundCV = cvRepository.findById(cv.getId()).orElse(null);
-        assertNotNull(foundCV);
+    public void whenSave_thenPersistData() {
+        CV newCV = new CV();
+        newCV.setPerson(person);
+        CV saved = cvRepository.save(newCV);
+        Optional<CV> found = cvRepository.findById(saved.getId());
+        assertThat(found.isPresent()).isTrue();
     }
 
     @Test
-    void testUpdateCV() {
+    public void saveCV_withNullPerson_shouldThrowException() {
         CV cv = new CV();
-        cv = entityManager.persist(cv);
+        assertThrows(Exception.class, () -> {
+            cvRepository.save(cv);
+        });
+    }
+
+    @Test
+    public void whenFindById_thenReturnCV() {
+        Optional<CV> found = cvRepository.findById(cv.getId());
+        assertThat(found.isPresent()).isTrue();
+        assertThat(found.get().getPerson()).isEqualTo(person);
+    }
+
+    @Test
+    public void findById_withInvalidId_shouldReturnEmptyOptional() {
+        Optional<CV> foundCV = cvRepository.findById(999L);
+        assertThat(foundCV.isPresent()).isFalse();
+    }
+
+    @Test
+    public void updateCV_withValidData_shouldUpdate() {
+
+        Person updatedPerson = person;
+        updatedPerson.setFirstName("Jane");
+        updatedPerson.setLastName("Doe");
+        cv.setPerson(updatedPerson);
 
         cvRepository.save(cv);
 
         CV updatedCV = entityManager.find(CV.class, cv.getId());
-        assertNotNull(updatedCV);
+        assertEquals(updatedCV.getPerson().getFirstName(), "Jane");
     }
 
     @Test
-    void testDeleteCV() {
-        CV cv = new CV();
-        cv = entityManager.persist(cv);
-        cvRepository.deleteById(cv.getId());
-
-        CV deletedCV = entityManager.find(CV.class, cv.getId());
-        assertNull(deletedCV);
+    public void whenDelete_thenRemoveData() {
+        cvRepository.delete(cv);
+        Optional<CV> found = cvRepository.findById(cv.getId());
+        assertThat(found.isPresent()).isFalse();
     }
+
+
 }

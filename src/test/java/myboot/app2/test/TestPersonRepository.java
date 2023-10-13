@@ -2,74 +2,91 @@ package myboot.app2.test;
 
 
 import myboot.app2.dao.PersonRepository;
+import myboot.app2.model.CV;
 import myboot.app2.model.Person;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
+
 @DataJpaTest  // C'est mieux pour tester les repositories que @SpringBootTest
 class TestPersonRepository {
-
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
     private PersonRepository personRepository;
 
-    @Test
-    void testSavePerson() {
-        Person person = new Person();
+    Person person;
+
+    @AfterEach
+    public void tearDown() {
+        entityManager.remove(person);
+    }
+
+
+    @BeforeEach
+    public void setUp() throws ParseException {
+        person = new Person();
         person.setFirstName("John");
         person.setLastName("Doe");
-        person.setEmail("john.doe@example.com");
-
-        person = personRepository.save(person);
-
-        assertNotNull(person.getId());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        person.setBirthDate(birthday);
+        person.setEmail("johndoe@email.com");
+        person.setPassword("JohnsPassword");
+        entityManager.persist(person);
     }
 
     @Test
-    void testFindById() {
-        Person person = new Person();
-        person.setFirstName("Jane");
-        person.setLastName("Doe");
-        person.setEmail("jane.doe@example.com");
+    public void savePerson_withValidData_shouldPersist() throws Exception {
+        Person newPerson = new Person();
+        newPerson.setFirstName("John");
+        newPerson.setLastName("Doe");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        newPerson.setBirthDate(birthday);
+        newPerson.setEmail("johndoe@email.com");
+        newPerson.setPassword("JohnsPassword");
+        Person saved = personRepository.save(newPerson);
 
-        person = entityManager.persist(person);
-
-        Person foundPerson = personRepository.findById(person.getId()).orElse(null);
-        assertNotNull(foundPerson);
-        assertEquals(person.getFirstName(), foundPerson.getFirstName());
+        Optional<Person> found = personRepository.findById(saved.getId());
+        assertThat(found.isPresent()).isTrue();
     }
 
     @Test
-    void testUpdatePerson() {
-        Person person = new Person();
-        person.setFirstName("Robert");
-        person.setLastName("Smith");
-        person.setEmail("robert.smith@example.com");
+    public void whenFindById_thenReturnPerson() {
+        Optional<Person> found = personRepository.findById(person.getId());
+        assertThat(found.isPresent()).isTrue();
+        assertEquals(found.get().getFirstName(), "John");
+    }
 
-        person = entityManager.persist(person);
-        person.setLastName("Jones");
+    @Test
+    public void updatePerson_withValidData_shouldUpdate() {
+
+        person.setPassword("new-password");
+
         personRepository.save(person);
 
         Person updatedPerson = entityManager.find(Person.class, person.getId());
-        assertEquals("Jones", updatedPerson.getLastName());
+        assertEquals(updatedPerson.getPassword(), "new-password");
     }
 
     @Test
-    void testDeletePerson() {
-        Person person = new Person();
-        person.setFirstName("Alice");
-        person.setLastName("Johnson");
-        person.setEmail("alice.johnson@example.com");
-
-        person = entityManager.persist(person);
-        personRepository.deleteById(person.getId());
-
-        Person deletedPerson = entityManager.find(Person.class, person.getId());
-        assertNull(deletedPerson);
+    public void whenDelete_thenRemoveData() {
+        personRepository.delete(person);
+        Optional<Person> found = personRepository.findById(person.getId());
+        assertThat(found.isPresent()).isFalse();
     }
+
 }

@@ -18,17 +18,27 @@ public class CVService {
         this.cvRepository = cvRepository;
     }
 
-    public List<CV> getAllCVs() {
-        return (List<CV>) cvRepository.findAll();
-    }
-
     @Transactional
     public CV saveCV(CV cv) {
         return cvRepository.save(cv);
     }
 
+    public List<CV> getAllCVs() {
+        return (List<CV>) cvRepository.findAll();
+    }
+
     public CV getCVById(Long id) {
         return cvRepository.findById(id).orElse(null);
+    }
+
+
+    public CV updateCV(Long id, CV updatedCV) {
+        if (cvRepository.findById(id).isPresent()) {
+            updatedCV.setId(id);
+            return cvRepository.save(updatedCV);
+        } else {
+            return null;
+        }
     }
 
     @Transactional

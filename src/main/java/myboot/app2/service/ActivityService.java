@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class ActivityService {
 
+    @Autowired
     private final ActivityRepository activityRepository;
 
     @Autowired
@@ -29,11 +30,6 @@ public class ActivityService {
     }
 
     @Transactional
-    public void deleteActivityById(Long id) {
-        activityRepository.deleteById(id);
-    }
-
-    @Transactional
     public List<Activity> getAllActivities() {
         return new ArrayList<>(activityRepository.findAll());
     }
@@ -42,5 +38,28 @@ public class ActivityService {
     public List<Activity> getActivityByTitle(String title) {
         return activityRepository.findActivityByTitle(title);
     }
+
+    @Transactional
+    public void deleteActivityById(Long id) {
+        activityRepository.deleteById(id);
+    }
+
+    public Activity updateActivity(Long id, Activity updatedActivity) {
+        if (activityRepository.findById(id).isPresent()) {
+            Activity existingActivity = activityRepository.findById(id).get();
+
+            existingActivity.setStartYear(updatedActivity.getStartYear());
+            existingActivity.setEndYear(updatedActivity.getEndYear());
+            existingActivity.setNature(updatedActivity.getNature());
+            existingActivity.setTitle(updatedActivity.getTitle());
+            existingActivity.setDescription(updatedActivity.getDescription());
+            existingActivity.setCv(updatedActivity.getCv());
+
+            return activityRepository.save(existingActivity);
+        } else {
+            throw new IllegalArgumentException("Activity with id " + id + " not found.");
+        }
+    }
+
 
 }
