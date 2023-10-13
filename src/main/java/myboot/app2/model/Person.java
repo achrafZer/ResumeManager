@@ -18,9 +18,9 @@ public class Person {
     private String email;
     private String website;
     private Date birthDate;
-    private String password; // TODO Est-ce que le cryptage des MDP est pour cette partie là ou pour après
+    private String password;
 
-    @OneToOne
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     private CV cv;
 
 }
