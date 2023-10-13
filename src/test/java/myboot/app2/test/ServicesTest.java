@@ -13,10 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class ServicesTest {
+class ServicesTest {
 
     @Autowired
     private PersonService personService;
@@ -36,9 +40,26 @@ public class ServicesTest {
     @Autowired
     private ActivityRepository activityRepository;
 
+//    @Test
+//    void testGetAllPersons() {
+//        Person person1 = new Person();
+//        person1.setFirstName("John");
+//        person1.setFirstName("Doe");
+//
+//        Person person2 = new Person();
+//        person2.setFirstName("Jeane");
+//        person2.setFirstName("Doe");
+//
+//        personRepository.save(person1);
+//        personRepository.save(person2);
+//
+//        List<Person> persons = personService.getAllPersons();
+//
+//        assertEquals(2, persons.size());
+//    }
 
     @Test
-    public void testSavePerson() {
+    void testSavePerson() {
         Person person = new Person();
         person.setFirstName("John");
         person.setLastName("Doe");
@@ -55,7 +76,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testGetPersonById() {
+    void testGetPersonById() {
         Person person = new Person();
         person.setFirstName("Jane");
         person.setLastName("Smith");
@@ -73,7 +94,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testDeletePersonById() {
+    void testDeletePersonById() {
         Person person = new Person();
         person.setFirstName("Alice");
         person.setLastName("Johnson");
@@ -89,7 +110,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testSaveCV() {
+    void testSaveCV() {
         CV cv = new CV();
 
         CV savedCV = cvService.saveCV(cv);
@@ -98,7 +119,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testGetCVById() {
+    void testGetCVById() {
         CV cv = new CV();
 
         cv = cvRepository.save(cv);
@@ -112,7 +133,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testDeleteCVById() {
+    void testDeleteCVById() {
         CV cv = new CV();
 
         cv = cvRepository.save(cv);
@@ -126,7 +147,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testSaveActivity() {
+    void testSaveActivity() {
         Activity activity = new Activity();
 
         Activity savedActivity = activityService.saveActivity(activity);
@@ -135,7 +156,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testGetActivityById() {
+    void testGetActivityById() {
         Activity activity = new Activity();
 
         activity = activityRepository.save(activity);
@@ -149,7 +170,7 @@ public class ServicesTest {
     }
 
     @Test
-    public void testDeleteActivityById() {
+    void testDeleteActivityById() {
         Activity activity = new Activity();
 
         activity = activityRepository.save(activity);
@@ -161,4 +182,37 @@ public class ServicesTest {
         Activity deletedActivity = activityRepository.findById(id).orElse(null);
         assertNull(deletedActivity);
     }
+
+    @Test
+    void testUpdatePerson() {
+        Person originalPerson = new Person();
+        originalPerson.setFirstName("John");
+        originalPerson.setLastName("Doe");
+        originalPerson = personRepository.save(originalPerson);
+
+        originalPerson.setFirstName("Jonathan");
+
+        Person updatedPerson = personService.updatePerson(originalPerson.getId(), originalPerson);
+
+        assertNotNull(updatedPerson);
+        assertEquals("Jonathan", updatedPerson.getFirstName());
+
+        Optional<Person> personFromDb = personRepository.findById(originalPerson.getId());
+        assertTrue(personFromDb.isPresent());
+        assertEquals("Jonathan", personFromDb.get().getFirstName());
+    }
+
+
+
+//    @Test
+//    public void testUpdateNonExistingPerson() {
+//        Person person = new Person();
+//        person.setName("John Doe");
+//        // Initialisez d'autres attributs si nécessaire
+//
+//        Person updatedPerson = personService.updatePerson(999L, person);  // utiliser un ID non existant
+//
+//        assertNull(updatedPerson);
+//    }
+
 }

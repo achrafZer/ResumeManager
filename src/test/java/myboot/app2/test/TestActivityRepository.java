@@ -2,6 +2,7 @@ package myboot.app2.test;
 
 import myboot.app2.dao.ActivityRepository;
 import myboot.app2.model.Activity;
+import myboot.app2.model.ActivityNature;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class TestActivityRepository {
+class TestActivityRepository {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -18,10 +19,10 @@ public class TestActivityRepository {
     private ActivityRepository activityRepository;
 
     @Test
-    public void testSaveActivity() {
+    void testSaveActivity() {
         Activity activity = new Activity();
-        activity.setYear(2023);
-        activity.setNature("Formation");
+        activity.setStartYear(2023);
+        activity.setNature(ActivityNature.EDUCATION);
         activity.setTitle("Java Training");
 
         activity = activityRepository.save(activity);
@@ -30,10 +31,10 @@ public class TestActivityRepository {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         Activity activity = new Activity();
-        activity.setYear(2023);
-        activity.setNature("Formation");
+        activity.setStartYear(2023);
+        activity.setNature(ActivityNature.EDUCATION);
         activity.setTitle("Java Training");
         activity = entityManager.persist(activity);
 
@@ -42,10 +43,10 @@ public class TestActivityRepository {
     }
 
     @Test
-    public void testUpdateActivity() {
+    void testUpdateActivity() {
         Activity activity = new Activity();
-        activity.setYear(2023);
-        activity.setNature("Formation");
+        activity.setStartYear(2023);
+        activity.setNature(ActivityNature.EDUCATION);
         activity.setTitle("Java Training");
         activity = entityManager.persist(activity);
 
@@ -57,10 +58,10 @@ public class TestActivityRepository {
     }
 
     @Test
-    public void testDeleteActivity() {
+    void testDeleteActivity() {
         Activity activity = new Activity();
-        activity.setYear(2023);
-        activity.setNature("Formation");
+        activity.setStartYear(2023);
+        activity.setNature(ActivityNature.EDUCATION);
         activity.setTitle("Java Training");
         activity = entityManager.persist(activity);
 

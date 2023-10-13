@@ -26,7 +26,7 @@ public class HelloController {
 	 * Une simple page de test (GET)
 	 */
 	@RequestMapping(value = "/hello")
-	private ModelAndView hello() {
+	public ModelAndView hello() {
 		return new ModelAndView("hello", "message", message);
 	}
 

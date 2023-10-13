@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class TestCVRepository {
+class TestCVRepository {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -18,7 +18,7 @@ public class TestCVRepository {
     private CVRepository cvRepository;
 
     @Test
-    public void testSaveCV() {
+    void testSaveCV() {
         CV cv = new CV();
 
         cv = cvRepository.save(cv);
@@ -27,7 +27,7 @@ public class TestCVRepository {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         CV cv = new CV();
         cv = entityManager.persist(cv);
 
@@ -36,7 +36,7 @@ public class TestCVRepository {
     }
 
     @Test
-    public void testUpdateCV() {
+    void testUpdateCV() {
         CV cv = new CV();
         cv = entityManager.persist(cv);
 
@@ -47,7 +47,7 @@ public class TestCVRepository {
     }
 
     @Test
-    public void testDeleteCV() {
+    void testDeleteCV() {
         CV cv = new CV();
         cv = entityManager.persist(cv);
         cvRepository.deleteById(cv.getId());

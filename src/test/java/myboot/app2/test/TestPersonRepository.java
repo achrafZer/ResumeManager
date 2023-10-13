@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest  // C'est mieux pour tester les repositories que @SpringBootTest
-public class TestPersonRepository {
+class TestPersonRepository {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -19,7 +19,7 @@ public class TestPersonRepository {
     private PersonRepository personRepository;
 
     @Test
-    public void testSavePerson() {
+    void testSavePerson() {
         Person person = new Person();
         person.setFirstName("John");
         person.setLastName("Doe");
@@ -31,7 +31,7 @@ public class TestPersonRepository {
     }
 
     @Test
-    public void testFindById() {
+    void testFindById() {
         Person person = new Person();
         person.setFirstName("Jane");
         person.setLastName("Doe");
@@ -45,7 +45,7 @@ public class TestPersonRepository {
     }
 
     @Test
-    public void testUpdatePerson() {
+    void testUpdatePerson() {
         Person person = new Person();
         person.setFirstName("Robert");
         person.setLastName("Smith");
@@ -60,7 +60,7 @@ public class TestPersonRepository {
     }
 
     @Test
-    public void testDeletePerson() {
+    void testDeletePerson() {
         Person person = new Person();
         person.setFirstName("Alice");
         person.setLastName("Johnson");
