@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ActivityService {
 
@@ -29,4 +32,15 @@ public class ActivityService {
     public void deleteActivityById(Long id) {
         activityRepository.deleteById(id);
     }
+
+    @Transactional
+    public List<Activity> getAllActivities() {
+        return new ArrayList<>(activityRepository.findAll());
+    }
+
+    @Transactional
+    public List<Activity> getActivityByTitle(String title) {
+        return activityRepository.findActivityByTitle(title);
+    }
+
 }

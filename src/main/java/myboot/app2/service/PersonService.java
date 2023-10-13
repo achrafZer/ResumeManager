@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PersonService {
 
@@ -30,4 +33,15 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
+    public List<Person> getAllPersons() {
+        return new ArrayList<>(personRepository.findAll());
+    }
+
+    public Person updatePerson(Long id, Person updatedPerson) {
+        if (personRepository.findById(id).isPresent()) {
+            updatedPerson.setId(id);
+            personRepository.save(updatedPerson);
+        }
+        return updatedPerson;
+    }
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CVService {
 
@@ -14,6 +16,10 @@ public class CVService {
     @Autowired
     public CVService(CVRepository cvRepository) {
         this.cvRepository = cvRepository;
+    }
+
+    public List<CV> getAllCVs() {
+        return (List<CV>) cvRepository.findAll();
     }
 
     @Transactional
