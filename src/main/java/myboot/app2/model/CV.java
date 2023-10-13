@@ -4,6 +4,7 @@ package myboot.app2.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import javax.management.ConstructorParameters;
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,8 +17,10 @@ public class CV {
 
     @OneToOne
     @JsonIgnore
+    @JoinColumn(nullable = false)
     private Person person;
 
     @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL)
     private List<Activity> activities;
+
 }
