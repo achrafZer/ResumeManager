@@ -18,6 +18,6 @@ public class CV {
     @JsonIgnore
     private Person person;
 
-    @OneToMany(mappedBy = "cv")
+    @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL)
     private List<Activity> activities;
 }
