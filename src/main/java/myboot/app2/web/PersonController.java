@@ -78,4 +78,9 @@ public class PersonController {
         List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
+
+    @GetMapping("/exception-test")
+    public void triggerException() {
+        throw new RuntimeException("Exception déclenchée intentionnellement");
+    }
 }
