@@ -60,17 +60,21 @@ public class PersonController {
         }
     }
 
-    @GetMapping("persons/search")
+    @GetMapping("persons/search-first-name")
     public ResponseEntity<List<Person>> getPersonsByFirstName(@RequestParam String firstName) {
         List<Person> personList = personService.getPersonsByFirstName(firstName);
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-    //getPersonByPartOfFirstName
+    @GetMapping("persons/search-last-name")
+    public ResponseEntity<List<Person>> getPersonsByLastName(@RequestParam String lastName) {
+        List<Person> personList = personService.getPersonsByLastName(lastName);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
 
-    //getPersonByPartOfLastName
-
-    //getPersonByActivityTitle
-
-    //getPersonByPartOfActivityTitle
+//    @GetMapping("persons/search-by-activity-title")
+//    public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
+//        List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
+//        return new ResponseEntity<>(personList, HttpStatus.OK);
+//    }
 }

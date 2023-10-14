@@ -16,4 +16,7 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person, Long> {
     @Query("SELECT p FROM Person p WHERE UPPER(p.firstName) LIKE UPPER(CONCAT('%', :firstName, '%'))")
     List<Person> findByFirstName(String firstName);
+
+    @Query("SELECT p FROM Person p WHERE UPPER(p.lastName) LIKE UPPER(CONCAT('%', :lastName, '%'))")
+    List<Person> findByLastName(String lastName);
 }

@@ -48,4 +48,8 @@ public class PersonService {
     public List<Person> getPersonsByFirstName(String firstName) {
         return personRepository.findByFirstName(firstName);
     }
+
+    public List<Person> getPersonsByLastName(String lastName) {
+        return personRepository.findByLastName(lastName);
+    }
 }
