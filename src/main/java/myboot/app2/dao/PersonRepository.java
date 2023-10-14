@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 @Transactional
@@ -19,4 +20,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     @Query("SELECT p FROM Person p WHERE UPPER(p.lastName) LIKE UPPER(CONCAT('%', :lastName, '%'))")
     List<Person> findByLastName(String lastName);
+
+    @Query("SELECT DISTINCT p FROM Person p JOIN p.cv cv JOIN cv.activities a WHERE a.title LIKE CONCAT('%', :title , '%')")
+    List<Person> findByActivityTitle(String title);
 }

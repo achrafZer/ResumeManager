@@ -1,6 +1,8 @@
 package myboot.app2.service;
 
+import myboot.app2.dao.ActivityRepository;
 import myboot.app2.dao.PersonRepository;
+import myboot.app2.model.Activity;
 import myboot.app2.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PersonService {
@@ -51,5 +54,9 @@ public class PersonService {
 
     public List<Person> getPersonsByLastName(String lastName) {
         return personRepository.findByLastName(lastName);
+    }
+
+    public List<Person> getPersonsByPartOfActivityTitle(String title) {
+        return personRepository.findByActivityTitle(title);
     }
 }

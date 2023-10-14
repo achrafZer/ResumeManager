@@ -9,6 +9,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -72,9 +73,9 @@ public class PersonController {
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-//    @GetMapping("persons/search-by-activity-title")
-//    public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
-//        List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
-//        return new ResponseEntity<>(personList, HttpStatus.OK);
-//    }
+    @GetMapping("persons/search-by-activity-title")
+    public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
+        List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
 }
