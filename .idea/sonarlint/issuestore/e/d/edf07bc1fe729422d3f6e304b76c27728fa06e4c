@@ -1,0 +1,23 @@
+
+;
+java:S5786<"Remove this 'public' modifier.(’ËµÇ8ĞÉ‘É²1
+:
+java:S5786E"Remove this 'public' modifier.(¯üÆ!8ĞÉ‘É²1
+;
+java:S5786M"Remove this 'public' modifier.(ÊÌø¶8ĞÉ‘É²1
+@
+java:S5786T"Remove this 'public' modifier.(§âÿ·üÿÿÿÿ8ĞÉ‘É²1
+@
+java:S5786Z"Remove this 'public' modifier.(×ã¶°şÿÿÿÿ8ĞÉ‘É²1
+;
+java:S5786h"Remove this 'public' modifier.(µé»Í8ĞÉ‘É²1
+M
+java:S5838A"+Use assertThat(actual).isPresent() instead.(…Ä‡¢üÿÿÿÿ8ÒÉ‘É²1
+M
+java:S5838O"+Use assertThat(actual).isPresent() instead.(…Ä‡¢üÿÿÿÿ8ÓÉ‘É²1
+p
+java:S5838V"NUse assertThat(actual).isNotPresent() or assertThat(actual).isEmpty() instead.(óäÄ½ûÿÿÿÿ8ÔÉ‘É²1
+s
+java:S3415d"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(Ä‰¤´8ÖÉ‘É²1
+k
+java:S5838k"NUse assertThat(actual).isNotPresent() or assertThat(actual).isEmpty() instead.(¥…Ï˜8ÖÉ‘É²1
