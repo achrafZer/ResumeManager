@@ -26,13 +26,7 @@ public class SpringConfiguration extends SpringBootServletInitializer implements
 	}
 
 	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		super.onStartup(servletContext);
-	}
-
-	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		System.out.println("--- addResourceHandlers");
 		registry.addResourceHandler("/webjars/**")//
 				.addResourceLocations("/webjars/");
 	}

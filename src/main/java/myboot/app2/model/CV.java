@@ -4,7 +4,6 @@ package myboot.app2.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.management.ConstructorParameters;
 import javax.persistence.*;
 import java.util.List;
 

@@ -2,7 +2,6 @@ package myboot.app2.test;
 
 
 import myboot.app2.dao.PersonRepository;
-import myboot.app2.model.CV;
 import myboot.app2.model.Person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
-@DataJpaTest  // C'est mieux pour tester les repositories que @SpringBootTest
+@DataJpaTest
 class TestPersonRepository {
     @Autowired
     private TestEntityManager entityManager;
@@ -49,7 +48,7 @@ class TestPersonRepository {
     }
 
     @Test
-    public void savePerson_withValidData_shouldPersist() throws Exception {
+    void savePerson_withValidData_shouldPersist() throws Exception {
         Person newPerson = new Person();
         newPerson.setFirstName("John");
         newPerson.setLastName("Doe");
@@ -61,32 +60,32 @@ class TestPersonRepository {
         Person saved = personRepository.save(newPerson);
 
         Optional<Person> found = personRepository.findById(saved.getId());
-        assertThat(found.isPresent()).isTrue();
+        assertTrue(found.isPresent());
     }
 
     @Test
-    public void whenFindById_thenReturnPerson() {
+    void whenFindById_thenReturnPerson() {
         Optional<Person> found = personRepository.findById(person.getId());
-        assertThat(found.isPresent()).isTrue();
-        assertEquals(found.get().getFirstName(), "John");
+        assertTrue(found.isPresent());
+        assertEquals("John", found.get().getFirstName());
     }
 
     @Test
-    public void updatePerson_withValidData_shouldUpdate() {
+    void updatePerson_withValidData_shouldUpdate() {
 
         person.setPassword("new-password");
 
         personRepository.save(person);
 
         Person updatedPerson = entityManager.find(Person.class, person.getId());
-        assertEquals(updatedPerson.getPassword(), "new-password");
+        assertEquals("new-password", updatedPerson.getPassword());
     }
 
     @Test
-    public void whenDelete_thenRemoveData() {
+    void whenDelete_thenRemoveData() {
         personRepository.delete(person);
         Optional<Person> found = personRepository.findById(person.getId());
-        assertThat(found.isPresent()).isFalse();
+        assertThat(found).isNotPresent();
     }
 
 }

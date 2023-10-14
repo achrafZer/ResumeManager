@@ -19,22 +19,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-public class TestCVService {
+class TestCVService {
 
     @Autowired
     private CVService cvService;
 
     private CV testCV;
-    private Person testPerson;
+
+    private Person testPerson2;
 
     @Autowired
     private PersonService personService;
 
-
-
     @BeforeEach
     public void setUp() throws ParseException {
-        testPerson = new Person();
+        Person testPerson = new Person();
         testPerson.setFirstName("John");
         testPerson.setLastName("Doe");
         testPerson.setEmail("johndoe@example.com");
@@ -44,29 +43,36 @@ public class TestCVService {
         testPerson.setPassword("password123");
         personService.savePerson(testPerson);
 
+        testPerson2 = new Person();
+        testPerson2.setFirstName("Person2");
+        testPerson2.setLastName("LastName2");
+        testPerson2.setEmail("johndoe@example.com");
+        Date birthday1 = sdf.parse("1985-01-01");
+        testPerson2.setBirthDate(birthday1);
+        testPerson2.setPassword("password123");
+        personService.savePerson(testPerson2);
+
         testCV = new CV();
         testCV.setPerson(testPerson);
     }
 
     @Test
-    public void testSaveCV() {
+    void testSaveCV() {
         CV savedCV = cvService.saveCV(testCV);
         assertNotNull(savedCV.getId());
-        // Test other assertions as per your needs.
     }
 
     @Test
-    public void testUpdateCV() {
+    void testUpdateCV() {
         CV savedCV = cvService.saveCV(testCV);
-
-        // Modify your CV object as needed for testing updates.
+        savedCV.setPerson(testPerson2);
         CV updatedCV = cvService.updateCV(savedCV.getId(), savedCV);
 
-        // Add assertions to check the update.
+        assertEquals("Person2", cvService.getCVById(savedCV.getId()).getPerson().getFirstName());
     }
 
     @Test
-    public void testDeleteCV() {
+    void testDeleteCV() {
         CV savedCV = cvService.saveCV(testCV);
         cvService.deleteCVById(savedCV.getId());
         assertNull(cvService.getCVById(savedCV.getId()));

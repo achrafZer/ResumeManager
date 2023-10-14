@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-public class TestPersonService {
+class TestPersonService {
 
     @Autowired
     private PersonService personService;
@@ -36,14 +36,14 @@ public class TestPersonService {
     }
 
     @Test
-    public void testSavePerson() {
+    void testSavePerson() {
         Person savedPerson = personService.savePerson(testPerson);
         assertNotNull(savedPerson.getId());
         assertEquals(testPerson.getFirstName(), savedPerson.getFirstName());
     }
 
     @Test
-    public void testUpdatePerson() throws Exception {
+    void testUpdatePerson() throws Exception {
         Person savedPerson = personService.savePerson(testPerson);
 
         savedPerson.setFirstName("Jane");
@@ -55,7 +55,7 @@ public class TestPersonService {
     }
 
     @Test
-    public void testDeletePerson() {
+    void testDeletePerson() {
         Person savedPerson = personService.savePerson(testPerson);
         personService.deletePersonById(savedPerson.getId());
         assertNull(personService.getPersonById(savedPerson.getId()));

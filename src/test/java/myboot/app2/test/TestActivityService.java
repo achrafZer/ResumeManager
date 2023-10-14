@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-public class TestActivityService {
+class TestActivityService {
 
     @Autowired
     private ActivityService activityService;
@@ -32,14 +32,14 @@ public class TestActivityService {
     }
 
     @Test
-    public void testSaveActivity() {
+    void testSaveActivity() {
         Activity savedActivity = activityService.saveActivity(testActivity);
         assertNotNull(savedActivity.getId());
         assertEquals(testActivity.getTitle(), savedActivity.getTitle());
     }
 
     @Test
-    public void testUpdateActivity() {
+    void testUpdateActivity() {
         Activity savedActivity = activityService.saveActivity(testActivity);
 
         savedActivity.setTitle("Senior Software Developer");
@@ -49,7 +49,7 @@ public class TestActivityService {
     }
 
     @Test
-    public void testDeleteActivity() {
+    void testDeleteActivity() {
         Activity savedActivity = activityService.saveActivity(testActivity);
         activityService.deleteActivityById(savedActivity.getId());
         assertNull(activityService.getActivityById(savedActivity.getId()));

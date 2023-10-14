@@ -57,16 +57,16 @@ class TestCVRepository {
     }
 
     @Test
-    public void whenSave_thenPersistData() {
+    void whenSave_thenPersistData() {
         CV newCV = new CV();
         newCV.setPerson(person);
         CV saved = cvRepository.save(newCV);
         Optional<CV> found = cvRepository.findById(saved.getId());
-        assertThat(found.isPresent()).isTrue();
+        assertThat(found).isPresent();
     }
 
     @Test
-    public void saveCV_withNullPerson_shouldThrowException() {
+    void saveCV_withNullPerson_shouldThrowException() {
         CV cv = new CV();
         assertThrows(Exception.class, () -> {
             cvRepository.save(cv);
@@ -74,20 +74,20 @@ class TestCVRepository {
     }
 
     @Test
-    public void whenFindById_thenReturnCV() {
+    void whenFindById_thenReturnCV() {
         Optional<CV> found = cvRepository.findById(cv.getId());
-        assertThat(found.isPresent()).isTrue();
+        assertThat(found).isPresent();
         assertThat(found.get().getPerson()).isEqualTo(person);
     }
 
     @Test
-    public void findById_withInvalidId_shouldReturnEmptyOptional() {
+    void findById_withInvalidId_shouldReturnEmptyOptional() {
         Optional<CV> foundCV = cvRepository.findById(999L);
-        assertThat(foundCV.isPresent()).isFalse();
+        assertThat(foundCV).isNotPresent();
     }
 
     @Test
-    public void updateCV_withValidData_shouldUpdate() {
+    void updateCV_withValidData_shouldUpdate() {
 
         Person updatedPerson = person;
         updatedPerson.setFirstName("Jane");
@@ -97,14 +97,14 @@ class TestCVRepository {
         cvRepository.save(cv);
 
         CV updatedCV = entityManager.find(CV.class, cv.getId());
-        assertEquals(updatedCV.getPerson().getFirstName(), "Jane");
+        assertEquals("Jane", updatedCV.getPerson().getFirstName());
     }
 
     @Test
-    public void whenDelete_thenRemoveData() {
+    void whenDelete_thenRemoveData() {
         cvRepository.delete(cv);
         Optional<CV> found = cvRepository.findById(cv.getId());
-        assertThat(found.isPresent()).isFalse();
+        assertThat(found).isNotPresent();
     }
 
 

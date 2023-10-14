@@ -45,9 +45,6 @@ public class MovieController {
 		}
 	}
 
-	@PreDestroy
-	public void destroy() {
-	}
 
 	/**
 	 * Montrer les films (GET)
