@@ -5,6 +5,7 @@ import myboot.app2.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,4 +59,18 @@ public class PersonController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("persons/search")
+    public ResponseEntity<List<Person>> getPersonsByFirstName(@RequestParam String firstName) {
+        List<Person> personList = personService.getPersonsByFirstName(firstName);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
+
+    //getPersonByPartOfFirstName
+
+    //getPersonByPartOfLastName
+
+    //getPersonByActivityTitle
+
+    //getPersonByPartOfActivityTitle
 }

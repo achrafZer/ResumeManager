@@ -44,4 +44,8 @@ public class PersonService {
         }
         return updatedPerson;
     }
+
+    public List<Person> getPersonsByFirstName(String firstName) {
+        return personRepository.findByFirstName(firstName);
+    }
 }
