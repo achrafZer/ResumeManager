@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import javax.validation.ConstraintViolationException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,7 +49,7 @@ class TestPersonRepository {
     }
 
     @Test
-    void savePerson_withValidData_shouldPersist() throws Exception {
+    void savePerson_withValidData() throws Exception {
         Person newPerson = new Person();
         newPerson.setFirstName("Jean");
         newPerson.setLastName("SAMSON");
@@ -61,6 +62,67 @@ class TestPersonRepository {
 
         Optional<Person> found = personRepository.findById(saved.getId());
         assertTrue(found.isPresent());
+    }
+
+    @Test
+    void savePerson_withUnvalidFirstName() throws ParseException { //name containing a number
+        Person newPerson = new Person();
+        newPerson.setFirstName("Jean2");
+        newPerson.setLastName("SAMSON");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        newPerson.setBirthDate(birthday);
+        newPerson.setEmail("jeansamson@email.com");
+        newPerson.setPassword("JeanPassword");
+        assertThrows(ConstraintViolationException.class, () -> {
+            personRepository.save(newPerson);
+        });
+    }
+
+    @Test
+    void savePerson_withUnvalidLastName() throws ParseException { //name containing an empty string
+        Person newPerson = new Person();
+        newPerson.setFirstName("Jean");
+        newPerson.setLastName("");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        newPerson.setBirthDate(birthday);
+        newPerson.setEmail("jeansamson@email.com");
+        newPerson.setPassword("JeanPassword");
+        assertThrows(ConstraintViolationException.class, () -> {
+            personRepository.save(newPerson);
+        });
+    }
+
+    @Test
+    void savePerson_withUnvalidEmail() throws ParseException { //email not containing '@'
+        Person newPerson = new Person();
+        newPerson.setFirstName("Jean");
+        newPerson.setLastName("SAMSON");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        newPerson.setBirthDate(birthday);
+        newPerson.setEmail("jeansamson.email.com");
+        newPerson.setPassword("JeanPassword");
+        assertThrows(ConstraintViolationException.class, () -> {
+            personRepository.save(newPerson);
+        });
+    }
+
+    @Test
+    void savePerson_withUnvalidWebSite() throws ParseException { //webSite not containing a '.'
+        Person newPerson = new Person();
+        newPerson.setFirstName("Jean");
+        newPerson.setLastName("SAMSON");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        newPerson.setBirthDate(birthday);
+        newPerson.setEmail("jeansamson@email.com");
+        newPerson.setPassword("JeanPassword");
+        newPerson.setWebsite("myWrongWebsite");
+        assertThrows(ConstraintViolationException.class, () -> {
+            personRepository.save(newPerson);
+        });
     }
 
     @Test
