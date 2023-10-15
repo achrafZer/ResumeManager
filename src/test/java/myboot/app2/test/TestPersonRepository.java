@@ -37,26 +37,26 @@ class TestPersonRepository {
     @BeforeEach
     public void setUp() throws ParseException {
         person = new Person();
-        person.setFirstName("John");
-        person.setLastName("Doe");
+        person.setFirstName("Jean");
+        person.setLastName("SAMSON");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday = sdf.parse("1990-01-01");
         person.setBirthDate(birthday);
-        person.setEmail("johndoe@email.com");
-        person.setPassword("JohnsPassword");
+        person.setEmail("jeansamson@email.com");
+        person.setPassword("JeanPassword");
         entityManager.persist(person);
     }
 
     @Test
     void savePerson_withValidData_shouldPersist() throws Exception {
         Person newPerson = new Person();
-        newPerson.setFirstName("John");
-        newPerson.setLastName("Doe");
+        newPerson.setFirstName("Jean");
+        newPerson.setLastName("SAMSON");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday = sdf.parse("1990-01-01");
         newPerson.setBirthDate(birthday);
-        newPerson.setEmail("johndoe@email.com");
-        newPerson.setPassword("JohnsPassword");
+        newPerson.setEmail("jeansamson@email.com");
+        newPerson.setPassword("JeanPassword");
         Person saved = personRepository.save(newPerson);
 
         Optional<Person> found = personRepository.findById(saved.getId());
@@ -67,7 +67,7 @@ class TestPersonRepository {
     void whenFindById_thenReturnPerson() {
         Optional<Person> found = personRepository.findById(person.getId());
         assertTrue(found.isPresent());
-        assertEquals("John", found.get().getFirstName());
+        assertEquals("Jean", found.get().getFirstName());
     }
 
     @Test

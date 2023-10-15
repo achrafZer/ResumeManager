@@ -34,9 +34,9 @@ class TestCVService {
     @BeforeEach
     public void setUp() throws ParseException {
         Person testPerson = new Person();
-        testPerson.setFirstName("John");
-        testPerson.setLastName("Doe");
-        testPerson.setEmail("johndoe@example.com");
+        testPerson.setFirstName("Jean");
+        testPerson.setLastName("SAMSON");
+        testPerson.setEmail("jeansamson@example.com");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday = sdf.parse("1985-01-01");
         testPerson.setBirthDate(birthday);
@@ -46,7 +46,7 @@ class TestCVService {
         testPerson2 = new Person();
         testPerson2.setFirstName("Person2");
         testPerson2.setLastName("LastName2");
-        testPerson2.setEmail("johndoe@example.com");
+        testPerson2.setEmail("personlastname@example.com");
         Date birthday1 = sdf.parse("1985-01-01");
         testPerson2.setBirthDate(birthday1);
         testPerson2.setPassword("password123");

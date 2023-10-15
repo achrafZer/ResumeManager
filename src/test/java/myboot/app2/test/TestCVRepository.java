@@ -36,13 +36,13 @@ class TestCVRepository {
     @BeforeEach
     public void setUp() throws ParseException {
         person = new Person();
-        person.setFirstName("John");
-        person.setLastName("Doe");
-        person.setEmail("john.doe@example.com");
+        person.setFirstName("Jean");
+        person.setLastName("SAMSON");
+        person.setEmail("jean.amson@example.com");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday = sdf.parse("1990-01-01");
         person.setBirthDate(birthday);
-        person.setPassword("JohnsPassword");
+        person.setPassword("JeanPassword");
         entityManager.persist(person);
 
         cv = new CV();
@@ -90,14 +90,14 @@ class TestCVRepository {
     void updateCV_withValidData_shouldUpdate() {
 
         Person updatedPerson = person;
-        updatedPerson.setFirstName("Jane");
-        updatedPerson.setLastName("Doe");
+        updatedPerson.setFirstName("Achraf");
+        updatedPerson.setLastName("ZERHOUNI");
         cv.setPerson(updatedPerson);
 
         cvRepository.save(cv);
 
         CV updatedCV = entityManager.find(CV.class, cv.getId());
-        assertEquals("Jane", updatedCV.getPerson().getFirstName());
+        assertEquals("Achraf", updatedCV.getPerson().getFirstName());
     }
 
     @Test

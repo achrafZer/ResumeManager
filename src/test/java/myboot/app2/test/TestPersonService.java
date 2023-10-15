@@ -26,9 +26,9 @@ class TestPersonService {
     @BeforeEach
     public void setUp() throws Exception {
         testPerson = new Person();
-        testPerson.setFirstName("John");
-        testPerson.setLastName("Doe");
-        testPerson.setEmail("johndoe@example.com");
+        testPerson.setFirstName("Jean");
+        testPerson.setLastName("SAMSON");
+        testPerson.setEmail("jeansamson@example.com");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday = sdf.parse("1985-01-01");
         testPerson.setBirthDate(birthday);
@@ -46,12 +46,12 @@ class TestPersonService {
     void testUpdatePerson() throws Exception {
         Person savedPerson = personService.savePerson(testPerson);
 
-        savedPerson.setFirstName("Jane");
-        savedPerson.setLastName("Doe");
+        savedPerson.setFirstName("Achraf");
+        savedPerson.setLastName("ZER");
         Person updatedPerson = personService.updatePerson(savedPerson.getId(), savedPerson);
 
-        assertEquals("Jane", updatedPerson.getFirstName());
-        assertEquals("Doe", updatedPerson.getLastName());
+        assertEquals("Achraf", updatedPerson.getFirstName());
+        assertEquals("ZER", updatedPerson.getLastName());
     }
 
     @Test
