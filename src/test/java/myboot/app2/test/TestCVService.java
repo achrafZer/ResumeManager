@@ -44,8 +44,8 @@ class TestCVService {
         personService.savePerson(testPerson);
 
         testPerson2 = new Person();
-        testPerson2.setFirstName("Person2");
-        testPerson2.setLastName("LastName2");
+        testPerson2.setFirstName("Person");
+        testPerson2.setLastName("LastName");
         testPerson2.setEmail("personlastname@example.com");
         Date birthday1 = sdf.parse("1985-01-01");
         testPerson2.setBirthDate(birthday1);
@@ -68,7 +68,7 @@ class TestCVService {
         savedCV.setPerson(testPerson2);
         CV updatedCV = cvService.updateCV(savedCV.getId(), savedCV);
 
-        assertEquals("Person2", cvService.getCVById(savedCV.getId()).getPerson().getFirstName());
+        assertEquals("Person", cvService.getCVById(savedCV.getId()).getPerson().getFirstName());
     }
 
     @Test

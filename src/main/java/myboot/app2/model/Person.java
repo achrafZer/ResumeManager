@@ -5,10 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -19,9 +16,11 @@ public class Person {
     private Long id;
 
     @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z-' ]+$", message = "First name can only contain alphabets, spaces, apostrophes, and hyphens")
     private String firstName;
 
     @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z-' ]+$", message = "Last name can only contain alphabets, spaces, apostrophes, and hyphens")
     private String lastName;
 
     @NotEmpty
