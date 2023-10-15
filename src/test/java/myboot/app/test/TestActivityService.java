@@ -39,6 +39,17 @@ class TestActivityService {
     }
 
     @Test
+    void testGetActivityByTitle() {
+        Activity activity = activityService.saveActivity(testActivity);
+        assertNotNull(activityService.getActivityByTitle("Software Developer"));
+    }
+
+    @Test
+    void testGetAllActivities() {
+        assertEquals(4, activityService.getAllActivities().size());
+    }
+
+    @Test
     void testUpdateActivity() {
         Activity savedActivity = activityService.saveActivity(testActivity);
 
@@ -46,6 +57,13 @@ class TestActivityService {
         Activity updatedActivity = activityService.updateActivity(savedActivity.getId(), savedActivity);
 
         assertEquals("Senior Software Developer", updatedActivity.getTitle());
+    }
+
+    @Test
+    void testUnvaliUpdateActivity() { //update with an inexistant id
+        assertThrows(IllegalArgumentException.class, () -> {
+            activityService.updateActivity(5L, testActivity);
+        });
     }
 
     @Test

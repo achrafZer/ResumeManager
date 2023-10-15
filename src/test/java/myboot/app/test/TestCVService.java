@@ -63,6 +63,12 @@ class TestCVService {
     }
 
     @Test
+    void testGetAllCVs() {
+        cvService.saveCV(testCV);
+        assertEquals("Jean", cvService.getAllCVs().get(1).getPerson().getFirstName());
+    }
+
+    @Test
     void testUpdateCV() {
         CV savedCV = cvService.saveCV(testCV);
         savedCV.setPerson(testPerson2);

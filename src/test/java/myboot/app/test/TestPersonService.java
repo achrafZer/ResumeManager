@@ -1,5 +1,6 @@
 package myboot.app.test;
 
+import io.netty.handler.codec.string.LineSeparator;
 import myboot.app.model.Person;
 import myboot.app.service.PersonService;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,6 +40,40 @@ class TestPersonService {
         Person savedPerson = personService.savePerson(testPerson);
         assertNotNull(savedPerson.getId());
         assertEquals(testPerson.getFirstName(), savedPerson.getFirstName());
+    }
+
+    @Test
+    void testGetPersonsByFirstName() {
+        personService.savePerson(testPerson);
+        List<Person> personList = personService.getPersonsByFirstName("Jean");
+        assertEquals(1, personList.size());
+        assertEquals("SAMSON", personList.get(0).getLastName());
+    }
+
+    @Test
+    void testGetPersonsByPartFirstName() {
+        personService.savePerson(testPerson);
+        List<Person> personList = personService.getPersonsByFirstName("Jea");
+        assertEquals(1, personList.size());
+        assertEquals("SAMSON", personList.get(0).getLastName());
+    }
+
+    @Test
+    void testGetPersonsByPartOfActivityTitle() {
+        personService.savePerson(testPerson);
+        List<Person> personList = personService.getPersonsByPartOfActivityTitle("Chef de");
+        assertEquals(1, personList.size());
+        assertEquals("ZERHOUNI", personList.get(0).getLastName());
+    }
+
+
+
+    @Test
+    void testGetPersonsByLastName() {
+        personService.savePerson(testPerson);
+        List<Person> personList = personService.getPersonsByLastName("SAMSON");
+        assertEquals(1, personList.size());
+        assertEquals("Jean", personList.get(0).getFirstName());
     }
 
     @Test
