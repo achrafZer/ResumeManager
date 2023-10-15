@@ -32,6 +32,7 @@ class TestActivityRepository {
     public void setUp() throws ParseException {
         activity = new Activity();
         activity.setStartYear(2023);
+        activity.setEndYear(2024);
         activity.setNature(ActivityNature.EDUCATION);
         activity.setTitle("Java Training");
         entityManager.persist(activity);

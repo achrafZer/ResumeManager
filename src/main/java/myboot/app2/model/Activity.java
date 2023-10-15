@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Data
@@ -16,6 +15,7 @@ public class Activity {
 
     @NotNull
     @Column(nullable = false)
+    @Max(message = "Start year should be in the past", value = 2023)
     private int startYear;
 
     @NotNull
@@ -36,4 +36,9 @@ public class Activity {
     @ManyToOne
     @JsonIgnore
     private CV cv;
+
+    @AssertTrue(message = "Start year should be before endYear")
+    public boolean isStartYearBeforeEndYear() {
+        return startYear < endYear;
+    }
 }

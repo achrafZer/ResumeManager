@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +35,13 @@ public class ActivityController {
     }
 
     @PostMapping
-    public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
+    public ResponseEntity<Activity> createActivity(@Valid @RequestBody Activity activity) {
         Activity savedActivity = activityRepository.save(activity);
         return new ResponseEntity<>(savedActivity, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Activity> updateActivity(@PathVariable Long id, @RequestBody Activity activity) {
+    public ResponseEntity<Activity> updateActivity(@PathVariable Long id,@Valid @RequestBody Activity activity) {
         if (activityRepository.existsById(id)) {
             activity.setId(id);
             Activity updatedActivity = activityRepository.save(activity);

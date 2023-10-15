@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @Entity
@@ -17,9 +18,11 @@ public class CV {
     @OneToOne
     @JsonIgnore
     @JoinColumn(nullable = false)
+    @Valid
     private Person person;
 
     @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL)
+    @Valid
     private List<Activity> activities;
 
 }

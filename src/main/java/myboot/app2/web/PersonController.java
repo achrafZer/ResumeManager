@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class PersonController {
     private PersonService personService;
 
     @PostMapping("/persons")
-    public ResponseEntity<Person> createPerson(@RequestBody Person person) {
+    public ResponseEntity<Person> createPerson(@Valid @RequestBody Person person) {
         Person savedPerson = personService.savePerson(person);
         return new ResponseEntity<>(savedPerson, HttpStatus.CREATED);
     }
@@ -41,7 +42,7 @@ public class PersonController {
     }
 
     @PutMapping("persons/{id}")
-    public ResponseEntity<Person> updatePerson(@PathVariable Long id, @RequestBody Person updatedPerson) {
+    public ResponseEntity<Person> updatePerson(@PathVariable Long id,@Valid @RequestBody Person updatedPerson) {
         Person person = personService.updatePerson(id, updatedPerson);
         if (person != null) {
             return new ResponseEntity<>(person, HttpStatus.OK);
