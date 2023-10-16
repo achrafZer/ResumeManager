@@ -39,6 +39,24 @@ public class PersonController {
         }
     }
 
+    @GetMapping("persons/search-first-name")
+    public ResponseEntity<List<Person>> getPersonsByFirstName(@RequestParam String firstName) {
+        List<Person> personList = personService.getPersonsByFirstName(firstName);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
+
+    @GetMapping("persons/search-last-name")
+    public ResponseEntity<List<Person>> getPersonsByLastName(@RequestParam String lastName) {
+        List<Person> personList = personService.getPersonsByLastName(lastName);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
+
+    @GetMapping("persons/search-by-activity-title")
+    public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
+        List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
+        return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
+
     @PutMapping("persons/{id}")
     public ResponseEntity<Person> updatePerson(@PathVariable Long id,@Valid @RequestBody Person updatedPerson) {
         Person person = personService.updatePerson(id, updatedPerson);
@@ -58,24 +76,6 @@ public class PersonController {
         else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @GetMapping("persons/search-first-name")
-    public ResponseEntity<List<Person>> getPersonsByFirstName(@RequestParam String firstName) {
-        List<Person> personList = personService.getPersonsByFirstName(firstName);
-        return new ResponseEntity<>(personList, HttpStatus.OK);
-    }
-
-    @GetMapping("persons/search-last-name")
-    public ResponseEntity<List<Person>> getPersonsByLastName(@RequestParam String lastName) {
-        List<Person> personList = personService.getPersonsByLastName(lastName);
-        return new ResponseEntity<>(personList, HttpStatus.OK);
-    }
-
-    @GetMapping("persons/search-by-activity-title")
-    public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
-        List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
-        return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
     @GetMapping("/exception-test")
