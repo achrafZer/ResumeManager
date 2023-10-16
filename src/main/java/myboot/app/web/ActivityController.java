@@ -18,6 +18,13 @@ public class ActivityController {
     @Autowired
     private ActivityRepository activityRepository;
 
+
+    @PostMapping
+    public ResponseEntity<Activity> createActivity(@Valid @RequestBody Activity activity) {
+        Activity savedActivity = activityRepository.save(activity);
+        return new ResponseEntity<>(savedActivity, HttpStatus.CREATED);
+    }
+
     @GetMapping
     public ResponseEntity<List<Activity>> getAllActivities() {
         List<Activity> activities = activityRepository.findAll();
@@ -32,12 +39,6 @@ public class ActivityController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    @PostMapping
-    public ResponseEntity<Activity> createActivity(@Valid @RequestBody Activity activity) {
-        Activity savedActivity = activityRepository.save(activity);
-        return new ResponseEntity<>(savedActivity, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
