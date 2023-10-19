@@ -20,4 +20,5 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     @Query("SELECT DISTINCT p FROM Person p JOIN p.cv cv JOIN cv.activities a WHERE a.title LIKE CONCAT('%', :title , '%')")
     List<Person> findByActivityTitle(String title);
+
 }
