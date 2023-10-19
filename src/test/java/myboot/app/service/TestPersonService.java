@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.service;
 
 import io.netty.handler.codec.string.LineSeparator;
 import myboot.app.model.Person;
@@ -65,8 +65,6 @@ class TestPersonService {
         assertEquals(1, personList.size());
         assertEquals("ZERHOUNI", personList.get(0).getLastName());
     }
-
-
 
     @Test
     void testGetPersonsByLastName() {

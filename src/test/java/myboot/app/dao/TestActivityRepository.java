@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.dao;
 
 import myboot.app.dao.ActivityRepository;
 import myboot.app.model.Activity;

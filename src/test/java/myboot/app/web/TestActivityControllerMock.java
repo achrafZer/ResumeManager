@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import myboot.app.dao.ActivityRepository;
@@ -19,8 +19,6 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-
 
 @SpringBootTest
 @AutoConfigureMockMvc
