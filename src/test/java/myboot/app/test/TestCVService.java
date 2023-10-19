@@ -28,12 +28,14 @@ class TestCVService {
 
     private Person testPerson2;
 
+    private Person testPerson;
+
     @Autowired
     private PersonService personService;
 
     @BeforeEach
     public void setUp() throws ParseException {
-        Person testPerson = new Person();
+        testPerson = new Person();
         testPerson.setFirstName("Jean");
         testPerson.setLastName("SAMSON");
         testPerson.setEmail("jeansamson@example.com");
@@ -87,5 +89,8 @@ class TestCVService {
     @AfterEach
     public void tearDown() {
         testCV = null;
+        personService.deletePersonById(testPerson2.getId());
+        personService.deletePersonById(testPerson.getId());
+
     }
 }

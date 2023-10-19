@@ -1,6 +1,8 @@
 package myboot.app.test;
 
 import myboot.app.dao.CVRepository;
+import myboot.app.model.Activity;
+import myboot.app.model.ActivityNature;
 import myboot.app.model.CV;
 import myboot.app.model.Person;
 import org.junit.jupiter.api.AfterEach;
@@ -45,7 +47,17 @@ class TestCVRepository {
 
         cv = new CV();
         cv.setPerson(person);
+
+        Activity activity = new Activity();
+        activity.setTitle("mon activité");
+        activity.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        activity.setStartYear(2012);
+        activity.setEndYear(2020);
+        activity.setDescription("ghghgg");
+        activity.setCv(cv);
+        entityManager.persist(activity);
         entityManager.persist(cv);
+
     }
 
     @AfterEach

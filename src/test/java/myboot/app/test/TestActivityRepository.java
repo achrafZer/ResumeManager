@@ -105,4 +105,5 @@ class TestActivityRepository {
         Activity deletedActivity = entityManager.find(Activity.class, activity.getId());
         assertNull(deletedActivity);
     }
+
 }

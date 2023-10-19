@@ -62,6 +62,9 @@ class TestPersonRepository {
 
         Optional<Person> found = personRepository.findById(saved.getId());
         assertTrue(found.isPresent());
+
+        personRepository.delete(newPerson);
+
     }
 
     @Test

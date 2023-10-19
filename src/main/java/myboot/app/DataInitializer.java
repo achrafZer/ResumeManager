@@ -8,6 +8,7 @@ import myboot.app.service.ActivityService;
 import myboot.app.service.CVService;
 import myboot.app.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Service
+//@Profile("dev")
 public class DataInitializer {
     @Autowired
     PersonService personService;

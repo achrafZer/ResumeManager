@@ -11,25 +11,25 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/persons")
 public class PersonController {
 
     @Autowired
     private PersonService personService;
 
-    @PostMapping("/persons")
+    @PostMapping()
     public ResponseEntity<Person> createPerson(@Valid @RequestBody Person person) {
         Person savedPerson = personService.savePerson(person);
         return new ResponseEntity<>(savedPerson, HttpStatus.CREATED);
     }
 
-    @GetMapping("/persons")
+    @GetMapping()
     public ResponseEntity<List<Person>> getAllPersons() {
         List<Person> persons = personService.getAllPersons();
         return new ResponseEntity<>(persons, HttpStatus.OK);
     }
 
-    @GetMapping("persons/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Person> getPersonById(@PathVariable Long id) {
         Person person = personService.getPersonById(id);
         if (person != null) {
@@ -39,25 +39,25 @@ public class PersonController {
         }
     }
 
-    @GetMapping("persons/search-first-name")
+    @GetMapping("/search-first-name")
     public ResponseEntity<List<Person>> getPersonsByFirstName(@RequestParam String firstName) {
         List<Person> personList = personService.getPersonsByFirstName(firstName);
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-    @GetMapping("persons/search-last-name")
+    @GetMapping("/search-last-name")
     public ResponseEntity<List<Person>> getPersonsByLastName(@RequestParam String lastName) {
         List<Person> personList = personService.getPersonsByLastName(lastName);
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-    @GetMapping("persons/search-by-activity-title")
+    @GetMapping("/search-by-activity-title")
     public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
         List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-    @PutMapping("persons/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Person> updatePerson(@PathVariable Long id,@Valid @RequestBody Person updatedPerson) {
         Person person = personService.updatePerson(id, updatedPerson);
         if (person != null) {
@@ -67,7 +67,7 @@ public class PersonController {
         }
     }
 
-    @DeleteMapping("persons/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
         if (personService.getPersonById(id) != null) {
             personService.deletePersonById(id);
