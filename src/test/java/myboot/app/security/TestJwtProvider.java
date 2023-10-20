@@ -28,7 +28,6 @@ public class TestJwtProvider {
         testPerson.setPassword("myPassword");
         testPerson.setFirstName("PersonJWT");
         testPerson.setLastName("PersonLastJWT");
-        // Populate other fields if required
     }
 
     @Test
