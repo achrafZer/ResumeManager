@@ -21,4 +21,15 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     @Query("SELECT DISTINCT p FROM Person p JOIN p.cv cv JOIN cv.activities a WHERE a.title LIKE CONCAT('%', :title , '%')")
     List<Person> findByActivityTitle(String title);
 
+    @Query("SELECT p FROM Person p WHERE UPPER(p.email) LIKE UPPER(CONCAT('%', :email, '%'))")
+    Person findByEmail(String email);
+
+    /**
+     * Checks if a person exists with the provided email.
+     *
+     * @param email the email to search for
+     * @return true if a person with the provided email exists, false otherwise
+     */
+    boolean existsByEmail(String email);
+
 }
