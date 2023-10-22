@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.service;
 
 import myboot.app.model.CV;
 import myboot.app.model.Person;

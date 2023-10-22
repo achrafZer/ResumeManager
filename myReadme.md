@@ -58,6 +58,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Gérer les rôles
 - Tester getPersonByEmail
 - Demander au prof si utiliser XUser est quand même recommandé
+- Changer secu-user par u
 
 # REPRISE :
 1. Comprendre comment marchent les jetons

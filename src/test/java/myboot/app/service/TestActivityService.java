@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.service;
 
 import myboot.app.model.Activity;
 import myboot.app.model.ActivityNature;
