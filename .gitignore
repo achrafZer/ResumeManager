@@ -7,6 +7,7 @@
 .idea/dataSources.xml
 .idea/sonarlint/*
 
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -239,3 +240,4 @@ replay_pid*
 *lol
 
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,test,sonar,sonarqube
+/.idea/
