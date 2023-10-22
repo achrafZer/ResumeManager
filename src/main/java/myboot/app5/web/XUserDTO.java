@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class XUserDTO {
 
-	private String username;
+	private String userName;
+	private String password;
 	private List<String> roles;
 
 }

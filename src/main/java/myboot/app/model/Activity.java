@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 @Entity
 @Data
 public class Activity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
