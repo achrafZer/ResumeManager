@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import myboot.app.dao.ActivityRepository;

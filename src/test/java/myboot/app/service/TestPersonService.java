@@ -1,4 +1,4 @@
-package myboot.app.test;
+package myboot.app.service;
 
 import io.netty.handler.codec.string.LineSeparator;
 import myboot.app.model.Person;
