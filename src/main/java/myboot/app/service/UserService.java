@@ -1,9 +1,12 @@
-package myboot.app5.security;
+package myboot.app.service;
 
 import javax.servlet.http.HttpServletRequest;
 
+import myboot.app.dao.PersonRepository;
 import myboot.app.dto.RegistrationDTO;
 import myboot.app.model.Person;
+import myboot.app5.security.JwtProvider;
+import myboot.app5.security.MyJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
@@ -31,6 +34,8 @@ public class UserService {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	@Autowired
+	private PersonRepository personRepository;
 
 	public String login(String username, String password) {
 		try {
@@ -57,10 +62,11 @@ public class UserService {
 		person.setWebsite(registrationDTO.getWebsite());
 		person.setBirthDate(registrationDTO.getBirthDate());
 		person.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+		personRepository.save(person);
 
 		XUser user = new XUser();
 		user.setUserName(userName);
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 		user.setRoles(registrationDTO.getRoles());
 		userRepository.save(user);
 		return jwtTokenProvider.createToken(user);
