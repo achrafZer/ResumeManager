@@ -44,7 +44,7 @@ public class TestUserService {
     @BeforeEach
     public void setup() throws ParseException {
         registrationDTO = new RegistrationDTO();
-        registrationDTO.setEmail("test@example.com");
+        registrationDTO.setEmail("testUserService@example.com");
         registrationDTO.setPassword("password");
         registrationDTO.setFirstName("Test");
         registrationDTO.setLastName("User");
@@ -56,24 +56,26 @@ public class TestUserService {
         registrationDTO.setRoles(new HashSet<>());
     }
 
+
+
     @Test
     public void testSignup() {
         String token = userService.signup(registrationDTO);
 
         assertNotNull(token);
 
-        XUser user = userRepository.findById("test@example.com").orElse(null);
+        XUser user = userRepository.findById("testUserService@example.com").orElse(null);
         assertNotNull(user);
         assertTrue(entityManager.contains(user));
-        assertEquals("test@example.com", user.getUserName());
+        assertEquals("testUserService@example.com", user.getUserName());
         assertTrue(passwordEncoder.matches("password", user.getPassword()));
 
-        Person person = personRepository.findByEmail("test@example.com");
+        Person person = personRepository.findByEmail("testUserService@example.com");
         assertNotNull(person);
         assertTrue(entityManager.contains(person));
         assertEquals("Test", person.getFirstName());
         assertEquals("User", person.getLastName());
-        assertEquals("test@example.com", person.getEmail());
+        assertEquals("testUserService@example.com", person.getEmail());
         assertTrue(passwordEncoder.matches("password", person.getPassword()));
 
 
