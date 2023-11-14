@@ -1,8 +1,13 @@
 package myboot.app.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 import java.util.Set;
 
+@Getter
+@Setter
 public class RegistrationDTO {
 
     private String firstName;

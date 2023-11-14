@@ -1,10 +1,14 @@
-package myboot.app5.web;
+package myboot.app.web;
 
 import javax.servlet.http.HttpServletRequest;
 
+import myboot.app.dto.RegistrationDTO;
+import myboot.app5.web.XUserDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +49,9 @@ public class UserController {
 	 * Ajouter un utilisateur
 	 */
 	@PostMapping("/signup")
-	public String signup(@RequestBody XUserDTO user) {
-		return userService.signup(modelMapper.map(user, XUser.class));
+	public ResponseEntity<String> signup(@RequestBody RegistrationDTO registrationDTO) {
+		userService.signup(registrationDTO);
+		return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
 	}
 
 	/**

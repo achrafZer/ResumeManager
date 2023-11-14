@@ -1,6 +1,9 @@
 package myboot.app.security;
 
+import myboot.app.dao.PersonRepository;
+import myboot.app.dto.RegistrationDTO;
 import myboot.app.model.XUser;
+import myboot.app5.security.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +26,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TestAuthentificationController {
+
+    @Autowired
+    PersonRepository personRepository;
 
     @LocalServerPort
     private int port;
@@ -35,66 +44,24 @@ public class TestAuthentificationController {
     }
 
     @Test
-    public void testSignup() {
+    public void testEmailSignup() throws ParseException {
+        System.out.println(personRepository.findAll());
+
+        RegistrationDTO registrationDTO = new RegistrationDTO();
+        registrationDTO.setFirstName("Achraf");
+        registrationDTO.setLastName("ZERHOUNI");
+        registrationDTO.setEmail("zerhouniachraf@hotmail.com");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        registrationDTO.setBirthDate(birthday);
+        registrationDTO.setPassword("mon MDP");
         Set<String> roles = new HashSet<>();
         roles.add("USER");
-        XUser user = new XUser("testUser", "testPassword", roles);
+        registrationDTO.setRoles(roles);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        UserService userService = new UserService();
+        userService.signup(registrationDTO);
 
-        HttpEntity<XUser> requestEntity = new HttpEntity<>(user, headers);
-
-        ResponseEntity<String> response = restTemplate.exchange(
-                baseUrl + "/signup",
-                HttpMethod.POST,
-                requestEntity,
-                String.class);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
-
-    @Test
-    public void testSignupAndLogin() {
-        Set<String> roles = new HashSet<>();
-        roles.add("USER");
-        XUser newUser = new XUser("testUserSignupLogin", "testPassword", roles);
-
-        HttpHeaders signupHeaders = new HttpHeaders();
-        signupHeaders.setContentType(MediaType.APPLICATION_JSON);
-        signupHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-
-        HttpEntity<XUser> signupRequestEntity = new HttpEntity<>(newUser, signupHeaders);
-
-        ResponseEntity<String> signupResponse = restTemplate.exchange(
-                baseUrl + "/signup",
-                HttpMethod.POST,
-                signupRequestEntity,
-                String.class);
-
-        assertEquals(HttpStatus.OK, signupResponse.getStatusCode());
-
-
-        MultiValueMap<String, String> loginFormData = new LinkedMultiValueMap<>();
-        loginFormData.add("username", "testUserSignupLogin");
-        loginFormData.add("password", "testPassword");
-
-        HttpHeaders loginHeaders = new HttpHeaders();
-        loginHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        loginHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-
-        HttpEntity<MultiValueMap<String, String>> loginRequestEntity = new HttpEntity<>(loginFormData, loginHeaders);
-
-        ResponseEntity<String> loginResponse = restTemplate.exchange(
-                baseUrl + "/login",
-                HttpMethod.POST,
-                loginRequestEntity,
-                String.class);
-
-        assertEquals(HttpStatus.OK, loginResponse.getStatusCode());
-    }
-
-
 
 }

@@ -2,6 +2,8 @@ package myboot.app5.security;
 
 import javax.servlet.http.HttpServletRequest;
 
+import myboot.app.dto.RegistrationDTO;
+import myboot.app.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
@@ -40,11 +42,26 @@ public class UserService {
 		}
 	}
 
-	public String signup(XUser user) {
-		if (userRepository.findById(user.getUserName()).isPresent()) {
-			throw new MyJwtException("Username is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
+	public String signup(RegistrationDTO registrationDTO) {
+		String userName = registrationDTO.getEmail();
+		if (userRepository.findById(userName).isPresent()) {
+			throw new MyJwtException("Email is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
+
+		//When a new person is registered, we create at the same time an insance of Person and another one of XUser
+
+		Person person = new Person();
+		person.setFirstName(registrationDTO.getFirstName());
+		person.setLastName(registrationDTO.getLastName());
+		person.setEmail(registrationDTO.getEmail());
+		person.setWebsite(registrationDTO.getWebsite());
+		person.setBirthDate(registrationDTO.getBirthDate());
+		person.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+
+		XUser user = new XUser();
+		user.setUserName(userName);
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRoles(registrationDTO.getRoles());
 		userRepository.save(user);
 		return jwtTokenProvider.createToken(user);
 	}
