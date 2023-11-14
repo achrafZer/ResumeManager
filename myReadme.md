@@ -43,35 +43,31 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Supprimer la branche non utile du git
 + Vérifier en demandant à chatGPT si j'ai pas oublié une ou plusieurs @valid pour les attribut
 + Faire en sorte que name ne prenne que des valeurs alphabétiques
-- Demander à GPT si j'ai besoin d'un SpringConfiguration
-- - Tester les controllers (couverture trop basse pour le moment)
++ Demander à GPT si j'ai besoin d'un SpringConfiguration
+- Tester les controllers (couverture trop basse pour le moment)
 + Redistribuer le répertoire de tests
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
-- Faire un git clean
-- Créer un Chat pour la JavaDoc
++ Faire un git clean
++ Créer un Chat pour la JavaDoc
 - Faire en sorte que tous les @Valid retournent un message clair
 - Demander à GPT les diagrams qu'il estime importants dans le rapport 
-- Rédiger le cahier des charges en entier
+- Rédiger le cahier des charges
 - Nettoyer webapp des éléments de movie
-- Recherche Outil pour savoir leiiiiiii s éléments du pom.xml qui ne sont pas utilisés
+- Recherche Outil pour savoir les éléments du pom.xml qui ne sont pas utilisés
 - Pour le JwtProvider, demander à gpt "selon toi quelle clé secrète devrais-je choisir ?"
 - Gérer les rôles
-- Tester getPersonByEmail
-- Demander au prof si utiliser XUser est quand même recommandé
-- Changer secu-user par 
++ Tester getPersonByEmail
++ Demander au prof si utiliser XUser est quand même recommandé
+- Changer secu-user par autre chose
 - La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
 
 # REPRISE :
-1. Faire en sorte que le userName soit valide en tant qu'adresse mail
-2. Tests
-3. Initier l'IHM en mettant en place l'interface d'inscription 
-4. Tests
-5. Faire en sorte qu'à l'inscription, Toutes les données obligatoires dans Person soient données 
-6. Tests
-7. Faire en sorte qu'à l'inscription, une entité de Person soit créée
-8. Tests
-9. Faire un tour sur les tâches indépendantes à faire 
-10. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
+
+1. Faire un plan d'une mise en place initiale d'une IHM pour les inscription et les login
+2. Appliquer le plan
+3. Dès que l'IHM confirme que la partie authentification est bien réussie, merge avec le main et mettre en place un Tag
+5. Faire un tour sur les tâches indépendantes à faire 
+6. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT
