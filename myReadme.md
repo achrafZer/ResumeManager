@@ -64,12 +64,14 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 # REPRISE :
 1. Faire en sorte que le userName soit valide en tant qu'adresse mail
 2. Tests
-3. Faire en sorte qu'à l'inscription, Toutes les données obligatoires dans Person soient données 
+3. Initier l'IHM en mettant en place l'interface d'inscription 
 4. Tests
-5. Faire en sorte qu'à l'inscription, une entité de Person soit créée
+5. Faire en sorte qu'à l'inscription, Toutes les données obligatoires dans Person soient données 
 6. Tests
-7. Faire un tour sur les tâches indépendantes à faire 
-8. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
+7. Faire en sorte qu'à l'inscription, une entité de Person soit créée
+8. Tests
+9. Faire un tour sur les tâches indépendantes à faire 
+10. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT
