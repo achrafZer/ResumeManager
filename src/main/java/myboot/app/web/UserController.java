@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import myboot.app.model.XUser;
-import myboot.app5.security.UserService;
+import myboot.app.service.UserService;
 
 /**
  * L'API d'authentification
