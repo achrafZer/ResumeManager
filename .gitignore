@@ -1,10 +1,5 @@
 
 ### Intellij ###
-.idea/
-arch-app.iml
-myReadme.md
-target/
-
 
 # CMake
 cmake-build-*/
@@ -174,3 +169,4 @@ replay_pid*
 *lol
 
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,test,sonar,sonarqube
+/.idea/
