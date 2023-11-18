@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <form @submit.prevent="login">
       <div class="mb-3">
-        <label for="email" class="form-label">Adresse mail</label>
+        <label for="email" class="form-label">Mail Adress</label>
         <input type="email" class="form-control" id="email" v-model="email" required>
       </div>
       <div class="mb-3">
@@ -30,7 +30,7 @@ export default {
     async login() {
       try {
         this.errorMessage = ''; // Réinitialiser le message d'erreur
-        const response = await axios.post('http://localhost:8080/secu-users/login', {
+        const response = await axios.post('http://localhost:8081/secu-users/login', {
           username: this.email,
           password: this.password
         });
