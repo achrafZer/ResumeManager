@@ -2,6 +2,7 @@ package myboot.app.web;
 
 import javax.servlet.http.HttpServletRequest;
 
+import myboot.app.dto.LoginDTO;
 import myboot.app.dto.RegistrationDTO;
 import myboot.app.model.Person;
 import myboot.app.model.XUser;
@@ -43,9 +44,8 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public String login(//
-			@RequestParam String username, //
-			@RequestParam String password) {
-		return userService.login(username, password);
+						@RequestBody LoginDTO loginDTO) {
+		return userService.login(loginDTO.getUsername(), loginDTO.getPassword());
 	}
 
 	@GetMapping()
