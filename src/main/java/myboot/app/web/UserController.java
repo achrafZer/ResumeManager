@@ -3,6 +3,8 @@ package myboot.app.web;
 import javax.servlet.http.HttpServletRequest;
 
 import myboot.app.dto.RegistrationDTO;
+import myboot.app.model.Person;
+import myboot.app.model.XUser;
 import myboot.app5.web.XUserDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import myboot.app.service.UserService;
+
+import java.util.List;
 
 /**
  * L'API d'authentification
@@ -42,6 +46,12 @@ public class UserController {
 			@RequestParam String username, //
 			@RequestParam String password) {
 		return userService.login(username, password);
+	}
+
+	@GetMapping()
+	public ResponseEntity<List<XUser>> getAllUsers() {
+		List<XUser> users = userService.getAllUsers();
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
 	/**
