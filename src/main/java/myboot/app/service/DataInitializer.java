@@ -1,9 +1,6 @@
 package myboot.app.service;
 
-import myboot.app.model.Activity;
-import myboot.app.model.ActivityNature;
-import myboot.app.model.CV;
-import myboot.app.model.Person;
+import myboot.app.model.*;
 import myboot.app.service.ActivityService;
 import myboot.app.service.CVService;
 import myboot.app.service.PersonService;
@@ -14,6 +11,7 @@ import javax.annotation.PostConstruct;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 
 @Service
 //@Profile("dev")
@@ -27,6 +25,10 @@ public class DataInitializer {
 
     @Autowired
     ActivityService activityService;
+
+    @Autowired
+    UserService userService;
+
     @PostConstruct
     public void initData() throws ParseException {
         if (! personService.getAllPersons().isEmpty()) return;
@@ -40,6 +42,14 @@ public class DataInitializer {
         achraf.setEmail("zerhouniachraf@hotmail.com");
         achraf.setPassword("AchrafPassword");
         personService.savePerson(achraf);
+
+        XUser achrafUser = new XUser();
+        achrafUser.setUserName("zerhouniachraf@hotmail.com");
+        achrafUser.setPassword("AchrafPassword");
+        achrafUser.setRoles(new HashSet<>());
+        achrafUser.getRoles().add("ADMIN");
+        userService.saveUser(achrafUser);
+
 
         CV cvAchraf = new CV();
         cvAchraf.setPerson(achraf);

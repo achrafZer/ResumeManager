@@ -62,14 +62,17 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
 - Refactor les repository
 - Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
-- Supprimer les node_modules - package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
+- Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
+- Faire en sorte que le logo soit le fond pour le moment
 
 # REPRISE :
 
-1. Faire un plan d'une mise en place initiale d'une IHM pour les inscription et les login
-2. Appliquer le plan
-3. Dès que l'IHM confirme que la partie authentification est bien réussie, merge avec le main et mettre en place un Tag
-5. Faire un tour sur les tâches indépendantes à faire 
+1. Faire en sorte qu'il y'ait un endpoint qui nous permet de vérifier les user qu'il y'a dans l'api
+2. Peupler l'api avec des XUser équivalents à toutes les personnes déjà créées 
+3. Faire en sorte qu'en tapant des bonnes donnée de connexion, un url /me soit renvoyé
+4. Général : formulaire d'inscription
+5. Général : page home
+
 6. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
 
