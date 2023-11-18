@@ -67,8 +67,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 # REPRISE :
 
-1. Faire en sorte qu'il y'ait un endpoint qui nous permet de vérifier les user qu'il y'a dans l'api
-2. Peupler l'api avec des XUser équivalents à toutes les personnes déjà créées 
 3. Faire en sorte qu'en tapant des bonnes donnée de connexion, un url /me soit renvoyé
 4. Général : formulaire d'inscription
 5. Général : page home
