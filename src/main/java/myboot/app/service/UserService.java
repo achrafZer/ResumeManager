@@ -92,6 +92,7 @@ public class UserService {
 	}
 
 	public void saveUser(XUser user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 	}
 
