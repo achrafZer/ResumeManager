@@ -29,24 +29,21 @@ export default {
   methods: {
     async login() {
       try {
-        this.errorMessage = ''; // Réinitialiser le message d'erreur
         const response = await axios.post('http://localhost:8081/secu-users/login', {
           username: this.email,
           password: this.password
         });
-        localStorage.setItem('user-token', response.data); // Stockage du JWT
-        // Redirection ou mise à jour de l'UI ici
-        // par exemple: this.$router.push('/dashboard');
+        console.log('Login Successful', response.data);
+        // Gérez le succès de la connexion
       } catch (error) {
         if (error.response) {
-          // Message d'erreur du serveur
           this.errorMessage = error.response.data.message || 'Erreur de connexion';
         } else {
-          // Erreur de réseau ou autre
           this.errorMessage = 'Erreur de connexion';
         }
       }
     }
+
   }
 };
 </script>
