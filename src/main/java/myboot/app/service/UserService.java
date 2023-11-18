@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import myboot.app.dao.XUserRepository;
 import myboot.app.model.XUser;
 
+import java.util.List;
+
 @Service
 @Profile("usejwt")
 public class UserService {
@@ -93,4 +95,7 @@ public class UserService {
 		userRepository.save(user);
 	}
 
+    public List<XUser> getAllUsers() {
+		return userRepository.findAll();
+    }
 }
