@@ -108,6 +108,13 @@ public class DataInitializer {
         heba.setPassword("HebaPassword");
         personService.savePerson(heba);
 
+        XUser hebaUser = new XUser();
+        hebaUser.setUserName("heba.abu-rabia@univ-amu.fr");
+        hebaUser.setPassword("HebaPassword");
+        hebaUser.setRoles(new HashSet<>());
+        hebaUser.getRoles().add("USER");
+        userService.saveUser(hebaUser);
+
         Person walid = new Person();
         walid.setFirstName("Walid");
         walid.setLastName("ADDOUCHE");
@@ -116,6 +123,13 @@ public class DataInitializer {
         walid.setEmail("walid.addouche@univ-amu.fr");
         walid.setPassword("WalidPassword");
         personService.savePerson(walid);
+
+        XUser walidUser = new XUser();
+        walidUser.setUserName("walid.addouche@univ-amu.fr");
+        walidUser.setPassword("WalidPassword");
+        walidUser.setRoles(new HashSet<>());
+        walidUser.getRoles().add("USER");
+        userService.saveUser(walidUser);
 
         Person rafik = new Person();
         rafik.setFirstName("Rafik");
