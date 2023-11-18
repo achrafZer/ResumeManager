@@ -60,6 +60,9 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Demander au prof si utiliser XUser est quand même recommandé
 - Changer secu-user par autre chose
 - La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
+- Refactor les repository
+- Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
+- Supprimer les node_modules - package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 
 # REPRISE :
 
