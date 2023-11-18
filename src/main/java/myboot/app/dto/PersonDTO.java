@@ -1,2 +1,3 @@
-package myboot.app.dto;public class PersonDTO {
+package myboot.app.dto;
+public class PersonDTO {
 }
