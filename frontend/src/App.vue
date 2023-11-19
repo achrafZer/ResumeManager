@@ -1,23 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.jpg">
-    <router-view></router-view> <!-- Utiliser router-view pour afficher les composants de route -->
+  <div>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <img src="./assets/logo.jpg" alt="Logo" class="navbar-brand" style="width: 100px; height: auto;" />
+
+        <!-- Liens de navigation -->
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <router-link to="/home" class="nav-link">Accueil</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/login" class="nav-link">Connexion</router-link>
+            </li>
+            <!-- Vous pouvez ajouter plus de liens ici -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Vue de la route actuelle -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: 'App'
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Ajoutez votre style personnalisé ici si nécessaire */
 </style>
