@@ -3,10 +3,13 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import LoginForm from './components/LoginForm.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HomePage from './components/HomePage.vue';
 
 
 const routes = [
-    { path: '/login', component: LoginForm }
+    { path: '/login', component: LoginForm },
+    { path: '/home', component: HomePage }
+
     // Vous pouvez ajouter d'autres routes ici
 ];
 

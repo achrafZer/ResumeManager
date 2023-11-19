@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5">
-        <h2>Personnes avec CV</h2>
+        <h2>Parcourir les CVs</h2>
         <ul v-if="persons.length">
             <li v-for="person in persons" :key="person.id">{{ person.firstName }} {{ person.lastName }}</li>
         </ul>
@@ -19,7 +19,7 @@ export default {
     },
     async created() {
         try {
-            const response = await axios.get('http://localhost:8080/api/persons');
+            const response = await axios.get('http://localhost:8081/api/persons');
             this.persons = response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération des personnes', error);
