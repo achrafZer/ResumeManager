@@ -63,14 +63,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Refactor les repository
 - Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
 - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
-- Faire en sorte que le logo soit le fond pour le moment
 
 # REPRISE :
-
-1. Ajouter un tag dans le main pour dire que la partie front commence 
-2. Faire en sorte qu'en tapant des bonnes donnée de connexion, un url /me soit renvoyé
-3. Général : formulaire d'inscription
-4. Général : page home
 
 5. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
