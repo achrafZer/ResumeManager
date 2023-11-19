@@ -11,7 +11,7 @@
 - 
 
 # PLAN
-1. Afficher Les descriptions das la page home
+1. Afficher Les descriptions dans la page home
 2. Ajouter une barre de recherche 
 3. Faire un plan de la gestion des changements qu'il faut faire pour que la barre de recherche fonctionne comme prévu
 4. Faire un plan pour créer une page affichant toutes les informations par personne (/{firstname-lastname})
