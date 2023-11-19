@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import myboot.app.dao.XUserRepository;
 import myboot.app.model.XUser;
 
+import java.util.List;
+
 @Service
 @Profile("usejwt")
 public class UserService {
@@ -89,4 +91,12 @@ public class UserService {
 		return jwtTokenProvider.createToken(userRepository.findById(username).get());
 	}
 
+	public void saveUser(XUser user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		userRepository.save(user);
+	}
+
+    public List<XUser> getAllUsers() {
+		return userRepository.findAll();
+    }
 }

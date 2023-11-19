@@ -1,9 +1,7 @@
 package myboot.app5.security;
 
-import java.util.Set;
-
-import javax.annotation.PostConstruct;
-
+import myboot.app.dao.XUserRepository;
+import myboot.app.model.XUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +15,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import myboot.app.dao.XUserRepository;
-import myboot.app.model.XUser;
+import javax.annotation.PostConstruct;
+import java.util.Set;
 
 /**
  * Configuration de Spring Security.
@@ -29,60 +29,72 @@ import myboot.app.model.XUser;
 @Profile("usejwt")
 public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private XUserRepository userRepo;
-	
-	@Autowired
-	private JwtProvider jwtTokenProvider;
+    protected final Log logger = LogFactory.getLog(getClass());
+    @Autowired
+    private XUserRepository userRepo;
+    @Autowired
+    private JwtProvider jwtTokenProvider;
 
-	protected final Log logger = LogFactory.getLog(getClass());
+    @PostConstruct
+    public void init() {
+        var encoder = passwordEncoder();
+        var aa = new XUser("aaa", encoder.encode("aaa"), Set.of("ADMIN", "USER"));
+        var bb = new XUser("bbb", encoder.encode("bbb"), Set.of("USER"));
+        userRepo.save(aa);
+        userRepo.save(bb);
+        logger.debug("--- INIT SPRING SECURITY JWT");
+    }
 
-	@PostConstruct
-	public void init() {
-		var encoder = passwordEncoder();
-		var aa = new XUser("aaa", encoder.encode("aaa"), Set.of("ADMIN", "USER"));
-		var bb = new XUser("bbb", encoder.encode("bbb"), Set.of("USER"));
-		userRepo.save(aa);
-		userRepo.save(bb);
-		logger.debug("--- INIT SPRING SECURITY JWT");
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+        // Pas de vérification CSRF (cross site request forgery)
+        http.csrf().disable();
 
-		// Pas de vérification CSRF (cross site request forgery)
-		http.csrf().disable();
+        // Spring security de doit gérer les sessions
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		// Spring security de doit gérer les sessions
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // Déclaration des end-points
+        http.authorizeRequests()//
+                .antMatchers("/secu-users/login").permitAll()//
+                .antMatchers("/secu-users/signup").permitAll()//
+                .antMatchers("/secu-users/**").permitAll()//
+                // Autoriser le reste...
+                .anyRequest().permitAll();
 
-		// Déclaration des end-points
-		http.authorizeRequests()//
-				.antMatchers("/secu-users/login").permitAll()//
-				.antMatchers("/secu-users/signup").permitAll()//
-				.antMatchers("/secu-users/**").authenticated()//
-				// Autoriser le reste...
-				.anyRequest().permitAll();
+        // Pas vraiment nécessaire
+        http.exceptionHandling().accessDeniedPage("/secu-users/login");
 
-		// Pas vraiment nécessaire
-		http.exceptionHandling().accessDeniedPage("/secu-users/login");
+        // Mise en place du filtre JWT
+        http.apply(new JwtFilterConfigurer(jwtTokenProvider));
 
-		// Mise en place du filtre JWT
-		http.apply(new JwtFilterConfigurer(jwtTokenProvider));
+        // Optional, if you want to test the API from a browser
+        // http.httpBasic();
+    }
 
-		// Optional, if you want to test the API from a browser
-		// http.httpBasic();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(12);
-	}
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
-	@Override
-	@Bean
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
-	}
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:8080")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
+            }
+        };
+    }
 
 }

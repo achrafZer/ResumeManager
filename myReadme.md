@@ -60,14 +60,13 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Demander au prof si utiliser XUser est quand même recommandé
 - Changer secu-user par autre chose
 - La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
+- Refactor les repository
+- Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
+- Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 
 # REPRISE :
 
-1. Faire un plan d'une mise en place initiale d'une IHM pour les inscription et les login
-2. Appliquer le plan
-3. Dès que l'IHM confirme que la partie authentification est bien réussie, merge avec le main et mettre en place un Tag
-5. Faire un tour sur les tâches indépendantes à faire 
-6. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
+5. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT
