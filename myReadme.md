@@ -67,11 +67,12 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 # REPRISE :
 
-3. Faire en sorte qu'en tapant des bonnes donnée de connexion, un url /me soit renvoyé
-4. Général : formulaire d'inscription
-5. Général : page home
+1. Ajouter un tag dans le main pour dire que la partie front commence 
+2. Faire en sorte qu'en tapant des bonnes donnée de connexion, un url /me soit renvoyé
+3. Général : formulaire d'inscription
+4. Général : page home
 
-6. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
+5. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT

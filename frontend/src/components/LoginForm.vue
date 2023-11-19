@@ -32,10 +32,16 @@ export default {
         const response = await axios.post('http://localhost:8081/secu-users/login', {
           username: this.email,
           password: this.password
-        });
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        );
         console.log('Login Successful', response.data);
         // Gérez le succès de la connexion
       } catch (error) {
+        console.error('Erreur lors de la tentative de connexion: ', error);
         if (error.response) {
           this.errorMessage = error.response.data.message || 'Erreur de connexion';
         } else {
