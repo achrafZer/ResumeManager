@@ -6,7 +6,8 @@ const myApp = {
         console.log("data");
         return {
             persons: [],
-            axios: null
+            axios: null,
+            searchQuery: ''
         }
     },
 
@@ -20,7 +21,22 @@ const myApp = {
     },
 
     methods: {
-        // Place pour les futures méthodes
+        async search() {
+            try {
+                let endpoint = 'http://localhost:8081/api/persons/search-first-name';
+                if (this.searchQuery.trim()) {
+                    endpoint += `?firstName=${this.searchQuery}`;
+                } else {
+                    // Si aucune requête de recherche, récupérer la liste complète
+                    this.created();
+                    return;
+                }
+                const response = await axios.get(endpoint);
+                this.persons = response.data;
+            } catch (error) {
+                console.error('Erreur lors de la recherche', error);
+            }
+        }
     }
 }
 

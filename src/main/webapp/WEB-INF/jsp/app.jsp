@@ -6,7 +6,13 @@
 <div id="myApp">
     <div class="container mt-5">
         <h1>Gestionnaire de CV</h1>
-        <p>Ceci est la page principale</p>
+        <h2>Liste des Personnes avec CV</h2>
+        <!--Barre de recherche par nom, prénom ou titre d'activité-->
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Rechercher par nom, prénom ou titre d'activité"
+                   v-model="searchQuery">
+            <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
+        </div>
 
         <div v-for="person in persons" :key="person.id" class="card mb-3">
             <div class="card-body">
