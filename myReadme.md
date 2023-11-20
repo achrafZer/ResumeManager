@@ -32,7 +32,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Vérifier quand l'api est plus développée qu'il n'y a pas de soucis de boucles
 + Revoir tous les tests des services
 + Tester les trois BDD avec une api (3/3)
-- Tout documenter en JavaDoc 
+* Tout documenter en JavaDoc 
 + Traiter tous les get avec des requêtes SQL
 - - Mettre en place des DTO plutôt que de mettre les entités en paramètre dans les controller api
 + Supprimer app1 et renommer app2 
@@ -44,7 +44,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Vérifier en demandant à chatGPT si j'ai pas oublié une ou plusieurs @valid pour les attribut
 + Faire en sorte que name ne prenne que des valeurs alphabétiques
 + Demander à GPT si j'ai besoin d'un SpringConfiguration
-- Tester les controllers (couverture trop basse pour le moment)
++ Tester les controllers (couverture trop basse pour le moment)
 + Redistribuer le répertoire de tests
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
 + Faire un git clean
@@ -70,12 +70,15 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
 - Pour le moment les controllers cherches les CV par prénom, nom ou activité, et c'est côté client que nous rassemblons les trois en même temps. Faire en sorte qu'il y'ait un controller qui fait ça dès le début
 - Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
+- Un tour bootstrap sur l'ensemble des pages
+- Ajouter des photos sur les profils 
 
 # REPRISE :
 
 5. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
 
 
-# A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT
+# A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT, LA SOUTENANCE
 - Je me suis inspiré totalement de linkedin, c'est par rapport à ça que j'ai mis en place mes "@NotNull" par exemple
 - PersonService est un service qui gère une personne en tant qu'entité, en revanche UserService gère une personne en tant qu'utilisateur qui se connecte
+- Mettre les commentaires dans le mode interactif pour qu'ils soient moins gênants avant la soutenance

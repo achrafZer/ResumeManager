@@ -1,2 +1,4 @@
-package myboot.app.dto;public class ActivityDTO {
+package myboot.app.dto;
+
+public class ActivityDTO {
 }
