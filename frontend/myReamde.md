@@ -8,7 +8,7 @@
 - Répondre à la question "quelles sont les informations que nous pourront avoir sur une personne dans la page /home sans avoir à cliquer sur le nom de la personne" et appliquer ça
 - Faire la différence entre une personne connectée et une personne non connectée (en mettant "deconnexion" à la place de connexion par exemple)
 - Pagination
-- 
+- Ajouter des informations à partir des linkedin des gens de la fac
 
 # PLAN
 1. Afficher Les descriptions dans la page home
