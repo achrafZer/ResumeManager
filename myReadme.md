@@ -67,6 +67,9 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Faire en sorte qu'il y ait qu'un seul profile d'actif dans le properties
 - Réorganiser totalement le application.properties
 - Régler le souci des accents 
+- Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
+- Pour le moment les controllers cherches les CV par prénom, nom ou activité, et c'est côté client que nous rassemblons les trois en même temps. Faire en sorte qu'il y'ait un controller qui fait ça dès le début
+- Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
 
 # REPRISE :
 
