@@ -23,11 +23,10 @@ const myApp = {
     methods: {
         async search() {
             try {
-                let endpoint = 'http://localhost:8081/api/persons/search-first-name';
+                let endpoint = 'http://localhost:8081/api/persons/search';
                 if (this.searchQuery.trim()) {
-                    endpoint += `?firstName=${this.searchQuery}`;
+                    endpoint += `?query=${this.searchQuery}`;
                 } else {
-                    // Si aucune requête de recherche, récupérer la liste complète
                     this.created();
                     return;
                 }

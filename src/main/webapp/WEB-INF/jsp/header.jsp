@@ -15,6 +15,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <%@ page contentType='text/html; s charset=UTF-8' %>
     <title>Resume Manager</title>
     <link rel="stylesheet" href="${css}">
     <link rel="stylesheet" href="${bootstrap_css}">
