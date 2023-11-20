@@ -63,6 +63,10 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Refactor les repository
 - Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
 - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
+- Définir un header
+- Faire en sorte qu'il y ait qu'un seul profile d'actif dans le properties
+- Réorganiser totalement le application.properties
+- Régler le souci des accents 
 
 # REPRISE :
 
