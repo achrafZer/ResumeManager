@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/persons")
@@ -55,6 +57,16 @@ public class PersonController {
     public ResponseEntity<List<Person>> getPersonByPartOfActivityTitle(@RequestParam String activityTitle) {
         List<Person> personList = personService.getPersonsByPartOfActivityTitle(activityTitle);
         return new ResponseEntity<>(personList, HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Person>> search(@RequestParam String query) {
+        List<Person> resultSet = new ArrayList<>();
+        resultSet.addAll(personService.getPersonsByFirstName(query));
+        resultSet.addAll(personService.getPersonsByLastName(query));
+        resultSet.addAll(personService.getPersonsByPartOfActivityTitle(query));
+
+        return ResponseEntity.ok(resultSet);
     }
 
     @PutMapping("/{id}")

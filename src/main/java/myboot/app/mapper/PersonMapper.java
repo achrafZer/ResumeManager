@@ -1,2 +1,4 @@
-package myboot.app.mapper;public class PersonMapper {
+package myboot.app.mapper;
+
+public class PersonMapper {
 }
