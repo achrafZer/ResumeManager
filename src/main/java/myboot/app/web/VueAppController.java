@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class VueAppController {
 
-    @RequestMapping(value = "/app")
+    @RequestMapping(value = "/app/**")
     private ModelAndView app() {
         return new ModelAndView("app");
     }

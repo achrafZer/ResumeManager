@@ -38,59 +38,83 @@
 
 	<dependencies>
 		<!-- ===== Partie Web ===== -->
+		<!-- Starter pour la création d'applications WebFlux -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
+
+		<!-- Starter pour la création d'applications Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- Outils de développement pour Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Starter Tomcat pour Spring Boot (fourni par défaut) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- Embed Tomcat Jasper pour Spring Boot (fourni par défaut) -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- Implémentation des balises JSTL standard -->
 		<dependency>
 			<groupId>org.apache.taglibs</groupId>
 			<artifactId>taglibs-standard-spec</artifactId>
 			<version>1.2.5</version>
 		</dependency>
+
+		<!-- Implémentation des balises JSTL standard -->
 		<dependency>
 			<groupId>org.apache.taglibs</groupId>
 			<artifactId>taglibs-standard-impl</artifactId>
 			<version>1.2.5</version>
 		</dependency>
+
 		<!-- ===== Partie Test ===== -->
+		<!-- Starter pour les tests unitaires Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- ===== Partie Data ===== -->
+		<!-- Starter pour l'accès aux données avec JPA -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-- Base de données HSQLDB -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 		</dependency>
+
 		<!-- ===== Partie Javabeans ===== -->
+		<!-- Starter pour la validation Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
+		<!-- Bibliothèque Lombok pour la génération de code -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -169,6 +193,12 @@
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>axios</artifactId>
 			<version>0.22.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>vue-router</artifactId>
+			<version>4.1.6</version> <!-- Utilisez la version compatible avec Vue 3 -->
 		</dependency>
 
 	</dependencies>

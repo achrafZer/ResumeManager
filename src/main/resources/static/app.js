@@ -1,43 +1,26 @@
 console.log("app.js chargé");
 
+import HomeComponent from './home.js';
+import ResumeComponent from './resume.js';
+
+const routes = [
+    // {path: '/app', component: PersonList},
+    { path: '/app/home', component: HomeComponent },
+    { path: '/app/home/:id', component: ResumeComponent }
+
+];
+
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHistory(),
+    routes
+});
+
+
+
 const myApp = {
 
-    data() {
-        console.log("data");
-        return {
-            persons: [],
-            axios: null,
-            searchQuery: ''
-        }
-    },
-
-    async created() {
-        try {
-            const response = await axios.get('http://localhost:8081/api/persons');
-            this.persons = response.data;
-        } catch (error) {
-            console.error('Erreur lors de la récupération des personnes', error);
-        }
-    },
-
-    methods: {
-        async search() {
-            try {
-                let endpoint = 'http://localhost:8081/api/persons/search';
-                if (this.searchQuery.trim()) {
-                    endpoint += `?query=${this.searchQuery}`;
-                } else {
-                    this.created();
-                    return;
-                }
-                const response = await axios.get(endpoint);
-                this.persons = response.data;
-            } catch (error) {
-                console.error('Erreur lors de la recherche', error);
-            }
-        }
-    }
 }
 
 const app = Vue.createApp(myApp);
+app.use(router);
 app.mount('#myApp');

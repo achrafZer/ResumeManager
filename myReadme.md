@@ -72,6 +72,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
 - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
+- Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
 
 # REPRISE :
 
