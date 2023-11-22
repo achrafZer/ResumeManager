@@ -43,8 +43,7 @@ public class UserController {
 	 * Authentification et récupération d'un JWT
 	 */
 	@PostMapping("/login")
-	public String login(//
-						@RequestBody LoginDTO loginDTO) {
+	public String login(@RequestBody LoginDTO loginDTO) {
 		return userService.login(loginDTO.getUsername(), loginDTO.getPassword());
 	}
 

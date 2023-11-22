@@ -2,11 +2,14 @@ console.log("app.js chargé");
 
 import HomeComponent from './home.js';
 import ResumeComponent from './resume.js';
+import LoginComponent from './login.js';
+import axios from './axios-config.js'
 
 const routes = [
     // {path: '/app', component: PersonList},
     { path: '/app/home', component: HomeComponent },
-    { path: '/app/home/:id', component: ResumeComponent }
+    { path: '/app/users/:id', component: ResumeComponent },
+    {path: '/app/login', component: LoginComponent}
 
 ];
 

@@ -2,32 +2,37 @@ console.log("home.js chargé");
 
 export default {
     template: `
-        <div id="myHome">
-            <div class="container mt-5">
-                <h1>Gestionnaire de CV</h1>
-                <h2>Liste des Personnes avec CV</h2>
-                <!--Barre de recherche par nom, prénom ou titre d'activité-->
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Rechercher une personne"
-                           v-model="searchQuery">
-                        <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
-                </div>
+      <div id="myHome">
+        <div class="container mt-5">
+          <h1>Gestionnaire de CV</h1>
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Liste des Personnes avec CV</h2>
+            <button class="btn btn-primary" @click="goToLogin">Se connecter</button>
+          </div>
+          <!--Barre de recherche par nom, prénom ou titre d'activité-->
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Rechercher une personne"
+                   v-model="searchQuery">
+            <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
+          </div>
 
-                <div v-for="person in persons" :key="person.id" class="card mb-3">
-                <div class="card-body" @click="goToResume(person.id)">
-                <h5 class="card-title">{{ person.firstName }} {{ person.lastName }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted" v-if="person.cv && person.cv.activities && person.cv.activities.length">Activite</h6>
-                <ul class="list-group list-group-flush">
-                    <li v-for="activity in person.cv.activities" :key="activity.id" class="list-group-item" v-if="person.cv && person.cv.activities">
-                    {{ activity.title }} ({{ activity.startYear }} - {{ activity.endYear }})
+          <div v-for="person in persons" :key="person.id" class="card mb-3">
+            <div class="card-body" @click="goToResume(person.id)">
+              <h5 class="card-title">{{ person.firstName }} {{ person.lastName }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted"
+                  v-if="person.cv && person.cv.activities && person.cv.activities.length">Activite</h6>
+              <ul class="list-group list-group-flush">
+                <li v-for="activity in person.cv.activities" :key="activity.id" class="list-group-item"
+                    v-if="person.cv && person.cv.activities">
+                  {{ activity.title }} ({{ activity.startYear }} - {{ activity.endYear }})
                 </li>
                 <p v-else class="text-muted">Aucune activite de CV disponible.</p>
-            </ul>
+              </ul>
+            </div>
+          </div>
         </div>
-</div>
-</div>
 
-</div>`,
+      </div>`,
     data() {
         console.log("data");
         return {
@@ -63,13 +68,14 @@ export default {
 
         goToResume(id) {
             console.log("je suis goToResume");
-            this.$router.push(`/app/home/${id}`)
+            this.$router.push(`/app/users/${id}`)
+        },
+
+        goToLogin() {
+            this.$router.push('/app/login');
         }
     }
 
 }
 
-const myHome = {
-
-
-}
+const myHome = {}

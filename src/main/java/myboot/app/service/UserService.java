@@ -36,6 +36,7 @@ public class UserService {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
 	@Autowired
 	private PersonRepository personRepository;
 

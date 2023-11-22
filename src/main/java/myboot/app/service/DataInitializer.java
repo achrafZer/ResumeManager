@@ -50,7 +50,6 @@ public class DataInitializer {
         achrafUser.getRoles().add("ADMIN");
         userService.saveUser(achrafUser);
 
-
         CV cvAchraf = new CV();
         cvAchraf.setPerson(achraf);
         cvService.saveCV(cvAchraf);
