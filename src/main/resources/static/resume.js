@@ -4,8 +4,8 @@ export default {
 
     template: `
       <div class="container mt-5">
-        <h2>CV de {{ person.firstName }} {{ person.lastName }}</h2>
         <div v-if="person">
+          <h2>CV de {{ person.firstName }} {{ person.lastName }}</h2>
           <h3>Informations Personnelles</h3>
           <p>Email: {{ person.email }}</p>
           <p>Site Web: {{ person.website }}</p>
@@ -48,7 +48,7 @@ export default {
         },
 
         formatDate(dateString) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const options = {year: 'numeric', month: 'long', day: 'numeric'};
             return new Date(dateString).toLocaleDateString(undefined, options);
         }
     }
