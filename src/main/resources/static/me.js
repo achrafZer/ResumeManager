@@ -71,10 +71,10 @@ export default {
             this.$router.push(`/app/users/${id}`)
         },
 
-        glogout() {
+        logout() {
             localStorage.removeItem('user-token');
             localStorage.removeItem('userId');
-            this.$router.push('/app/login');
+            this.$router.push('/app/home');
         }
     }
 
