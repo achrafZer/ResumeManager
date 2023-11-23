@@ -13,9 +13,12 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 # FICHE DES TESTS :
 - /app : page vide
 - /app/home : rechercher "che"
+- /app/home : ouvrir l'un des CVs 
 - /app/home : appuyer sur login
 - /app/home : s'identifier avec un mauvais mdr
 - /app/home : s'identifier avec un bon mdr
+- refaire depuis recherche
+- aller sur modifier le profil
 
 
 # A FAIRE :
@@ -86,6 +89,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
+- Faire un triatement de toutes les routes qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
 
 
 # REPRISE :
