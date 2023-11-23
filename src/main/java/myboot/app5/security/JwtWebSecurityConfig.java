@@ -30,8 +30,10 @@ import java.util.Set;
 public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected final Log logger = LogFactory.getLog(getClass());
+
     @Autowired
     private XUserRepository userRepo;
+
     @Autowired
     private JwtProvider jwtTokenProvider;
 
@@ -88,11 +90,7 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:8080")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
+                registry.addMapping("/**").allowedOrigins("http://localhost:8080").allowedMethods("GET", "POST", "PUT", "DELETE").allowedHeaders("*").allowCredentials(true);
             }
         };
     }

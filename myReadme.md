@@ -73,11 +73,11 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
 - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
+- Faire en sorte que /app renvoie directement à /app/home
 
 # REPRISE :
 
-5. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
-
+L'authentification marche, mais on n'est pas redirigé à la page home après s'être connecté
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT, LA SOUTENANCE
 - Je me suis inspiré totalement de linkedin, c'est par rapport à ça que j'ai mis en place mes "@NotNull" par exemple
