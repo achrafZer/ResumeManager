@@ -14,7 +14,9 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - /app : page vide
 - /app/home : rechercher "che"
 - /app/home : appuyer sur login
-- /app/home : s'identifier
+- /app/home : s'identifier avec un mauvais mdr
+- /app/home : s'identifier avec un bon mdr
+
 
 # A FAIRE :
 + README
@@ -83,6 +85,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - résoudre l'erreur du timeout 1000
 - Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
+- Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
+
 
 # REPRISE :
 
