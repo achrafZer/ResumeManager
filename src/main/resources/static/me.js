@@ -1,13 +1,13 @@
-console.log("home.js chargé");
+console.log("me.js chargé");
 
 export default {
     template: `
-      <div id="myHome">
+      <div id="me">
         <div class="container mt-5">
           <h1>Gestionnaire de CV</h1>
           <div class="d-flex justify-content-between align-items-center">
             <h2>Liste des Personnes avec CV</h2>
-            <button class="btn btn-primary" @click="goToLogin">Se connecter</button>
+            <button class="btn btn-secondary" @click="logout">Se déconnecter</button>
           </div>
           <!--Barre de recherche par nom, prénom ou titre d'activité-->
           <div class="mb-3">
@@ -71,11 +71,11 @@ export default {
             this.$router.push(`/app/users/${id}`)
         },
 
-        goToLogin() {
+        glogout() {
+            localStorage.removeItem('user-token');
+            localStorage.removeItem('userId');
             this.$router.push('/app/login');
         }
     }
 
 }
-
-const myHome = {}

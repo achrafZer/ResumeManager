@@ -1,9 +1,11 @@
 package myboot.app.service;
 
-import myboot.app.model.*;
-import myboot.app.service.ActivityService;
-import myboot.app.service.CVService;
-import myboot.app.service.PersonService;
+import myboot.app.model.Activity;
+import myboot.app.model.CV;
+import myboot.app.model.Person;
+import myboot.app.model.XUser;
+import myboot.app.model.ActivityNature;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,7 @@ public class DataInitializer {
 
     @PostConstruct
     public void initData() throws ParseException {
-        if (! personService.getAllPersons().isEmpty()) return;
+        if (!personService.getAllPersons().isEmpty()) return;
 
         Person achraf = new Person();
         achraf.setFirstName("Achraf");
@@ -50,7 +52,6 @@ public class DataInitializer {
         achrafUser.getRoles().add("ADMIN");
         userService.saveUser(achrafUser);
 
-
         CV cvAchraf = new CV();
         cvAchraf.setPerson(achraf);
         cvService.saveCV(cvAchraf);
@@ -58,9 +59,7 @@ public class DataInitializer {
         Activity activity1 = new Activity();
         activity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
         activity1.setTitle("Chef de projets informatiques");
-        activity1.setDescription("En étant chef de projets informatiques à la Métropole, je m'occupe de préparer les" +
-                " environnement de travail pour mon équipe de développement, de garantir le bon déroulement de la" +
-                " méthode AGILE, ainsi que d'anticiper les moments où je dois intervenir dans le code");
+        activity1.setDescription("En étant chef de projets informatiques à la Métropole, je m'occupe de préparer les" + " environnement de travail pour mon équipe de développement, de garantir le bon déroulement de la" + " méthode AGILE, ainsi que d'anticiper les moments où je dois intervenir dans le code");
         activity1.setStartYear(2023);
         activity1.setEndYear(2024);
         activity1.setCv(cvAchraf);
@@ -95,8 +94,6 @@ public class DataInitializer {
         activity4.setCv(cvAchraf);
 
         activityService.saveActivity(activity4);
-
-
 
 
         Person heba = new Person();

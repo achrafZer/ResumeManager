@@ -8,7 +8,15 @@
 devons-nous à chaque test lui créer ses propres éléments de test ?
 
 # A NE PAS OUBLIER :
-- Le chifrement des MDP pourrait poser problème dans le futur.
+- Stocker les jetons dans le local storage
+
+# FICHE DES TESTS :
+- /app : page vide
+- /app/home : rechercher "che"
+- /app/home : appuyer sur login
+- /app/home : s'identifier avec un mauvais mdr
+- /app/home : s'identifier avec un bon mdr
+
 
 # A FAIRE :
 + README
@@ -61,9 +69,9 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Changer secu-user par autre chose
 - La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
 - Refactor les repository
-- Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
++ Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
 - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
-- Définir un header
++ Définir un header
 - Faire en sorte qu'il y ait qu'un seul profile d'actif dans le properties
 - Réorganiser totalement le application.properties
 - Régler le souci des accents 
@@ -73,11 +81,16 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
 - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
+- Faire en sorte que /app renvoie directement à /app/home
+- résoudre l'erreur du timeout 1000
+- Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
+- Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
+- Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
+
 
 # REPRISE :
 
-5. Faire un plan pour gérer les routes auxquelles il faudra s'authentifier
-
+L'authentification marche, mais on n'est pas redirigé à la page home après s'être connecté
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT, LA SOUTENANCE
 - Je me suis inspiré totalement de linkedin, c'est par rapport à ça que j'ai mis en place mes "@NotNull" par exemple
