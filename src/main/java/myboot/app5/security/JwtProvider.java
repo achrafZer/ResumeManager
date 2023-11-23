@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
+import myboot.app.dao.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
@@ -43,6 +44,9 @@ public class JwtProvider {
 	@Autowired
 	private JwtUserDetails myUserDetails;
 
+	@Autowired
+	private PersonRepository personRepository;
+
 	@PostConstruct
 	protected void init() {
 		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
@@ -52,6 +56,7 @@ public class JwtProvider {
 
 		Claims claims = Jwts.claims().setSubject(user.getUserName());
 		claims.put("auth", user.getRoles().stream().filter(Objects::nonNull).collect(Collectors.toList()));
+		claims.put("userId", personRepository.findByEmail(user.getUserName()).getId());
 
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + validityInMilliseconds);

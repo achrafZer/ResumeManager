@@ -1,6 +1,7 @@
 console.log("login.js chargé");
 import axios from './axios-config.js'
 
+
 export default {
     template: `
 
@@ -42,6 +43,7 @@ export default {
                     }
                 );
                 console.log('Login Successful', response.data);
+                console.log('userId', response.data.userId)
                 // Gérez le succès de la connexion
             } catch (error) {
                 console.error('Erreur lors de la tentative de connexion: ', error);
