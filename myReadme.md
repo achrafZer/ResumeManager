@@ -71,16 +71,16 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
   + Modifier le profil : /app/users/1/profile
   + Modifier une activité : /app/users/1/edit-activities
 + résoudre l'erreur du timeout 1000
++ Documenter l'API
++ Supprimer les rôles
 
-- Documenter l'API
+- Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Pagination
 - Nettoyer webapp des éléments de movie
-- Supprimer les rôles
 - Refactor les repository
 - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 - Régler le souci des accents 
 - Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
-
 
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
 - Faire un tour de code pour éliminer toutes les import avec '*'
@@ -101,7 +101,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
 - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
-- Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
 - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
