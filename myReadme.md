@@ -76,10 +76,21 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 + Refactor les repository
 + Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
++ - - - Nettoyer webapp des éléments de movie
 
+- - Faire une liste de tous les éléments donc nous auront besoin dans chacune des pages
+  - Header : connexion ou déconnexion( de l'enlever de là où il est maintenant)
+  - Home : 
+    - Pagination
+  - page de profil : 
+    - le bouton d'accueil n'est pas adéquat (si on appuie dessu et qu'on est connecté on doit avoir la page home avec un bouton déconnexion, et avec un petit motif sur notre CV qui sera épinglé)
+    - le bouton qui mène vers la cooptation
+  - Modifier profil/activités : Bouton "<revenir à votre profil"
 
+- - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
+- - - Cooptation
+- - - Suppression d'une activité
 - - Pagination
-- - - Nettoyer webapp des éléments de movie
 - - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 - - Régler le souci des accents
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
@@ -103,12 +114,10 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
 - - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
-- - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
 - - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
 - - - Mettre en place 1000 entités
 - - Nettoyer les console.log
 - - Pour le moment le bouton Accueil renvoie vers la page d'accueil où on est pas connecté. Ca serait bien que ça renvoie vers une page où on est connecté
-- Faire une liste de tous les boutons donc nous auront besoin dans chacune des pages
 
 # REPRISE :
 

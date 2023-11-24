@@ -8,11 +8,11 @@ export default {
     <div class="container mt-5">
     <form @submit.prevent="login">
       <div class="mb-3">
-        <label for="email" class="form-label">Mail Adress</label>
+        <label for="email" class="form-label">Adresse mail</label>
         <input type="email" class="form-control" id="email" v-model="email" required>
       </div>
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" class="form-label">Mot-de-passe</label>
         <input type="password" class="form-control" id="password" v-model="password" required>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
@@ -26,7 +26,7 @@ export default {
         return {
             email: '',
             password: '',
-            errorMessage: '' // Pour afficher les messages d'erreur
+            errorMessage: ''
         };
     },
 
@@ -50,7 +50,6 @@ export default {
 
                 this.$router.push(`/app/users/${response.data.userId}/profile`);
 
-                // Gérez le succès de la connexion
             } catch (error) {
                 console.error('Erreur lors de la tentative de connexion: ', error);
                 if (error.response) {
