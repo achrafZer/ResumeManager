@@ -77,6 +77,7 @@ class TestPersonRepository {
         newPerson.setBirthDate(birthday);
         newPerson.setEmail("jeansamson@email.com");
         newPerson.setPassword("JeanPassword");
+
         assertThrows(ConstraintViolationException.class, () -> {
             personRepository.save(newPerson);
         });
@@ -92,6 +93,7 @@ class TestPersonRepository {
         newPerson.setBirthDate(birthday);
         newPerson.setEmail("jeansamson@email.com");
         newPerson.setPassword("JeanPassword");
+
         assertThrows(ConstraintViolationException.class, () -> {
             personRepository.save(newPerson);
         });
@@ -122,7 +124,23 @@ class TestPersonRepository {
         newPerson.setBirthDate(birthday);
         newPerson.setEmail("jeansamson@email.com");
         newPerson.setPassword("JeanPassword");
-        newPerson.setWebsite("myWrongWebsite");
+        newPerson.setWebsite("myWrongWebsite.com");
+        assertThrows(ConstraintViolationException.class, () -> {
+            personRepository.save(newPerson);
+        });
+    }
+
+    @Test
+    void savePerson_withValidWebSite() throws ParseException {
+        Person newPerson = new Person();
+        newPerson.setFirstName("Jean");
+        newPerson.setLastName("SAMSON");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse("1990-01-01");
+        newPerson.setBirthDate(birthday);
+        newPerson.setEmail("jeansamson@email.com");
+        newPerson.setPassword("JeanPassword");
+        newPerson.setWebsite(".mywrongwebsite.com");
         assertThrows(ConstraintViolationException.class, () -> {
             personRepository.save(newPerson);
         });

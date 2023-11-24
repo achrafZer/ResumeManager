@@ -61,11 +61,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois
 + Définir un header
 + Pour le moment les controllers cherches les CV par prénom, nom ou activité, et c'est côté client que nous rassemblons les trois en même temps. Faire en sorte qu'il y'ait un controller qui fait ça dès le début
++ Ajouter des messages clairs lors des erreurs 
 
-
-
-
-- Ajouter des messages clairs lors des erreurs 
 - Changer la validation du website (qu'on puisse commencer par www par exemple)
 - Popup pour dire que le profil a bien été modifié
 - Faire en sorte qque entrée marche comme un appui sur le bouton rechercher
