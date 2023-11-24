@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import myboot.app.dao.XUserRepository;
 
+import java.util.stream.Collectors;
+
 /**
  * Une nouvelle version de la classe qui code la description d'un utilisateur
  * connecté.
@@ -29,7 +31,7 @@ public class JwtUserDetails implements UserDetailsService {
 
 		var authorities = user.getRoles().stream()
 				.map(SimpleGrantedAuthority::new)
-				.toList();
+				.collect(Collectors.toList());
 		return org.springframework.security.core.userdetails.User//
 				.withUsername(username)//
 				.password(user.getPassword())//
