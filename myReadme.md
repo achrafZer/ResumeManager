@@ -24,7 +24,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 
 # A FAIRE :
-- Ajouter des messages claires lors des erreurs 
+- Ajouter des messages clairs lors des erreurs 
 - Changer la validation du website (qu'on puisse commencer par www par exemple)
 - Popup pour dire que le profil a bien été modifié
 - Faire en sorte qque entrée marche comme un appui sur le bouton rechercher
@@ -97,8 +97,11 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
-- Faire un triatement de toutes les routes qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
+- Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
 - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
+- Mettre en place 1000 entités
+- Nettoyer les console.log
+- Pour le moment le bouton Accueil renvoie vers la page d'accueil où on est pas connecté. Ca serait bien que ça renvoie vers une page où on est connecté
 
 # REPRISE :
 

@@ -48,7 +48,7 @@ export default {
                 localStorage.setItem('user-token', response.data.jwt);
                 localStorage.setItem('userId', response.data.userId);
 
-                this.$router.push(`/app/users/${response.data.userId}/home`);
+                this.$router.push(`/app/users/${response.data.userId}/profile`);
 
                 // Gérez le succès de la connexion
             } catch (error) {
