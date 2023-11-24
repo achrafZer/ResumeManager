@@ -73,8 +73,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + résoudre l'erreur du timeout 1000
 + Documenter l'API
 + Supprimer les rôles
++ Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 
-- Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Pagination
 - Nettoyer webapp des éléments de movie
 - Refactor les repository
@@ -109,6 +109,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Nettoyer les console.log
 - Pour le moment le bouton Accueil renvoie vers la page d'accueil où on est pas connecté. Ca serait bien que ça renvoie vers une page où on est connecté
 - Faire une liste de tous les boutons donc nous auront besoin dans chacune des pages
+- Faire en sorte qu'une recherche vide retourne toute la liste
 # REPRISE :
 
 L'authentification marche, mais on n'est pas redirigé à la page home après s'être connecté

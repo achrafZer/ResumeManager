@@ -78,12 +78,8 @@ public class PersonController {
     @Operation(summary = "Recherche générale de personnes, par nom, prénom et titre d'activité")
     @ApiResponse(responseCode = "200", description = "Résultat de la recherche")
     public ResponseEntity<List<Person>> search(@RequestParam String query) {
-        List<Person> resultSet = new ArrayList<>();
-        resultSet.addAll(personService.getPersonsByFirstName(query));
-        resultSet.addAll(personService.getPersonsByLastName(query));
-        resultSet.addAll(personService.getPersonsByPartOfActivityTitle(query));
-
-        return ResponseEntity.ok(resultSet);
+        List<Person> resultList = personService.search(query);
+        return new ResponseEntity<>(resultList, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

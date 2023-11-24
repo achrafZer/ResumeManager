@@ -62,4 +62,8 @@ public class PersonService {
     public List<Person> getPersonsByPartOfActivityTitle(String title) {
         return personRepository.findByActivityTitle(title);
     }
+
+    public List<Person> search(String query) {
+        return personRepository.search(query);
+    }
 }
