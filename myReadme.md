@@ -74,16 +74,16 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Documenter l'API
 + Supprimer les rôles
 + Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
++ Refactor les repository
++ Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
 
-- Pagination
-- Nettoyer webapp des éléments de movie
-- Refactor les repository
-- Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
-- Régler le souci des accents 
-- Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
 
+- - Pagination
+- - - Nettoyer webapp des éléments de movie
+- - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
+- - Régler le souci des accents
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
-- Faire un tour de code pour éliminer toutes les import avec '*'
+- - Faire un tour de code pour éliminer toutes les import avec '*'
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
 - Ajouter des éléments à la BDD (exemple ajouter "lieu" dans activities)
@@ -91,25 +91,25 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Ajouter un controller pour chacune des erreur HTTP
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
 - Demander à GPT les diagrams qu'il estime importants dans le rapport 
-- Rédiger le cahier des charges
+- - - Rédiger le cahier des charges
 - Recherche Outil pour savoir les éléments du pom.xml qui ne sont pas utilisés
 - Pour le JwtProvider, demander à gpt "selon toi quelle clé secrète devrais-je choisir ?"
 - Changer secu-user par autre chose
 - Faire en sorte qu'il y ait qu'un seul profile d'actif dans le properties
 - Réorganiser totalement le application.properties
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
-- Un tour bootstrap sur l'ensemble des pages
+- - - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
 - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
-- Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
+- - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
-- Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
-- Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
-- Mettre en place 1000 entités
-- Nettoyer les console.log
-- Pour le moment le bouton Accueil renvoie vers la page d'accueil où on est pas connecté. Ca serait bien que ça renvoie vers une page où on est connecté
+- - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
+- - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
+- - - Mettre en place 1000 entités
+- - Nettoyer les console.log
+- - Pour le moment le bouton Accueil renvoie vers la page d'accueil où on est pas connecté. Ca serait bien que ça renvoie vers une page où on est connecté
 - Faire une liste de tous les boutons donc nous auront besoin dans chacune des pages
-- Faire en sorte qu'une recherche vide retourne toute la liste
+
 # REPRISE :
 
 L'authentification marche, mais on n'est pas redirigé à la page home après s'être connecté

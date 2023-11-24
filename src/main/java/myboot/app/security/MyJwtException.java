@@ -1,4 +1,4 @@
-package myboot.app5.security;
+package myboot.app.security;
 
 import org.springframework.http.HttpStatus;
 

@@ -1,4 +1,4 @@
-package myboot.app5.security;
+package myboot.app.security;
 
 import myboot.app.dao.XUserRepository;
 import myboot.app.model.XUser;
