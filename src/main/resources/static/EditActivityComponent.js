@@ -47,7 +47,7 @@ export default {
         const activityId = this.$route.params.activityId;
         await axios.put(`http://localhost:8081/api/activities/${activityId}`, this.activity);
         alert('La modification de l\'activité a été effectuée avec succès.');
-        this.$router.push(`/app/users/${localStorage.getItem('userId')}/profile`);
+        this.$router.push(`/app/users/${localStorage.getItem('userId')}/edit-activities`);
 
 
       } catch (error) {
