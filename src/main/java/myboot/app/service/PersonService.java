@@ -42,6 +42,7 @@ public class PersonService {
         return new ArrayList<>(personRepository.findAll());
     }
 
+    @Transactional
     public Person updatePerson(Long id, Person updatedPerson) {
         if (personRepository.findById(id).isPresent()) {
             updatedPerson.setId(id);
