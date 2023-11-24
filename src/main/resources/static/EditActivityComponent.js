@@ -39,16 +39,19 @@ export default {
                 console.log("activity : ", response);
             } catch (error) {
                 console.error("Erreur lors de la récupération des détails de l'activité", error);
-                // Gestion d'erreur appropriée
             }
-        }, async updateActivity() {
+        },
+
+        async updateActivity() {
             try {
                 const activityId = this.$route.params.activityId;
                 await axios.put(`http://localhost:8081/api/activities/${activityId}`, this.activity);
-                // Gérer la réponse, par exemple, afficher un message ou rediriger
+                alert('La modification de l\'activité a été effectuée avec succès.');
+
             } catch (error) {
                 console.error("Erreur lors de la mise à jour de l'activité", error);
                 // Gestion d'erreur appropriée
-            }        }
+            }
+        }
     }
 };
