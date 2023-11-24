@@ -6,6 +6,7 @@ import LoginComponent from './login.js';
 import axios from './axios-config.js';
 import UserHomeComponent from './me.js';
 import EditProfileComponent from './EditProfileComponent.js';
+import UserProfileComponent from './UserProfileComponent.js';
 
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
     { path: '/app/users/:id', component: ResumeComponent },
     { path: '/app/login', component: LoginComponent},
     { path: '/app/users/:id/home', component: UserHomeComponent},
+    { path: '/app/users/:id/profile', component: UserProfileComponent },
     { path: '/app/users/:id/edit-profile', component: EditProfileComponent }
 
 ];
