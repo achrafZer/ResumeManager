@@ -11,6 +11,7 @@ export default {
           <p>Site Web: {{ person.website }}</p>
           <p>Date de naissance: {{ formatDate(person.birthDate) }}</p>
           <button class="btn btn-primary mt-3" @click="editProfile">Modifier le Profil</button>
+          <button class="btn btn-primary mt-3" @click="editActivities">Modifier les activités</button>
 
 
           <h3>Le contenu de votre CV</h3>
@@ -21,6 +22,7 @@ export default {
             </li>
           </ul>
           <p v-else>Vous n'avez mis aucune activité encore</p>
+
         </div>
         <div v-else>
           <p>Chargement...</p>
@@ -56,6 +58,10 @@ export default {
 
         editProfile() {
             this.$router.push(`/app/users/${this.$route.params.id}/edit-profile`);
+        },
+
+        editActivities() {
+            this.$router.push(`/app/users/${this.$route.params.id}/edit-activities`);
         }
     }
 };

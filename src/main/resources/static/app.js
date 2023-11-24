@@ -7,6 +7,9 @@ import axios from './axios-config.js';
 import UserHomeComponent from './me.js';
 import EditProfileComponent from './EditProfileComponent.js';
 import UserProfileComponent from './UserProfileComponent.js';
+import EditActivitiesComponent from './EditActivitiesComponent.js';
+import EditActivityComponent from './EditActivityComponent.js'; // Supposons que vous créez ce composant
+
 
 
 const routes = [
@@ -16,7 +19,9 @@ const routes = [
     { path: '/app/login', component: LoginComponent},
     { path: '/app/users/:id/home', component: UserHomeComponent},
     { path: '/app/users/:id/profile', component: UserProfileComponent },
-    { path: '/app/users/:id/edit-profile', component: EditProfileComponent }
+    { path: '/app/users/:id/edit-profile', component: EditProfileComponent },
+    { path: '/app/users/:id/edit-activities', component: EditActivitiesComponent },
+    { path: '/app/users/:userId/edit-activities/:activityId', component: EditActivityComponent }
 
 ];
 
