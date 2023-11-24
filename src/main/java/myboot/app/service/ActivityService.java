@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,26 +77,22 @@ public class ActivityService {
     /**
      * Updates an existing activity.
      *
-     * @param id The ID of the activity to update.
+     * @param id              The ID of the activity to update.
      * @param updatedActivity The updated activity data.
      * @return The updated activity.
      * @throws IllegalArgumentException If the activity with the specified ID is not found.
      */
+    @Transactional
     public Activity updateActivity(Long id, Activity updatedActivity) {
-        if (activityRepository.findById(id).isPresent()) {
-            Activity existingActivity = activityRepository.findById(id).get();
+        return activityRepository.findById(id).map(activity -> {
+            activity.setTitle(updatedActivity.getTitle());
+            activity.setDescription(updatedActivity.getDescription());
+            activity.setStartYear(updatedActivity.getStartYear());
+            activity.setEndYear(updatedActivity.getEndYear());
+            activity.setNature(updatedActivity.getNature());
 
-            existingActivity.setStartYear(updatedActivity.getStartYear());
-            existingActivity.setEndYear(updatedActivity.getEndYear());
-            existingActivity.setNature(updatedActivity.getNature());
-            existingActivity.setTitle(updatedActivity.getTitle());
-            existingActivity.setDescription(updatedActivity.getDescription());
-            existingActivity.setCv(updatedActivity.getCv());
-
-            return activityRepository.save(existingActivity);
-        } else {
-            throw new IllegalArgumentException("Activity with id " + id + " not found.");
-        }
+            return activityRepository.save(activity);
+        }).orElseThrow(() -> new EntityNotFoundException("Activity not found with id " + id));
     }
 
     /**
@@ -111,4 +108,8 @@ public class ActivityService {
     public List<Activity> getActivitiesByPersonId(Long id) {
         return activityRepository.getActivitiesByPersonId(id);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/small-modifications
 }

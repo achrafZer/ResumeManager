@@ -42,6 +42,7 @@ public class PersonService {
         return new ArrayList<>(personRepository.findAll());
     }
 
+    @Transactional
     public Person updatePerson(Long id, Person updatedPerson) {
         if (personRepository.findById(id).isPresent()) {
             updatedPerson.setId(id);
@@ -60,5 +61,9 @@ public class PersonService {
 
     public List<Person> getPersonsByPartOfActivityTitle(String title) {
         return personRepository.findByActivityTitle(title);
+    }
+
+    public List<Person> search(String query) {
+        return personRepository.search(query);
     }
 }

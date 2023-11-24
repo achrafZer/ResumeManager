@@ -4,6 +4,7 @@ package myboot.app.dao;
 import myboot.app.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,6 +60,15 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
      */
     @Query("SELECT p FROM Person p WHERE UPPER(p.email) LIKE UPPER(CONCAT('%', :email, '%'))")
     Person findByEmail(String email);
+
+    @Query("SELECT DISTINCT p FROM Person p " +
+            "LEFT JOIN p.cv cv " +
+            "LEFT JOIN cv.activities a " +
+            "WHERE (UPPER(p.firstName) LIKE UPPER(CONCAT('%', :searchQuery, '%')) " +
+            "OR UPPER(p.lastName) LIKE UPPER(CONCAT('%', :searchQuery, '%')) " +
+            "OR UPPER(a.title) LIKE UPPER(CONCAT('%', :searchQuery, '%')))")
+    List<Person> search(@Param("searchQuery") String searchQuery);
+
 
     /**
      * Checks if a person exists with the provided email.

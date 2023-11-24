@@ -112,6 +112,49 @@ public class DataInitializer {
         hebaUser.getRoles().add("USER");
         userService.saveUser(hebaUser);
 
+        CV cvHeba = new CV();
+        cvHeba.setPerson(heba);
+        cvService.saveCV(cvHeba);
+
+        Activity hactivity1 = new Activity();
+        hactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        hactivity1.setTitle("Full Stack Developer");
+        hactivity1.setDescription("Modul-Bio · Contrat en alternance");
+        hactivity1.setStartYear(2023);
+        hactivity1.setEndYear(2024);
+        hactivity1.setCv(cvHeba);
+        activityService.saveActivity(hactivity1);
+
+        Activity hactivity2 = new Activity();
+        hactivity2.setNature(ActivityNature.EDUCATION);
+        hactivity2.setTitle("Aix-Marseille Université");
+        hactivity2.setDescription("French language");
+        hactivity2.setStartYear(2016);
+        hactivity2.setEndYear(2017);
+        hactivity2.setCv(cvHeba);
+
+        activityService.saveActivity(hactivity2);
+
+        Activity hactivity3 = new Activity();
+        hactivity3.setNature(ActivityNature.EDUCATION);
+        hactivity3.setTitle("Bachelor of Science");
+        hactivity3.setDescription("BS, Computer Science");
+        hactivity3.setStartYear(2019);
+        hactivity3.setEndYear(2022);
+        hactivity3.setCv(cvHeba);
+
+        activityService.saveActivity(hactivity3);
+
+        Activity hactivity4 = new Activity();
+        hactivity4.setNature(ActivityNature.EDUCATION);
+        hactivity4.setTitle("Master's degree'");
+        hactivity4.setDescription("Computer Software Engineering");
+        hactivity4.setStartYear(2022);
+        hactivity4.setEndYear(2024);
+        hactivity4.setCv(cvHeba);
+
+        activityService.saveActivity(hactivity4);
+
         Person walid = new Person();
         walid.setFirstName("Walid");
         walid.setLastName("ADDOUCHE");
@@ -128,6 +171,52 @@ public class DataInitializer {
         walidUser.getRoles().add("USER");
         userService.saveUser(walidUser);
 
+        CV cvWalid = new CV();
+        cvWalid.setPerson(walid);
+        cvService.saveCV(cvWalid);
+
+        Activity wactivity1 = new Activity();
+        wactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        wactivity1.setTitle("Ingénieur en développement Java");
+        wactivity1.setDescription("Sopra Steria · Stage");
+        wactivity1.setStartYear(2023);
+        wactivity1.setEndYear(2024);
+        wactivity1.setCv(cvWalid);
+        activityService.saveActivity(wactivity1);
+
+        Activity wactivity2 = new Activity();
+        wactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        wactivity2.setTitle("Apprenti Ingénieur logiciel Java");
+        wactivity2.setDescription("Capgemini · Contrat en alternance");
+        wactivity2.setStartYear(2023);
+        wactivity2.setEndYear(2024);
+        wactivity2.setCv(cvWalid);
+
+        activityService.saveActivity(wactivity2);
+
+        Activity wactivity3 = new Activity();
+        wactivity3.setNature(ActivityNature.EDUCATION);
+        wactivity3.setTitle("Licence");
+        wactivity3.setDescription("Informatique");
+        wactivity3.setStartYear(2019);
+        wactivity3.setEndYear(2022);
+        wactivity3.setCv(cvWalid);
+
+        activityService.saveActivity(wactivity3);
+
+        Activity wactivity4 = new Activity();
+        wactivity4.setNature(ActivityNature.EDUCATION);
+        wactivity4.setTitle("Master2");
+        wactivity4.setDescription("Ingénierie du développement Logiciel");
+        wactivity4.setStartYear(2022);
+        wactivity4.setEndYear(2024);
+        wactivity4.setCv(cvWalid);
+
+        activityService.saveActivity(wactivity4);
+
+
+        ////////////////////////////////////////////////////////
+
         Person rafik = new Person();
         rafik.setFirstName("Rafik");
         rafik.setLastName("CHAIB");
@@ -136,6 +225,36 @@ public class DataInitializer {
         rafik.setEmail("rafik.chaib@univ-amu.fr");
         rafik.setPassword("RafikPassword");
         personService.savePerson(rafik);
+
+        XUser rafiqUser = new XUser();
+        rafiqUser.setUserName("rafik.chaib@univ-amu.fr");
+        rafiqUser.setPassword("RafikPassword");
+        rafiqUser.setRoles(new HashSet<>());
+        rafiqUser.getRoles().add("USER");
+        userService.saveUser(rafiqUser);
+
+        CV cvRafiq = new CV();
+        cvRafiq.setPerson(rafik);
+        cvService.saveCV(cvRafiq);
+
+        Activity ractivity1 = new Activity();
+        ractivity1.setNature(ActivityNature.EDUCATION);
+        ractivity1.setTitle("Master 1");
+        ractivity1.setDescription("Ingénierie Logicielle");
+        ractivity1.setStartYear(2020);
+        ractivity1.setEndYear(2022);
+        ractivity1.setCv(cvRafiq);
+        activityService.saveActivity(ractivity1);
+
+        Activity ractivity2 = new Activity();
+        ractivity2.setNature(ActivityNature.EDUCATION);
+        ractivity2.setTitle("Master 1");
+        ractivity2.setDescription("Ingénierie Logicielle");
+        ractivity2.setStartYear(2022);
+        ractivity2.setEndYear(2024);
+        ractivity2.setCv(cvRafiq);
+
+        activityService.saveActivity(ractivity2);
 
         Person maxime = new Person();
         maxime.setFirstName("Maxime");

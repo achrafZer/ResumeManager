@@ -62,6 +62,9 @@ export default {
                     password: this.user.password,
                     website: this.user.website
                 });
+                alert('La modification de votre profil a été effectuée avec succès.');
+                this.$router.push(`/app/users/${this.user.id}/profile`);
+
             } catch (error) {
                 console.error('Erreur lors de la mise à jour du profil', error);
             }

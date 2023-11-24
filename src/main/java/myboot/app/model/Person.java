@@ -26,41 +26,42 @@ public class Person {
     /**
      * First name of the person. We do a little check and validation
      */
-    @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z-' ]+$", message = "First name can only contain alphabets, spaces, apostrophes, and hyphens")
+    @NotEmpty(message = "Le prénom d'une personne ne peut pas être vide")
+    @Pattern(regexp = "^[a-zA-Z-' ]+$", message = "Le prénom peut uniquement contenir des lettres ou les symboles suivants: '-', ' '")
     private String firstName;
 
     /**
      * Last name of the person. We do a little check and validation
      */
-    @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z-' ]+$", message = "Last name can only contain alphabets, spaces, apostrophes, and hyphens")
+    @NotEmpty(message = "Le nom d'une personne ne peut pas être vide")
+    @Pattern(regexp = "^[a-zA-Z-' ]+$", message = "Le nom peut uniquement contenir des lettres ou les symboles suivants: '-', ' '")
     private String lastName;
 
     /**
      * The email that is also the username
      */
-    @NotEmpty
-    @Email(message = "Email should be valid")
+    @NotEmpty(message = "L'adresse mail' d'une personne ne peut pas être vide")
+    @Email(message = "L'adresse mail doit avoir le format conventionnel d'une adresse mail")
     private String email;
 
     /**
      * Website URL of the person, if any. It should be in a valid URL format.
      */
-    @URL(message = "Website should be a valid URL")
+    @Pattern(regexp = "^(www\\.http://www\\.|https://www\\.|http://|https://)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$",
+            message = "L'URL du site doit être valide")
     private String website;
 
     /**
      * Birth date of the person. It must be a date in the past.
      */
-    @NotNull
+    @NotNull(message = "La date de naissance ne peut pas être nulle")
     @Past(message = "Birth date should be in the past")
     private Date birthDate;
 
     /**
      * Password for the person's account. This field is required.
      */
-    @NotEmpty
+    @NotEmpty(message = "Le mot-de-passe d'une personne ne peut pas être vide")
     private String password;
 
     /**

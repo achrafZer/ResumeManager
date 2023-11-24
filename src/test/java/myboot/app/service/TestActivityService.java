@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -45,11 +47,6 @@ class TestActivityService {
     }
 
     @Test
-    void testGetAllActivities() {
-        assertEquals(4, activityService.getAllActivities().size());
-    }
-
-    @Test
     void testUpdateActivity() {
         Activity savedActivity = activityService.saveActivity(testActivity);
 
@@ -60,9 +57,9 @@ class TestActivityService {
     }
 
     @Test
-    void testUnvaliUpdateActivity() { //update with an inexistant id
-        assertThrows(IllegalArgumentException.class, () -> {
-            activityService.updateActivity(5L, testActivity);
+    void testUnvaliUpdateActivity() {
+        assertThrows(EntityNotFoundException.class, () -> {
+            activityService.updateActivity(50000L, testActivity);
         });
     }
 

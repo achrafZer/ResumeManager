@@ -28,7 +28,7 @@ export default {
                     v-if="person.cv && person.cv.activities">
                   {{ activity.title }} ({{ activity.startYear }} - {{ activity.endYear }})
                 </li>
-                <p v-else class="text-muted">Aucune activite de CV disponible.</p>
+                <p v-else class="text-muted">Aucune activité de CV disponible.</p>
               </ul>
             </div>
           </div>

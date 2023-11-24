@@ -1,4 +1,4 @@
-package myboot.app5.web;
+package myboot.app.web;
 
 import java.io.IOException;
 import java.util.Map;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import myboot.app5.security.MyJwtException;
+import myboot.app.security.MyJwtException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandlerController {

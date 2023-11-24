@@ -13,11 +13,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
@@ -108,14 +111,20 @@ public class TestActivityControllerMock {
 
     @Test
     public void testUpdateActivity() throws Exception {
-        when(activityRepository.existsById(1L)).thenReturn(true);
-        when(activityRepository.save(activity1)).thenReturn(activity1);
+        // Configurer le comportement simulé du repository
+        when(activityRepository.findById(any(Long.class))).thenReturn(Optional.of(activity1));
+        when(activityRepository.save(any(Activity.class))).thenReturn(activity1);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/activities/1")
+        // Créer un ObjectMapper pour convertir les objets en JSON
+        ObjectMapper objectMapper = new ObjectMapper();
+        String updatedActivityJson = objectMapper.writeValueAsString(activity1);
+
+        // Exécuter la requête PUT et vérifier la réponse
+        mockMvc.perform(put("/api/activities/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(activity1)))
+                        .content(updatedActivityJson))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1L));
+                .andExpect(content().json(updatedActivityJson));
     }
 
     @Test
