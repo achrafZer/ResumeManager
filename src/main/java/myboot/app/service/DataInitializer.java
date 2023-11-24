@@ -171,6 +171,52 @@ public class DataInitializer {
         walidUser.getRoles().add("USER");
         userService.saveUser(walidUser);
 
+        CV cvWalid = new CV();
+        cvWalid.setPerson(walid);
+        cvService.saveCV(cvWalid);
+
+        Activity wactivity1 = new Activity();
+        wactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        wactivity1.setTitle("Ingénieur en développement Java");
+        wactivity1.setDescription("Sopra Steria · Stage");
+        wactivity1.setStartYear(2023);
+        wactivity1.setEndYear(2024);
+        wactivity1.setCv(cvWalid);
+        activityService.saveActivity(wactivity1);
+
+        Activity wactivity2 = new Activity();
+        wactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        wactivity2.setTitle("Apprenti Ingénieur logiciel Java");
+        wactivity2.setDescription("Capgemini · Contrat en alternance");
+        wactivity2.setStartYear(2023);
+        wactivity2.setEndYear(2024);
+        wactivity2.setCv(cvWalid);
+
+        activityService.saveActivity(wactivity2);
+
+        Activity wactivity3 = new Activity();
+        wactivity3.setNature(ActivityNature.EDUCATION);
+        wactivity3.setTitle("Licence");
+        wactivity3.setDescription("Informatique");
+        wactivity3.setStartYear(2019);
+        wactivity3.setEndYear(2022);
+        wactivity3.setCv(cvWalid);
+
+        activityService.saveActivity(wactivity3);
+
+        Activity wactivity4 = new Activity();
+        wactivity4.setNature(ActivityNature.EDUCATION);
+        wactivity4.setTitle("Master2");
+        wactivity4.setDescription("Ingénierie du développement Logiciel");
+        wactivity4.setStartYear(2022);
+        wactivity4.setEndYear(2024);
+        wactivity4.setCv(cvWalid);
+
+        activityService.saveActivity(wactivity4);
+
+
+        ////////////////////////////////////////////////////////
+
         Person rafik = new Person();
         rafik.setFirstName("Rafik");
         rafik.setLastName("CHAIB");
@@ -179,6 +225,8 @@ public class DataInitializer {
         rafik.setEmail("rafik.chaib@univ-amu.fr");
         rafik.setPassword("RafikPassword");
         personService.savePerson(rafik);
+
+
 
         Person maxime = new Person();
         maxime.setFirstName("Maxime");
