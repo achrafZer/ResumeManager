@@ -70,8 +70,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
   + /app : /app/home
   + Modifier le profil : /app/users/1/profile
   + Modifier une activité : /app/users/1/edit-activities
++ résoudre l'erreur du timeout 1000
 
-- résoudre l'erreur du timeout 1000
 - Documenter l'API
 - Pagination
 - Nettoyer webapp des éléments de movie

@@ -195,10 +195,18 @@
 			<version>0.22.0</version>
 		</dependency>
 
+		<!--Pour Vue-->
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>vue-router</artifactId>
-			<version>4.1.6</version> <!-- Utilisez la version compatible avec Vue 3 -->
+			<version>4.1.6</version>
+		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 
 	</dependencies>
