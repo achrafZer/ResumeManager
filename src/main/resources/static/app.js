@@ -13,7 +13,7 @@ import EditActivityComponent from './EditActivityComponent.js'; // Supposons que
 
 
 const routes = [
-    {path: '/app', redirect: '/home'},
+    {path: '/app', redirect: '/app/home'},
     { path: '/app/home', component: HomeComponent },
     { path: '/app/users/:id', component: ResumeComponent },
     { path: '/app/login', component: LoginComponent},
