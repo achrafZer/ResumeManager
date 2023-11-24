@@ -45,6 +45,12 @@ public class ActivityController {
         return new ResponseEntity<>(activitieList, HttpStatus.OK);
     }
 
+    @GetMapping("/search-by-person-id")
+    public ResponseEntity<List<Activity>> getActivitiesByPerson(@RequestParam Long id) {
+        List<Activity> activitieList = activityService.getActivitiesByPersonId(id);
+        return new ResponseEntity<>(activitieList, HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Activity> updateActivity(@PathVariable Long id,@Valid @RequestBody Activity activity) {
         if (activityService.existsById(id)) {
