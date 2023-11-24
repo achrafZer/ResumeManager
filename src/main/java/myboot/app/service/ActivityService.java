@@ -108,8 +108,5 @@ public class ActivityService {
     public List<Activity> getActivitiesByPersonId(Long id) {
         return activityRepository.getActivitiesByPersonId(id);
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> feature/small-modifications
 }

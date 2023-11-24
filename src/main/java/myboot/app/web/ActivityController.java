@@ -61,11 +61,8 @@ public class ActivityController {
     }
 
     @GetMapping("/search-by-person-id")
-<<<<<<< HEAD
-=======
     @Operation(summary = "Récupérer des activités par l'ID de la personne dont le CV les contient")
     @ApiResponse(responseCode = "200", description = "Activités de la personne spécifiée")
->>>>>>> feature/small-modifications
     public ResponseEntity<List<Activity>> getActivitiesByPerson(@RequestParam Long id) {
         List<Activity> activitieList = activityService.getActivitiesByPersonId(id);
         return new ResponseEntity<>(activitieList, HttpStatus.OK);
