@@ -107,4 +107,8 @@ public class ActivityService {
     public boolean existsById(Long id) {
         return activityRepository.existsById(id);
     }
+
+    public List<Activity> getActivitiesByPersonId(Long id) {
+        return activityRepository.getActivitiesByPersonId(id);
+    }
 }
