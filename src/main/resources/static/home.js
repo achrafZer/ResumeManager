@@ -20,13 +20,13 @@ export default {
             <div class="card-body" @click="goToResume(person.id)">
               <h5 class="card-title">{{ person.firstName }} {{ person.lastName }}</h5>
               <h6 class="card-subtitle mb-2 text-muted"
-                  v-if="person.cv && person.cv.activities && person.cv.activities.length">Activite</h6>
+                  v-if="person.cv && person.cv.activities && person.cv.activities.length">Activités</h6>
               <ul class="list-group list-group-flush">
                 <li v-for="activity in person.cv.activities" :key="activity.id" class="list-group-item"
                     v-if="person.cv && person.cv.activities">
                   {{ activity.title }} ({{ activity.startYear }} - {{ activity.endYear }})
                 </li>
-                <p v-else class="text-muted">Aucune activite de CV disponible.</p>
+                <p v-else class="text-muted">Aucune activité de CV disponible.</p>
               </ul>
             </div>
           </div>

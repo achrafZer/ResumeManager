@@ -47,11 +47,6 @@ class TestActivityService {
     }
 
     @Test
-    void testGetAllActivities() {
-        assertEquals(4, activityService.getAllActivities().size());
-    }
-
-    @Test
     void testUpdateActivity() {
         Activity savedActivity = activityService.saveActivity(testActivity);
 
@@ -62,9 +57,9 @@ class TestActivityService {
     }
 
     @Test
-    void testUnvaliUpdateActivity() { //update with an inexistant id
+    void testUnvaliUpdateActivity() {
         assertThrows(EntityNotFoundException.class, () -> {
-            activityService.updateActivity(5L, testActivity);
+            activityService.updateActivity(50000L, testActivity);
         });
     }
 

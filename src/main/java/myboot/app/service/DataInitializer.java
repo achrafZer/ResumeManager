@@ -112,6 +112,49 @@ public class DataInitializer {
         hebaUser.getRoles().add("USER");
         userService.saveUser(hebaUser);
 
+        CV cvHeba = new CV();
+        cvHeba.setPerson(heba);
+        cvService.saveCV(cvHeba);
+
+        Activity hactivity1 = new Activity();
+        hactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        hactivity1.setTitle("Full Stack Developer");
+        hactivity1.setDescription("Modul-Bio · Contrat en alternance");
+        hactivity1.setStartYear(2023);
+        hactivity1.setEndYear(2024);
+        hactivity1.setCv(cvHeba);
+        activityService.saveActivity(hactivity1);
+
+        Activity hactivity2 = new Activity();
+        hactivity2.setNature(ActivityNature.EDUCATION);
+        hactivity2.setTitle("Aix-Marseille Université");
+        hactivity2.setDescription("French language");
+        hactivity2.setStartYear(2016);
+        hactivity2.setEndYear(2017);
+        hactivity2.setCv(cvHeba);
+
+        activityService.saveActivity(hactivity2);
+
+        Activity hactivity3 = new Activity();
+        hactivity3.setNature(ActivityNature.EDUCATION);
+        hactivity3.setTitle("Bachelor of Science");
+        hactivity3.setDescription("BS, Computer Science");
+        hactivity3.setStartYear(2019);
+        hactivity3.setEndYear(2022);
+        hactivity3.setCv(cvHeba);
+
+        activityService.saveActivity(hactivity3);
+
+        Activity hactivity4 = new Activity();
+        hactivity4.setNature(ActivityNature.EDUCATION);
+        hactivity4.setTitle("Master's degree'");
+        hactivity4.setDescription("Computer Software Engineering");
+        hactivity4.setStartYear(2022);
+        hactivity4.setEndYear(2024);
+        hactivity4.setCv(cvHeba);
+
+        activityService.saveActivity(hactivity4);
+
         Person walid = new Person();
         walid.setFirstName("Walid");
         walid.setLastName("ADDOUCHE");
