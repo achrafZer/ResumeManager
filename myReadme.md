@@ -71,7 +71,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
   + Modifier le profil : /app/users/1/profile
   + Modifier une activité : /app/users/1/edit-activities
 
-
+- résoudre l'erreur du timeout 1000
 - Documenter l'API
 - Pagination
 - Nettoyer webapp des éléments de movie
@@ -101,7 +101,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
 - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
-- résoudre l'erreur du timeout 1000
 - Mettre en place une seule requête pour les trois opérations plutôt que trois requêtes combinées avec Java
 - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
