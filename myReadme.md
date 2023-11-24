@@ -63,9 +63,15 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Pour le moment les controllers cherches les CV par prénom, nom ou activité, et c'est côté client que nous rassemblons les trois en même temps. Faire en sorte qu'il y'ait un controller qui fait ça dès le début
 + Ajouter des messages clairs lors des erreurs
 + Changer la validation du website (qu'on puisse commencer par www par exemple)
++ Popup pour dire que le profil a bien été modifié
 
-- Popup pour dire que le profil a bien été modifié
-- Gérer les redirections
+- Gérer les redirections :
+  - /app : /app/home
+  - Modifier le profil : /app/users/1/profile
+  - Modifier une activité : /app/users/1/edit-activities
+
+
+
 - Faire en sorte qque entrée marche comme un appui sur le bouton rechercher
 - Faire en sorte que sur la page de modif, les input contiennent de base la valeur actuelle de la personne
 - Documenter l'API
@@ -104,7 +110,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Mettre en place 1000 entités
 - Nettoyer les console.log
 - Pour le moment le bouton Accueil renvoie vers la page d'accueil où on est pas connecté. Ca serait bien que ça renvoie vers une page où on est connecté
-
+- Faire une liste de tous les boutons donc nous auront besoin dans chacune des pages 
 # REPRISE :
 
 L'authentification marche, mais on n'est pas redirigé à la page home après s'être connecté
