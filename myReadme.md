@@ -19,9 +19,16 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - /app/home : s'identifier avec un bon mdr
 - refaire depuis recherche
 - aller sur modifier le profil
+- Modifier un élément
+- Se déconnecter
 
 
 # A FAIRE :
+- Ajouter des messages claires lors des erreurs 
+- Changer la validation du website (qu'on puisse commencer par www par exemple)
+- Popup pour dire que le profil a bien été modifié
+- Faire en sorte qque entrée marche comme un appui sur le bouton rechercher
+- Faire en sorte que sur la page de modif, les input contiennent de base la valeur actuelle de la personne
 + README
 + Trouver pourquoi si je supprime app1 mon api ne marche plus
 + Recherche sur les tests de l'api pour les méthodes non GET
@@ -70,7 +77,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Tester getPersonByEmail
 + Demander au prof si utiliser XUser est quand même recommandé
 - Changer secu-user par autre chose
-- La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
++ La méthode searchActivityByTitle cherche une activité par titre et non pas par une partie du titre
 - Refactor les repository
 + Faire en sorte que le back exécute npm run build pour ne pas avoir à lancer et back et front à chaque fois 
 - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
@@ -79,7 +86,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Réorganiser totalement le application.properties
 - Régler le souci des accents 
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
-- Pour le moment les controllers cherches les CV par prénom, nom ou activité, et c'est côté client que nous rassemblons les trois en même temps. Faire en sorte qu'il y'ait un controller qui fait ça dès le début
++ Pour le moment les controllers cherches les CV par prénom, nom ou activité, et c'est côté client que nous rassemblons les trois en même temps. Faire en sorte qu'il y'ait un controller qui fait ça dès le début
 - Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
 - Un tour bootstrap sur l'ensemble des pages
 - Ajouter des photos sur les profils 
