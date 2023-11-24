@@ -1,4 +1,4 @@
-console.log("Resume.js chargé");
+console.log("UserProfileComponent.js chargé");
 
 export default {
 
@@ -6,19 +6,21 @@ export default {
       <div class="container mt-5">
         <div v-if="person">
           <h2>CV de {{ person.firstName }} {{ person.lastName }}</h2>
-          <h3>Informations Personnelles</h3>
+          <h3>Votre profil</h3>
           <p>Email: {{ person.email }}</p>
           <p>Site Web: {{ person.website }}</p>
           <p>Date de naissance: {{ formatDate(person.birthDate) }}</p>
+          <button class="btn btn-primary mt-3" @click="editProfile">Modifier le Profil</button>
 
-          <h3>Expériences et Formations</h3>
+
+          <h3>Le contenu de votre CV</h3>
           <ul v-if="person.cv && person.cv.activities.length">
             <li v-for="activity in person.cv.activities" :key="activity.id">
               <strong>{{ activity.title }}</strong> ({{ activity.startYear }} - {{ activity.endYear }})
               <p>{{ activity.description }}</p>
             </li>
           </ul>
-          <p v-else>Aucune activité de CV disponible.</p>
+          <p v-else>Vous n'avez mis aucune activité encore</p>
         </div>
         <div v-else>
           <p>Chargement...</p>
@@ -50,6 +52,10 @@ export default {
         formatDate(dateString) {
             const options = {year: 'numeric', month: 'long', day: 'numeric'};
             return new Date(dateString).toLocaleDateString(undefined, options);
+        },
+
+        editProfile() {
+            this.$router.push(`/app/users/${this.$route.params.id}/edit-profile`);
         }
     }
 };
