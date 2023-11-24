@@ -226,7 +226,35 @@ public class DataInitializer {
         rafik.setPassword("RafikPassword");
         personService.savePerson(rafik);
 
+        XUser rafiqUser = new XUser();
+        rafiqUser.setUserName("rafik.chaib@univ-amu.fr");
+        rafiqUser.setPassword("RafikPassword");
+        rafiqUser.setRoles(new HashSet<>());
+        rafiqUser.getRoles().add("USER");
+        userService.saveUser(rafiqUser);
 
+        CV cvRafiq = new CV();
+        cvRafiq.setPerson(rafik);
+        cvService.saveCV(cvRafiq);
+
+        Activity ractivity1 = new Activity();
+        ractivity1.setNature(ActivityNature.EDUCATION);
+        ractivity1.setTitle("Master 1");
+        ractivity1.setDescription("Ingénierie Logicielle");
+        ractivity1.setStartYear(2020);
+        ractivity1.setEndYear(2022);
+        ractivity1.setCv(cvRafiq);
+        activityService.saveActivity(ractivity1);
+
+        Activity ractivity2 = new Activity();
+        ractivity2.setNature(ActivityNature.EDUCATION);
+        ractivity2.setTitle("Master 1");
+        ractivity2.setDescription("Ingénierie Logicielle");
+        ractivity2.setStartYear(2022);
+        ractivity2.setEndYear(2024);
+        ractivity2.setCv(cvRafiq);
+
+        activityService.saveActivity(ractivity2);
 
         Person maxime = new Person();
         maxime.setFirstName("Maxime");
