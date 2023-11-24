@@ -34,6 +34,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Recherche sur les tests de l'api pour les méthodes non GET
 - Documenter l'API
 - Tests fonctionnels avec un outil de QL
+- Enlever les warning affichés dans la console
 + Sécuriser les MDP
 + Gérer les exceptions (des intercepteurs pour capturer les exceptions et renvoyer des réponses d'erreur significatives)
 + Persister les données
@@ -97,7 +98,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
 - Faire un triatement de toutes les routes qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
-
+- Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
 
 # REPRISE :
 
