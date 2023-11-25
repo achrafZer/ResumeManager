@@ -1,5 +1,6 @@
 console.log("home.js chargé");
 import axios from './axios-config.js';
+
 export default {
     template: `
       <div id="myHome">
@@ -13,6 +14,8 @@ export default {
             <input type="text" class="form-control" placeholder="Rechercher une personne"
                    v-model="searchQuery">
             <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
+            <button class="btn btn-primary mt-2" @click="resetSearch">Réinitialiser la recherche</button>
+
           </div>
 
           <div v-for="person in persons" :key="person.id" class="card mb-3">
@@ -49,17 +52,10 @@ export default {
           </nav>
         </div>
 
-      </div>`,
-    data() {
+      </div>`, data() {
         console.log("data");
         return {
-            allPersons: [],
-            persons: [],
-            axios: null,
-            searchQuery: '',
-            currentPage: 1,
-            pageSize: 6,
-            totalPersons: 0
+            allPersons: [], persons: [], axios: null, searchQuery: '', currentPage: 1, pageSize: 6, totalPersons: 0
         }
     },
 
@@ -77,6 +73,10 @@ export default {
     methods: {
         async search() {
             try {
+                if (this.searchQuery === '') {
+                    this.resetSearch();
+                    return;
+                }
                 let endpoint = 'http://localhost:8081/api/persons/search';
                 if (this.searchQuery.trim()) {
                     endpoint += `?query=${this.searchQuery}`;
@@ -85,7 +85,10 @@ export default {
                     return;
                 }
                 const response = await axios.get(endpoint);
-                this.persons = response.data;
+                this.allPersons = response.data;
+                this.totalPersons = this.allPersons.length;
+                this.currentPage = 1; // Réinitialiser à la première page pour la nouvelle recherche
+                this.persons = this.allPersons.slice(0, this.pageSize);
             } catch (error) {
                 console.error('Erreur lors de la recherche', error);
             }
@@ -101,6 +104,19 @@ export default {
                 this.currentPage = page;
                 const startIndex = (page - 1) * this.pageSize;
                 this.persons = this.allPersons.slice(startIndex, startIndex + this.pageSize);
+            }
+        },
+
+        async resetSearch() {
+            try {
+                const response = await axios.get('http://localhost:8081/api/persons');
+                this.allPersons = response.data;
+                this.totalPersons = this.allPersons.length;
+                this.currentPage = 1;
+                this.persons = this.allPersons.slice(0, this.pageSize);
+                this.searchQuery = ''; // Réinitialiser la requête de recherche
+            } catch (error) {
+                console.error('Erreur lors de la réinitialisation de la recherche', error);
             }
         }
     },

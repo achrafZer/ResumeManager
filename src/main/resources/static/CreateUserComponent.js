@@ -60,10 +60,17 @@ export default {
         const response = await axios.post('http://localhost:8081/secu-users/signup', this.user);
         this.successMessage = response.data;
         this.errorMessage = '';
+        this.errors = {};
         alert('La modification de votre profil a été effectuée avec succès.');
         this.$router.push(`/app/users/${localStorage.getItem('userId')}/profile`);
       } catch (error) {
-        if (error.response && (error.response.status === 400 || error.response.status === 500)) {
+        if (error.response) {
+          console.log("response");
+        }
+        if (error.response && (error.response.status === 500)) {
+          this.errorMessage = "L'adresse mail existe déjà";
+        }
+        if (error.response && (error.response.status === 400)) {
           this.errors = error.response.data;
           this.errorMessage = 'Des erreurs de validation ont été détectées.';
         } else {

@@ -93,6 +93,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 
 - - Faire une gestion des erreurs pour les formulaires
+
 - - - Lors de la recherche, la deuxième page des résultats n'est pas incluses dans le tri
 - - - Un tour bootstrap sur l'ensemble des pages
 
@@ -137,6 +138,7 @@ L'authentification marche, mais on n'est pas redirigé à la page home après s'
 - Mettre les commentaires dans le mode interactif pour qu'ils soient moins gênants avant la soutenance
 - Les rôles sont inutiles dans ce programme mais sont là pour les prochaines versions de l'application
 - Les @Valid que nous utilisons, sont retournés comme erreur dans les formulaires et non pas des nouvelles erreurs purement front
+- SonarLint
 
 # A VERIFIER AVEC FAB ET JUBA
 - Les routes sécurisées et celles publiques
