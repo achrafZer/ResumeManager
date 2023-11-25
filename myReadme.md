@@ -89,17 +89,17 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
     + le bouton d'accueil n'est pas adéquat (si on appuie dessus et qu'on est connecté on doit avoir la page home avec un bouton déconnexion, et avec un petit motif sur notre CV qui sera épinglé)
 + - - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
 + - Faire en sorte qu'il y ait qu'un seul profile d'actif dans le properties
++ - - - Lors de la recherche, la deuxième page des résultats n'est pas incluses dans le tri
+
 
 
 
 - - Faire une gestion des erreurs pour les formulaires
 
-- - - Lors de la recherche, la deuxième page des résultats n'est pas incluses dans le tri
 - - - Un tour bootstrap sur l'ensemble des pages
 
 - - Suppression d'une activité
 - - Demander à GPT de m'aider à trouver des failles de sécurité
-- - Modifier Users et mettre CVs à la place
 - - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
 - - Faire un tour de code pour éliminer toutes les import avec '*'
