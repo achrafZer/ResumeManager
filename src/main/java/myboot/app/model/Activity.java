@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 /**
  * Represents an individual activity, such as a professional experience, educational course, or a project.
@@ -50,7 +47,7 @@ public class Activity {
     /**
      * The title of the activity, which can be a job title, degree name, or project name.
      */
-    @NotNull(message = "Une activité doit obligatoirement avoir un titre")
+    @NotBlank(message = "Une activité doit obligatoirement avoir un titre")
     @Column(nullable = false)
     private String title; //Ex : Chef de projets informatique / Licence / Master...
 

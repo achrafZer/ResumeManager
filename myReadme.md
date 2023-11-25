@@ -123,6 +123,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - - - Mettre en place 1000 entités
 - - Nettoyer les console.log
 - Echanger localStorage en SessionStorage
+- Comparer tous les formulaires de l'application avec les classes dans model pour être sûr qu'aucun champ n'a été oublié
+- Faire en sorte que tous les controller en cas de paramètre non valide, ils retournent une erreur 400 et non pas 500 comme c'est le cas maintenant
 
 # REPRISE :
 
