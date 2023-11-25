@@ -51,6 +51,13 @@ const app = Vue.createApp({
             localStorage.removeItem('userId');
             this.isLoggedIn = false;
             this.$router.push('/app/home');
+        },
+        goToProfile() {
+            const userId = localStorage.getItem('userId');
+            this.$router.push(`/app/users/${userId}/profile`);
+        },
+        goToCreateUser() {
+
         }
     },
     template: `
@@ -60,6 +67,8 @@ const app = Vue.createApp({
             <a class="navbar-brand" href="/app/home">Accueil</a>
             <div class="d-flex">
               <button v-if="!isLoggedIn" class="btn btn-primary" @click="goToLogin">Connexion</button>
+              <button v-if="isLoggedIn" class="btn btn-primary" @click="goToProfile">Profil</button>
+              <button v-if="isLoggedIn" class="btn btn-info" @click="goToCreateUser">Créer un utilisateur</button>
               <button v-if="isLoggedIn" class="btn btn-secondary" @click="logout">Déconnexion</button>
             </div>
           </div>
