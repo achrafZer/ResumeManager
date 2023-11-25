@@ -1,8 +1,6 @@
 package myboot.app.model;
 
-
 import lombok.Data;
-import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -47,8 +45,7 @@ public class Person {
     /**
      * Website URL of the person, if any. It should be in a valid URL format.
      */
-    @Pattern(regexp = "^(www\\.http://www\\.|https://www\\.|http://|https://)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$",
-            message = "L'URL du site doit être valide")
+    @Pattern(regexp = "^(www\\.http://www\\.|https://www\\.|http://|https://)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$", message = "L'URL du site doit être valide")
     private String website;
 
     /**
