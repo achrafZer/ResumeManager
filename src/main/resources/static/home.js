@@ -29,20 +29,46 @@ export default {
               </ul>
             </div>
           </div>
+
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                <button class="page-link" @click="changePage(currentPage - 1)" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </button>
+              </li>
+              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
+                <button class="page-link" @click="changePage(page)">{{ page }}</button>
+              </li>
+              <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+                <button class="page-link" @click="changePage(currentPage + 1)" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
         </div>
 
       </div>`,
     data() {
         console.log("data");
         return {
-            persons: [], axios: null, searchQuery: ''
+            allPersons: [],
+            persons: [],
+            axios: null,
+            searchQuery: '',
+            currentPage: 1,
+            pageSize: 6,
+            totalPersons: 0
         }
     },
 
     async created() {
         try {
             const response = await axios.get('http://localhost:8081/api/persons');
-            this.persons = response.data;
+            this.allPersons = response.data;
+            this.totalPersons = this.allPersons.length;
+            this.persons = this.allPersons.slice(0, this.pageSize);
         } catch (error) {
             console.error('Erreur lors de la récupération des personnes', error);
         }
@@ -68,9 +94,21 @@ export default {
         goToResume(id) {
             console.log("je suis goToResume");
             this.$router.push(`/app/users/${id}`)
+        },
+
+        changePage(page) {
+            if (page >= 1 && page <= this.totalPages) {
+                this.currentPage = page;
+                const startIndex = (page - 1) * this.pageSize;
+                this.persons = this.allPersons.slice(startIndex, startIndex + this.pageSize);
+            }
+        }
+    },
+
+    computed: {
+        totalPages() {
+            return Math.ceil(this.totalPersons / this.pageSize);
         }
     }
 
 }
-
-const myHome = {}
