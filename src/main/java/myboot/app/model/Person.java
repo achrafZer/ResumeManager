@@ -55,7 +55,7 @@ public class Person {
      * Birth date of the person. It must be a date in the past.
      */
     @NotNull(message = "La date de naissance ne peut pas être nulle")
-    @Past(message = "Birth date should be in the past")
+    @Past(message = "La date de naissance doit être dans le passé")
     private Date birthDate;
 
     /**
