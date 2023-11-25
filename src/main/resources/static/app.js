@@ -9,6 +9,7 @@ import EditProfileComponent from './EditProfileComponent.js';
 import UserProfileComponent from './UserProfileComponent.js';
 import EditActivitiesComponent from './EditActivitiesComponent.js';
 import EditActivityComponent from './EditActivityComponent.js'; // Supposons que vous créez ce composant
+import CreateUserComponent from './CreateUserComponent.js';
 
 
 
@@ -21,7 +22,8 @@ const routes = [
     { path: '/app/users/:id/profile', component: UserProfileComponent },
     { path: '/app/users/:id/edit-profile', component: EditProfileComponent },
     { path: '/app/users/:id/edit-activities', component: EditActivitiesComponent },
-    { path: '/app/users/:userId/edit-activities/:activityId', component: EditActivityComponent }
+    { path: '/app/users/:userId/edit-activities/:activityId', component: EditActivityComponent },
+    { path: '/app/create-user', component: CreateUserComponent }
 
 ];
 
@@ -57,7 +59,7 @@ const app = Vue.createApp({
             this.$router.push(`/app/users/${userId}/profile`);
         },
         goToCreateUser() {
-
+            this.$router.push('/app/create-user');
         }
     },
     template: `
