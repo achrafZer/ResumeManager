@@ -314,6 +314,65 @@ public class DataInitializer {
         diego.setPassword("DiegoPassword");
         personService.savePerson(diego);
 
+        XUser diegoUser = new XUser();
+        diegoUser.setUserName("maxime.guiliani@univ-amu.fr");
+        diegoUser.setPassword("MaximePassword");
+        diegoUser.setRoles(new HashSet<>());
+        diegoUser.getRoles().add("USER");
+        userService.saveUser(diegoUser);
+
+        CV cvDiego = new CV();
+        cvDiego.setPerson(diego);
+        cvService.saveCV(cvDiego);
+
+        Activity dactivity1 = new Activity();
+        dactivity1.setNature(ActivityNature.EDUCATION);
+        dactivity1.setTitle("Bachelor of Science");
+        dactivity1.setDescription("BS, Computer Software Engineering");
+        dactivity1.setStartYear(2019);
+        dactivity1.setEndYear(2022);
+        dactivity1.setCv(cvDiego);
+        activityService.saveActivity(dactivity1);
+
+        Activity dactivity2 = new Activity();
+        dactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        dactivity2.setTitle("Software Engineer");
+        dactivity2.setDescription("KANSO - Agence Digitale · Contrat en alternance");
+        dactivity2.setStartYear(2023);
+        dactivity2.setEndYear(2024);
+        dactivity2.setCv(cvDiego);
+
+        activityService.saveActivity(dactivity2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         Person kpotivi = new Person();
         kpotivi.setFirstName("Kpotivi");
         kpotivi.setLastName("KPOTY");

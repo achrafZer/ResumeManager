@@ -80,13 +80,12 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 - - Faire une liste de tous les éléments donc nous auront besoin dans chacune des pages
   + Header : connexion ou déconnexion( de l'enlever de là où il est maintenant)
-  - Header : bouton profil si on est connecté
+  + Header : bouton profil si on est connecté
   - Header : bouton créer un user si on est connecté
   - Home : 
     - Pagination
   - page de profil : 
     + le bouton d'accueil n'est pas adéquat (si on appuie dessus et qu'on est connecté on doit avoir la page home avec un bouton déconnexion, et avec un petit motif sur notre CV qui sera épinglé)
-  - Modifier profil/activités : Bouton "<revenir à votre profil"
 
 - - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
 - - - Cooptation
