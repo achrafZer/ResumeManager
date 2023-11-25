@@ -91,6 +91,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - - - Cooptation
 - - - Suppression d'une activité
 - - Pagination
+- - Modifier Users et mettre CVs à la place
 - - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 - - Régler le souci des accents
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher

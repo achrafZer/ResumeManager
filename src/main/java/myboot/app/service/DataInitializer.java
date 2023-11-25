@@ -265,6 +265,46 @@ public class DataInitializer {
         maxime.setPassword("MaximePassword");
         personService.savePerson(maxime);
 
+        XUser maximeUser = new XUser();
+        maximeUser.setUserName("maxime.guiliani@univ-amu.fr");
+        maximeUser.setPassword("MaximePassword");
+        maximeUser.setRoles(new HashSet<>());
+        maximeUser.getRoles().add("USER");
+        userService.saveUser(maximeUser);
+
+        CV cvMaxime = new CV();
+        cvMaxime.setPerson(maxime);
+        cvService.saveCV(cvMaxime);
+
+        Activity mactivity1 = new Activity();
+        mactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity1.setTitle("Apprenti Java Full-stack");
+        mactivity1.setDescription("Thales · Contrat en alternance");
+        mactivity1.setStartYear(2023);
+        mactivity1.setEndYear(2024);
+        mactivity1.setCv(cvMaxime);
+        activityService.saveActivity(mactivity1);
+
+        Activity mactivity2 = new Activity();
+        mactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity2.setTitle("Vacataire");
+        mactivity2.setDescription("Direction générale des Finances publiques · Intérimaire");
+        mactivity2.setStartYear(2023);
+        mactivity2.setEndYear(2024);
+        mactivity2.setCv(cvMaxime);
+
+        activityService.saveActivity(mactivity2);
+
+        Activity mactivity3 = new Activity();
+        mactivity3.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity3.setTitle("Développeur junior");
+        mactivity3.setDescription("NetCeler · Stage");
+        mactivity3.setStartYear(2019);
+        mactivity3.setEndYear(2022);
+        mactivity3.setCv(cvMaxime);
+
+        activityService.saveActivity(mactivity3);
+
         Person diego = new Person();
         diego.setFirstName("Diego");
         diego.setLastName("IMBERT");
