@@ -17,6 +17,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.http.HttpMethod;
+
 
 import javax.annotation.PostConstruct;
 import java.util.Set;
@@ -49,7 +51,6 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         // Pas de vérification CSRF (cross site request forgery)
         http.csrf().disable();
 
@@ -57,22 +58,31 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // Déclaration des end-points
-        http.authorizeRequests()//
-                .antMatchers("/secu-users/login").permitAll()//
-                .antMatchers("/secu-users/signup").permitAll()//
-                .antMatchers("/secu-users/**").permitAll()//
+        http.authorizeRequests()
+                // Routes publiques
+                .antMatchers("/secu-users/login").permitAll()
+                .antMatchers("/secu-users/signup").permitAll()
+
+                // Routes protégées nécessitant une authentification
+                .antMatchers(HttpMethod.GET, "/secu-users", "/secu-users/me", "/secu-users/refresh", "/secu-users/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/secu-users/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/persons").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/persons/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/persons/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/activities").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/activities/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/activities/**").authenticated()
+
                 // Autoriser le reste...
                 .anyRequest().permitAll();
 
-        // Pas vraiment nécessaire
+        // Gestion d'accès refusé
         http.exceptionHandling().accessDeniedPage("/secu-users/login");
 
         // Mise en place du filtre JWT
         http.apply(new JwtFilterConfigurer(jwtTokenProvider));
-
-        // Optional, if you want to test the API from a browser
-        // http.httpBasic();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

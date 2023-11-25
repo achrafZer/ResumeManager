@@ -1,3 +1,4 @@
+import axios from './axios-config.js';
 export default {
     template: `
 

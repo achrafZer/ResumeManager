@@ -1,3 +1,5 @@
+import axios from './axios-config.js';
+
 export default {
   template: `
       <div class="container mt-5">
