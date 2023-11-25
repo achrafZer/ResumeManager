@@ -7,7 +7,6 @@ export default {
           <h1>Gestionnaire de CV</h1>
           <div class="d-flex justify-content-between align-items-center">
             <h2>Liste des Personnes avec CV</h2>
-            <button class="btn btn-primary" @click="goToLogin">Se connecter</button>
           </div>
           <!--Barre de recherche par nom, prénom ou titre d'activité-->
           <div class="mb-3">
@@ -69,10 +68,6 @@ export default {
         goToResume(id) {
             console.log("je suis goToResume");
             this.$router.push(`/app/users/${id}`)
-        },
-
-        goToLogin() {
-            this.$router.push('/app/login');
         }
     }
 
