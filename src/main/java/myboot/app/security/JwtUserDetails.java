@@ -1,7 +1,6 @@
 package myboot.app.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +16,6 @@ import java.util.stream.Collectors;
  * connecté.
  */
 @Service
-@Profile("usejwt")
 public class JwtUserDetails implements UserDetailsService {
 
 	@Autowired
