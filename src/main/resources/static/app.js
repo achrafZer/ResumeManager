@@ -11,18 +11,28 @@ import EditActivitiesComponent from './EditActivitiesComponent.js';
 import EditActivityComponent from './EditActivityComponent.js'; // Supposons que vous créez ce composant
 import CreateUserComponent from './CreateUserComponent.js';
 
+function userGuard(to, from, next) {
+    const loggedInUserId = localStorage.getItem('userId');
+    const isUserLoggedIn = !!localStorage.getItem('user-token');
+    const userIdInUrl = to.params.id || to.params.userId;
 
+    if (!isUserLoggedIn || loggedInUserId !== userIdInUrl) {
+        next('/app/login');
+    } else {
+        next();
+    }
+}
 
 const routes = [
     {path: '/app', redirect: '/app/home'},
     { path: '/app/home', component: HomeComponent },
     { path: '/app/users/:id', component: ResumeComponent },
     { path: '/app/login', component: LoginComponent},
-    { path: '/app/users/:id/home', component: UserHomeComponent},
-    { path: '/app/users/:id/profile', component: UserProfileComponent },
-    { path: '/app/users/:id/edit-profile', component: EditProfileComponent },
-    { path: '/app/users/:id/edit-activities', component: EditActivitiesComponent },
-    { path: '/app/users/:userId/edit-activities/:activityId', component: EditActivityComponent },
+    { path: '/app/users/:id/home', component: UserHomeComponent, beforeEnter: userGuard},
+    { path: '/app/users/:id/profile', component: UserProfileComponent, beforeEnter: userGuard},
+    { path: '/app/users/:id/edit-profile', component: EditProfileComponent, beforeEnter: userGuard},
+    { path: '/app/users/:id/edit-activities', component: EditActivitiesComponent, beforeEnter: userGuard},
+    { path: '/app/users/:userId/edit-activities/:activityId', component: EditActivityComponent, beforeEnter: userGuard},
     { path: '/app/create-user', component: CreateUserComponent }
 
 ];
