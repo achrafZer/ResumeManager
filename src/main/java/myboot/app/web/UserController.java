@@ -30,7 +30,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/secu-users")
-@Profile("usejwt")
 public class UserController {
 
 	@Autowired
