@@ -315,8 +315,8 @@ public class DataInitializer {
         personService.savePerson(diego);
 
         XUser diegoUser = new XUser();
-        diegoUser.setUserName("maxime.guiliani@univ-amu.fr");
-        diegoUser.setPassword("MaximePassword");
+        diegoUser.setUserName("diego.imbert@univ-amu.fr");
+        diegoUser.setPassword("DiegoPassword");
         diegoUser.setRoles(new HashSet<>());
         diegoUser.getRoles().add("USER");
         userService.saveUser(diegoUser);
@@ -344,35 +344,6 @@ public class DataInitializer {
 
         activityService.saveActivity(dactivity2);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         Person kpotivi = new Person();
         kpotivi.setFirstName("Kpotivi");
         kpotivi.setLastName("KPOTY");
@@ -381,6 +352,76 @@ public class DataInitializer {
         kpotivi.setEmail("kpotivi.kpoty@univ-amu.fr");
         kpotivi.setPassword("KpotiviPassword");
         personService.savePerson(kpotivi);
+
+        XUser kpotiviUser = new XUser();
+        kpotiviUser.setUserName("kpotivi.kpoty@univ-amu.fr");
+        kpotiviUser.setPassword("KpotiviPassword");
+        kpotiviUser.setRoles(new HashSet<>());
+        kpotiviUser.getRoles().add("USER");
+        userService.saveUser(kpotiviUser);
+
+        CV cvKpotivi = new CV();
+        cvKpotivi.setPerson(kpotivi);
+        cvService.saveCV(cvKpotivi);
+
+        Activity kactivity1 = new Activity();
+        kactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        kactivity1.setTitle("Développeur Full Stack Spring / Angular");
+        kactivity1.setDescription("Sopra Steria");
+        kactivity1.setStartYear(2023);
+        kactivity1.setEndYear(2024);
+        kactivity1.setCv(cvKpotivi);
+
+        activityService.saveActivity(kactivity1);
+
+        Activity kactivity2 = new Activity();
+        kactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        kactivity2.setTitle("Stagiaire en développement Web");
+        kactivity2.setDescription("HDM Network · Stage");
+        kactivity2.setStartYear(2022);
+        kactivity2.setEndYear(2023);
+        kactivity2.setCv(cvKpotivi);
+
+        activityService.saveActivity(kactivity2);
+
+        Activity kactivity3 = new Activity();
+        kactivity3.setNature(ActivityNature.EDUCATION);
+        kactivity3.setTitle("Master 2, Ingénierie logicielle");
+        kactivity3.setDescription("Aix-Marseille Université");
+        kactivity3.setStartYear(2022);
+        kactivity3.setEndYear(2024);
+        kactivity3.setCv(cvKpotivi);
+
+        activityService.saveActivity(kactivity3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         Person elie = new Person();
         elie.setFirstName("Elie");

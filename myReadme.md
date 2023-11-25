@@ -77,23 +77,23 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + Refactor les repository
 + Traiter le cas où la personns entre dans la barre de recherche "chef" plutôt que "Chef"
 + - - - Nettoyer webapp des éléments de movie
++ - - Régler le souci des accents
+
 
 - - Faire une liste de tous les éléments donc nous auront besoin dans chacune des pages
   + Header : connexion ou déconnexion( de l'enlever de là où il est maintenant)
   + Header : bouton profil si on est connecté
   - Header : bouton créer un user si on est connecté
-  - Home : 
-    - Pagination
-  - page de profil : 
+  + Home : 
+    + Pagination
+  + page de profil : 
     + le bouton d'accueil n'est pas adéquat (si on appuie dessus et qu'on est connecté on doit avoir la page home avec un bouton déconnexion, et avec un petit motif sur notre CV qui sera épinglé)
 
 - - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
-- - - Cooptation
 - - - Suppression d'une activité
-- - Pagination
+- - Faire une gestion des erreurs pour les formulaires
 - - Modifier Users et mettre CVs à la place
 - - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
-- - Régler le souci des accents
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
 - - Faire un tour de code pour éliminer toutes les import avec '*'
 - Tests fonctionnels avec un outil de QL
@@ -128,3 +128,4 @@ L'authentification marche, mais on n'est pas redirigé à la page home après s'
 - Je me suis inspiré totalement de linkedin, c'est par rapport à ça que j'ai mis en place mes "@NotNull" par exemple
 - PersonService est un service qui gère une personne en tant qu'entité, en revanche UserService gère une personne en tant qu'utilisateur qui se connecte
 - Mettre les commentaires dans le mode interactif pour qu'ils soient moins gênants avant la soutenance
+- Les rôles sont inutiles dans ce programme mais sont là pour les prochaines versions de l'application
