@@ -30,12 +30,43 @@ const router = VueRouter.createRouter({
     routes
 });
 
-
-
-const myApp = {
-
-}
-
-const app = Vue.createApp(myApp);
+const app = Vue.createApp({
+    data() {
+        return {
+            isLoggedIn: false
+        };
+    },
+    created() {
+        this.checkLogin();
+    },
+    methods: {
+        checkLogin() {
+            this.isLoggedIn = !!localStorage.getItem('user-token');
+        },
+        goToLogin() {
+            this.$router.push('/app/login');
+        },
+        logout() {
+            localStorage.removeItem('user-token');
+            localStorage.removeItem('userId');
+            this.isLoggedIn = false;
+            this.$router.push('/app/home');
+        }
+    },
+    template: `
+      <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/app/home">Accueil</a>
+            <div class="d-flex">
+              <button v-if="!isLoggedIn" class="btn btn-primary" @click="goToLogin">Connexion</button>
+              <button v-if="isLoggedIn" class="btn btn-secondary" @click="logout">Déconnexion</button>
+            </div>
+          </div>
+        </nav>
+        <router-view></router-view>
+      </div>
+    `
+});
 app.use(router);
 app.mount('#myApp');
