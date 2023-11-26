@@ -1,5 +1,5 @@
 console.log("Resume.js chargé");
-
+import axios from './axios-config.js';
 export default {
 
     template: `

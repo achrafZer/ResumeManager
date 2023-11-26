@@ -1,6 +1,13 @@
-const instance = axios.create({
-    baseUrl: "http:localhost:8081/api",
-    timeout: 5000,
-    headers: {"Content-type": "application/json"},
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:8081/'
 });
-export default instance;
+
+axiosInstance.interceptors.request.use(config => {
+    const token = localStorage.getItem('user-token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+export default axiosInstance;

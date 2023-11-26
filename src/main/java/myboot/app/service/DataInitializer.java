@@ -265,6 +265,46 @@ public class DataInitializer {
         maxime.setPassword("MaximePassword");
         personService.savePerson(maxime);
 
+        XUser maximeUser = new XUser();
+        maximeUser.setUserName("maxime.guiliani@univ-amu.fr");
+        maximeUser.setPassword("MaximePassword");
+        maximeUser.setRoles(new HashSet<>());
+        maximeUser.getRoles().add("USER");
+        userService.saveUser(maximeUser);
+
+        CV cvMaxime = new CV();
+        cvMaxime.setPerson(maxime);
+        cvService.saveCV(cvMaxime);
+
+        Activity mactivity1 = new Activity();
+        mactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity1.setTitle("Apprenti Java Full-stack");
+        mactivity1.setDescription("Thales · Contrat en alternance");
+        mactivity1.setStartYear(2023);
+        mactivity1.setEndYear(2024);
+        mactivity1.setCv(cvMaxime);
+        activityService.saveActivity(mactivity1);
+
+        Activity mactivity2 = new Activity();
+        mactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity2.setTitle("Vacataire");
+        mactivity2.setDescription("Direction générale des Finances publiques · Intérimaire");
+        mactivity2.setStartYear(2023);
+        mactivity2.setEndYear(2024);
+        mactivity2.setCv(cvMaxime);
+
+        activityService.saveActivity(mactivity2);
+
+        Activity mactivity3 = new Activity();
+        mactivity3.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity3.setTitle("Développeur junior");
+        mactivity3.setDescription("NetCeler · Stage");
+        mactivity3.setStartYear(2019);
+        mactivity3.setEndYear(2022);
+        mactivity3.setCv(cvMaxime);
+
+        activityService.saveActivity(mactivity3);
+
         Person diego = new Person();
         diego.setFirstName("Diego");
         diego.setLastName("IMBERT");
@@ -274,6 +314,36 @@ public class DataInitializer {
         diego.setPassword("DiegoPassword");
         personService.savePerson(diego);
 
+        XUser diegoUser = new XUser();
+        diegoUser.setUserName("diego.imbert@univ-amu.fr");
+        diegoUser.setPassword("DiegoPassword");
+        diegoUser.setRoles(new HashSet<>());
+        diegoUser.getRoles().add("USER");
+        userService.saveUser(diegoUser);
+
+        CV cvDiego = new CV();
+        cvDiego.setPerson(diego);
+        cvService.saveCV(cvDiego);
+
+        Activity dactivity1 = new Activity();
+        dactivity1.setNature(ActivityNature.EDUCATION);
+        dactivity1.setTitle("Bachelor of Science");
+        dactivity1.setDescription("BS, Computer Software Engineering");
+        dactivity1.setStartYear(2019);
+        dactivity1.setEndYear(2022);
+        dactivity1.setCv(cvDiego);
+        activityService.saveActivity(dactivity1);
+
+        Activity dactivity2 = new Activity();
+        dactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        dactivity2.setTitle("Software Engineer");
+        dactivity2.setDescription("KANSO - Agence Digitale · Contrat en alternance");
+        dactivity2.setStartYear(2023);
+        dactivity2.setEndYear(2024);
+        dactivity2.setCv(cvDiego);
+
+        activityService.saveActivity(dactivity2);
+
         Person kpotivi = new Person();
         kpotivi.setFirstName("Kpotivi");
         kpotivi.setLastName("KPOTY");
@@ -282,6 +352,76 @@ public class DataInitializer {
         kpotivi.setEmail("kpotivi.kpoty@univ-amu.fr");
         kpotivi.setPassword("KpotiviPassword");
         personService.savePerson(kpotivi);
+
+        XUser kpotiviUser = new XUser();
+        kpotiviUser.setUserName("kpotivi.kpoty@univ-amu.fr");
+        kpotiviUser.setPassword("KpotiviPassword");
+        kpotiviUser.setRoles(new HashSet<>());
+        kpotiviUser.getRoles().add("USER");
+        userService.saveUser(kpotiviUser);
+
+        CV cvKpotivi = new CV();
+        cvKpotivi.setPerson(kpotivi);
+        cvService.saveCV(cvKpotivi);
+
+        Activity kactivity1 = new Activity();
+        kactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        kactivity1.setTitle("Développeur Full Stack Spring / Angular");
+        kactivity1.setDescription("Sopra Steria");
+        kactivity1.setStartYear(2023);
+        kactivity1.setEndYear(2024);
+        kactivity1.setCv(cvKpotivi);
+
+        activityService.saveActivity(kactivity1);
+
+        Activity kactivity2 = new Activity();
+        kactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        kactivity2.setTitle("Stagiaire en développement Web");
+        kactivity2.setDescription("HDM Network · Stage");
+        kactivity2.setStartYear(2022);
+        kactivity2.setEndYear(2023);
+        kactivity2.setCv(cvKpotivi);
+
+        activityService.saveActivity(kactivity2);
+
+        Activity kactivity3 = new Activity();
+        kactivity3.setNature(ActivityNature.EDUCATION);
+        kactivity3.setTitle("Master 2, Ingénierie logicielle");
+        kactivity3.setDescription("Aix-Marseille Université");
+        kactivity3.setStartYear(2022);
+        kactivity3.setEndYear(2024);
+        kactivity3.setCv(cvKpotivi);
+
+        activityService.saveActivity(kactivity3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         Person elie = new Person();
         elie.setFirstName("Elie");

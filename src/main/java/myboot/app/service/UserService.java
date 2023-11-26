@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
-@Profile("usejwt")
 public class UserService {
 
     @Autowired

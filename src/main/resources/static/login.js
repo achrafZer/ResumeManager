@@ -1,7 +1,5 @@
 console.log("login.js chargé");
-import axios from './axios-config.js'
-
-
+import axios from './axios-config.js';
 export default {
     template: `
 
@@ -46,9 +44,9 @@ export default {
                 console.log('userId', response.data.userId)
 
                 localStorage.setItem('user-token', response.data.jwt);
+                console.log(localStorage.getItem('user-token'));
                 localStorage.setItem('userId', response.data.userId);
-
-                this.$router.push(`/app/users/${response.data.userId}/profile`);
+                this.$router.push(`/app/users/${response.data.userId}/profile`).then(() => window.location.reload());
 
             } catch (error) {
                 console.error('Erreur lors de la tentative de connexion: ', error);

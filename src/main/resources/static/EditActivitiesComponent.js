@@ -30,7 +30,6 @@ export default {
                 this.activities = response.data;
             } catch (error) {
                 console.error('Erreur lors de la récupération des activités', error);
-                // Gestion d'erreur appropriée
             }
         }, editActivity(activityId) {
             this.$router.push(`/app/users/${this.$route.params.id}/edit-activities/${activityId}`);

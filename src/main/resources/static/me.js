@@ -1,5 +1,5 @@
 console.log("me.js chargé");
-
+import axios from './axios-config.js';
 export default {
     template: `
       <div id="me">

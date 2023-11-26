@@ -1,4 +1,5 @@
 console.log("home.js chargé");
+import axios from './axios-config.js';
 
 export default {
     template: `
@@ -7,13 +8,21 @@ export default {
           <h1>Gestionnaire de CV</h1>
           <div class="d-flex justify-content-between align-items-center">
             <h2>Liste des Personnes avec CV</h2>
-            <button class="btn btn-primary" @click="goToLogin">Se connecter</button>
           </div>
           <!--Barre de recherche par nom, prénom ou titre d'activité-->
           <div class="mb-3">
+          
+          <form @submit.prevent="search">
+    <div class="mb-3">
             <input type="text" class="form-control" placeholder="Rechercher une personne"
                    v-model="searchQuery">
             <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
+            </div>
+</form>
+            
+            
+            <button class="btn btn-primary mt-2" @click="resetSearch">Réinitialiser la recherche</button>
+
           </div>
 
           <div v-for="person in persons" :key="person.id" class="card mb-3">
@@ -30,20 +39,39 @@ export default {
               </ul>
             </div>
           </div>
+
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                <button class="page-link" @click="changePage(currentPage - 1)" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </button>
+              </li>
+              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
+                <button class="page-link" @click="changePage(page)">{{ page }}</button>
+              </li>
+              <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+                <button class="page-link" @click="changePage(currentPage + 1)" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
         </div>
 
-      </div>`,
-    data() {
+      </div>`, data() {
         console.log("data");
         return {
-            persons: [], axios: null, searchQuery: ''
+            allPersons: [], persons: [], axios: null, searchQuery: '', currentPage: 1, pageSize: 6, totalPersons: 0
         }
     },
 
     async created() {
         try {
             const response = await axios.get('http://localhost:8081/api/persons');
-            this.persons = response.data;
+            this.allPersons = response.data;
+            this.totalPersons = this.allPersons.length;
+            this.persons = this.allPersons.slice(0, this.pageSize);
         } catch (error) {
             console.error('Erreur lors de la récupération des personnes', error);
         }
@@ -52,6 +80,10 @@ export default {
     methods: {
         async search() {
             try {
+                if (this.searchQuery === '') {
+                    this.resetSearch();
+                    return;
+                }
                 let endpoint = 'http://localhost:8081/api/persons/search';
                 if (this.searchQuery.trim()) {
                     endpoint += `?query=${this.searchQuery}`;
@@ -60,7 +92,10 @@ export default {
                     return;
                 }
                 const response = await axios.get(endpoint);
-                this.persons = response.data;
+                this.allPersons = response.data;
+                this.totalPersons = this.allPersons.length;
+                this.currentPage = 1; // Réinitialiser à la première page pour la nouvelle recherche
+                this.persons = this.allPersons.slice(0, this.pageSize);
             } catch (error) {
                 console.error('Erreur lors de la recherche', error);
             }
@@ -71,11 +106,32 @@ export default {
             this.$router.push(`/app/users/${id}`)
         },
 
-        goToLogin() {
-            this.$router.push('/app/login');
+        changePage(page) {
+            if (page >= 1 && page <= this.totalPages) {
+                this.currentPage = page;
+                const startIndex = (page - 1) * this.pageSize;
+                this.persons = this.allPersons.slice(startIndex, startIndex + this.pageSize);
+            }
+        },
+
+        async resetSearch() {
+            try {
+                const response = await axios.get('http://localhost:8081/api/persons');
+                this.allPersons = response.data;
+                this.totalPersons = this.allPersons.length;
+                this.currentPage = 1;
+                this.persons = this.allPersons.slice(0, this.pageSize);
+                this.searchQuery = ''; // Réinitialiser la requête de recherche
+            } catch (error) {
+                console.error('Erreur lors de la réinitialisation de la recherche', error);
+            }
+        }
+    },
+
+    computed: {
+        totalPages() {
+            return Math.ceil(this.totalPersons / this.pageSize);
         }
     }
 
 }
-
-const myHome = {}
