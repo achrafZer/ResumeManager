@@ -1,11 +1,10 @@
 package myboot.app.service;
 
 import myboot.app.model.Activity;
+import myboot.app.model.ActivityNature;
 import myboot.app.model.CV;
 import myboot.app.model.Person;
 import myboot.app.model.XUser;
-import myboot.app.model.ActivityNature;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
+/**
+ * The DataInitializer class is responsible for initializing the application with default data.
+ * This class is marked as a Service, indicating that it's a part of the service layer and is
+ * automatically detected and configured by Spring Boot. The initialization is done once at
+ * the start of the application.
+ */
 @Service
-//@Profile("dev")
 public class DataInitializer {
 
     @Autowired
@@ -31,6 +35,13 @@ public class DataInitializer {
     @Autowired
     UserService userService;
 
+    /**
+     * Initializes the application with predefined data.
+     * This method is annotated with @PostConstruct, meaning it will be executed after
+     * the service's construction and dependency injection are complete.
+     *
+     * @throws ParseException If there is an error in parsing the date format.
+     */
     @PostConstruct
     public void initData() throws ParseException {
         if (!personService.getAllPersons().isEmpty()) return;
@@ -393,34 +404,6 @@ public class DataInitializer {
         kactivity3.setCv(cvKpotivi);
 
         activityService.saveActivity(kactivity3);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         Person elie = new Person();
