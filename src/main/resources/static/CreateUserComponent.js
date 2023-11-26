@@ -77,7 +77,7 @@ export default {
         this.successMessage = response.data;
         this.errorMessage = '';
         this.errors = {};
-        alert('La modification de votre profil a été effectuée avec succès.');
+        alert('Le profil a été créé avec succès');
         this.$router.push(`/app/users/${localStorage.getItem('userId')}/profile`);
       } catch (error) {
         if (error.response) {

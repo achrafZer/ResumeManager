@@ -102,24 +102,31 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + - - Nettoyer les console.log
 + - - Ajout d'une activié
 + - - - Rédiger le cahier des charges
++ - - Suppression d'une activité
++ - - Tour sur les alert
++ - - - Rapport
++ - - - Mettre en place 1000 entités
 
 
 
 
-- - Suppression d'une activité
-- - Tour sur les alert
-- - Demander à GPT de m'aider à trouver des failles de sécurité
+
+- - - Mettre en place des DTO plutôt que de mettre les entités en paramètre dans les controller api
+- - Mettons des alertes de validation aux formulaires qui ne marchent pas comme prévu (faire le point d'après en parallèle)
+- - Mettre en place des * sur les éléments nécessaires dans les formulaires
+
+
+
+
+- Demander à GPT de m'aider à trouver des failles de sécurité
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
 - Ajouter des éléments à la BDD (exemple ajouter "lieu" dans activities)
-- - Mettre en place des DTO plutôt que de mettre les entités en paramètre dans les controller api
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
 - Demander à GPT les diagrams qu'il estime importants dans le rapport 
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
 - Ajouter des photos sur les profils 
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
-- - - Mettre en place 1000 entités
-- - Mettre en place des * sur les éléments nécessaires dans les formulaires
 
 # REPRISE :
 

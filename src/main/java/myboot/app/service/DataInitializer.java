@@ -435,6 +435,24 @@ public class DataInitializer {
 
     }
 
+//    @PostConstruct
+    public void initOneThousandUsers() throws ParseException {
+        if (!personService.getAllPersons().isEmpty()) return;
+
+        for (int i = 1; i <= 1000; i++) {
+            Person person = new Person();
+            person.setFirstName("Nom");
+            person.setLastName("Prenom");
+            person.setEmail("email" + i + "@example.com");
+            person.setPassword("Password" + i);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date birthday = sdf.parse("2000-12-25");
+            person.setBirthDate(birthday);
+            personService.savePerson(person);
+            System.out.println(i + '\n');
+        }
+    }
+
 }
 
 
