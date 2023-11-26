@@ -24,7 +24,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 
 # A FAIRE :
-+ README
 + Trouver pourquoi si je supprime app1 mon api ne marche plus
 + Recherche sur les tests de l'api pour les méthodes non GET
 + Sécuriser les MDP
@@ -107,6 +106,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - - - Un tour bootstrap sur l'ensemble des pages
 
 - - Suppression d'une activité
+- README
 - - Demander à GPT de m'aider à trouver des failles de sécurité
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
