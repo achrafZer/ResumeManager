@@ -94,6 +94,8 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + - - Faire un tour de code pour éliminer toutes les import avec '*'
 + - Réorganiser totalement le application.properties
 + - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
++ - - - Un tour bootstrap sur l'ensemble des pages
+
 
 
 
@@ -103,7 +105,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 - - Faire une gestion des erreurs pour les formulaires
 
-- - - Un tour bootstrap sur l'ensemble des pages
 
 - - Suppression d'une activité
 - README
