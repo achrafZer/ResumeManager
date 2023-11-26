@@ -90,6 +90,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + - - - Faire un traitement de toutes les routes normales + routes d'api qui doivent être accessible uniquement par authentification et vérifier que ça ne merche que si le JWT est donné avec la requête
 + - Faire en sorte qu'il y ait qu'un seul profile d'actif dans le properties
 + - - - Lors de la recherche, la deuxième page des résultats n'est pas incluses dans le tri
++ - - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même
 
 
 
@@ -100,7 +101,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 - - Suppression d'une activité
 - - Demander à GPT de m'aider à trouver des failles de sécurité
-- - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même 
 - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
 - - Faire un tour de code pour éliminer toutes les import avec '*'
 - Tests fonctionnels avec un outil de QL

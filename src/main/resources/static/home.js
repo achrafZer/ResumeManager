@@ -11,9 +11,16 @@ export default {
           </div>
           <!--Barre de recherche par nom, prénom ou titre d'activité-->
           <div class="mb-3">
+          
+          <form @submit.prevent="search">
+    <div class="mb-3">
             <input type="text" class="form-control" placeholder="Rechercher une personne"
                    v-model="searchQuery">
             <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
+            </div>
+</form>
+            
+            
             <button class="btn btn-primary mt-2" @click="resetSearch">Réinitialiser la recherche</button>
 
           </div>
