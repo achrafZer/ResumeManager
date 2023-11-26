@@ -22,6 +22,8 @@
     <meta charset="UTF-8">
     <%@ page contentType='text/html; s charset=UTF-8' %>
     <title>Resume Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="${css}">
     <link rel="stylesheet" href="${bootstrap_css}">
     <script src="${jquery_js}"></script>

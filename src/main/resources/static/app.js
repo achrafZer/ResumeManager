@@ -4,7 +4,6 @@ import HomeComponent from './home.js';
 import ResumeComponent from './resume.js';
 import LoginComponent from './login.js';
 import axios from './axios-config.js';
-import UserHomeComponent from './me.js';
 import EditProfileComponent from './EditProfileComponent.js';
 import UserProfileComponent from './UserProfileComponent.js';
 import EditActivitiesComponent from './EditActivitiesComponent.js';
@@ -28,7 +27,6 @@ const routes = [
     { path: '/app/home', component: HomeComponent },
     { path: '/app/users/:id', component: ResumeComponent },
     { path: '/app/login', component: LoginComponent},
-    { path: '/app/users/:id/home', component: UserHomeComponent, beforeEnter: userGuard},
     { path: '/app/users/:id/profile', component: UserProfileComponent, beforeEnter: userGuard},
     { path: '/app/users/:id/edit-profile', component: EditProfileComponent, beforeEnter: userGuard},
     { path: '/app/users/:id/edit-activities', component: EditActivitiesComponent, beforeEnter: userGuard},
@@ -75,14 +73,30 @@ const app = Vue.createApp({
     template: `
 
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+          <div class="container">
             <a class="navbar-brand" href="/app/home">Accueil</a>
-            <div class="d-flex">
-              <button v-if="!isLoggedIn" class="btn btn-primary" @click="goToLogin">Connexion</button>
-              <button v-if="isLoggedIn" class="btn btn-primary" @click="goToProfile">Profil</button>
-              <button v-if="isLoggedIn" class="btn btn-info" @click="goToCreateUser">Créer un utilisateur</button>
-              <button v-if="isLoggedIn" class="btn btn-secondary" @click="logout">Déconnexion</button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id = "navbarResponsive">
+            <ul class = "navbar-nav ms-auto">
+            
+            <li class="nav-item">
+              <button v-if="!isLoggedIn" class="btn-success" @click="goToLogin">Connexion</button>
+            </li>
+            
+            <li class="nav-item">
+              <button v-if="isLoggedIn" class="btn" @click="goToProfile">Profil</button>
+            </li>
+            
+            <li class="nav-item">
+              <button v-if="isLoggedIn" class="btn" @click="goToCreateUser">Créer un utilisateur</button>
+            </li>
+            
+              <button v-if="isLoggedIn" class="btn-danger" @click="logout">Déconnexion</button>
+            
+            </ul>
             </div>
           </div>
         </nav>
