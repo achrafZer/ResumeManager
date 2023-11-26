@@ -3,63 +3,65 @@ import axios from './axios-config.js';
 
 export default {
     template: `
-      <div id="myHome">
-        <div class="container mt-5">
-          <h1>Gestionnaire de CV</h1>
-          <div class="d-flex justify-content-between align-items-center">
-            <h2>Liste des Personnes avec CV</h2>
-          </div>
-          <!--Barre de recherche par nom, prénom ou titre d'activité-->
-          <div class="mb-3">
-          
-          <form @submit.prevent="search">
-    <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Rechercher une personne"
-                   v-model="searchQuery">
-            <button class="btn btn-primary mt-2" @click="search">Rechercher</button>
+      
+            <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body text-center">
+                <h1 class="fw-bold mb-3 text-uppercase">Gestionnaire de CV</h1>
+                <h2 class="mb-4">Liste des Personnes avec CV</h2>
+
+                <form @submit.prevent="search" class="d-flex justify-content-center align-items-center mb-4">
+                    <input type="text" class="form-control form-control-lg me-2" placeholder="Rechercher une personne"
+                        v-model="searchQuery">
+                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                </form>
             </div>
-</form>
-            
-            
-            <button class="btn btn-primary mt-2" @click="resetSearch">Réinitialiser la recherche</button>
-
-          </div>
-
-          <div v-for="person in persons" :key="person.id" class="card mb-3">
-            <div class="card-body" @click="goToResume(person.id)">
-              <h5 class="card-title">{{ person.firstName }} {{ person.lastName }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted"
-                  v-if="person.cv && person.cv.activities && person.cv.activities.length">Activités</h6>
-              <ul class="list-group list-group-flush">
-                <li v-for="activity in person.cv.activities" :key="activity.id" class="list-group-item"
-                    v-if="person.cv && person.cv.activities">
-                  {{ activity.title }} ({{ activity.startYear }} - {{ activity.endYear }})
-                </li>
-                <p v-else class="text-muted">Aucune activité de CV disponible.</p>
-              </ul>
-            </div>
-          </div>
-
-          <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-              <li class="page-item" :class="{ disabled: currentPage === 1 }">
-                <button class="page-link" @click="changePage(currentPage - 1)" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </button>
-              </li>
-              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
-                <button class="page-link" @click="changePage(page)">{{ page }}</button>
-              </li>
-              <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-                <button class="page-link" @click="changePage(currentPage + 1)" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </button>
-              </li>
-            </ul>
-          </nav>
         </div>
 
-      </div>`, data() {
+        <div class="row mt-4">
+            <div v-for="person in persons" :key="person.id" class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 ">
+                    <div class="card-body">
+    <h5 class="card-title">{{ person.firstName }} {{ person.lastName }}</h5>
+    <ul class="list-group list-group-flush">
+        <li v-if="person.cv && person.cv.activities && person.cv.activities.length" v-for="activity in person.cv.activities" :key="activity.id" class="list-group-item">
+            {{ activity.title }} ({{ activity.startYear }} - {{ activity.endYear }})
+        </li>
+        <li v-if="!person.cv || !person.cv.activities || person.cv.activities.length === 0" class="list-group-item text-muted">
+            Aucune activité de CV disponible.
+        </li>
+    </ul>
+</div>
+                    <div class="card-footer">
+                        <button @click="goToResume(person.id)" class="btn btn-primary">Voir le CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" :class="{ disabled: currentPage === 1 }">
+            <button class="page-link" @click="changePage(currentPage - 1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </button>
+        </li>
+        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
+            <button class="page-link" @click="changePage(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" :class="{ disabled: currentPage === totalPages }">
+            <button class="page-link" @click="changePage(currentPage + 1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
+        </li>
+    </ul>
+</nav>
+    </div>
+</section>
+
+
+`, data() {
         console.log("data");
         return {
             allPersons: [], persons: [], axios: null, searchQuery: '', currentPage: 1, pageSize: 6, totalPersons: 0
@@ -71,7 +73,7 @@ export default {
             const response = await axios.get('http://localhost:8081/api/persons');
             this.allPersons = response.data;
             this.totalPersons = this.allPersons.length;
-            this.persons = this.allPersons.slice(0, this.pageSize);
+            this.updatePage();
         } catch (error) {
             console.error('Erreur lors de la récupération des personnes', error);
         }
@@ -101,6 +103,12 @@ export default {
             }
         },
 
+        updatePage() {
+            const startIndex = (this.currentPage - 1) * this.pageSize;
+            const endIndex = startIndex + this.pageSize;
+            this.persons = this.allPersons.slice(startIndex, endIndex);
+        },
+
         goToResume(id) {
             console.log("je suis goToResume");
             this.$router.push(`/app/users/${id}`)
@@ -109,8 +117,7 @@ export default {
         changePage(page) {
             if (page >= 1 && page <= this.totalPages) {
                 this.currentPage = page;
-                const startIndex = (page - 1) * this.pageSize;
-                this.persons = this.allPersons.slice(startIndex, startIndex + this.pageSize);
+                this.updatePage();
             }
         },
 
