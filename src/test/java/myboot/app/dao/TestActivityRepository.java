@@ -1,19 +1,21 @@
 package myboot.app.dao;
 
-import myboot.app.dao.ActivityRepository;
 import myboot.app.model.Activity;
 import myboot.app.model.ActivityNature;
-import myboot.app.model.CV;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import javax.validation.ConstraintViolationException;
 import java.text.ParseException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
 class TestActivityRepository {

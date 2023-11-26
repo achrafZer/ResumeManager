@@ -18,8 +18,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
 public class TestUserService {

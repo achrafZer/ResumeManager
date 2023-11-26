@@ -1,6 +1,5 @@
 package myboot.app.dao;
 
-import myboot.app.dao.CVRepository;
 import myboot.app.model.Activity;
 import myboot.app.model.ActivityNature;
 import myboot.app.model.CV;
@@ -10,7 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
