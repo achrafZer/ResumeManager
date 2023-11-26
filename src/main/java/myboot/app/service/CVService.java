@@ -2,11 +2,14 @@ package myboot.app.service;
 
 import myboot.app.dao.CVRepository;
 import myboot.app.model.CV;
+import myboot.app.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Service layer for managing CV (Curriculum Vitae) entities.
@@ -16,6 +19,9 @@ import java.util.List;
 public class CVService {
 
     private final CVRepository cvRepository;
+
+    @Autowired
+    private PersonService personService;
 
     @Autowired
     public CVService(CVRepository cvRepository) {
@@ -30,8 +36,14 @@ public class CVService {
      */
     @Transactional
     public CV saveCV(CV cv) {
-        return cvRepository.save(cv);
-    }
+        CV savedCV = cvRepository.save(cv);
+
+        Person person = savedCV.getPerson();
+        if (person != null) {
+            personService.savePerson(person);
+        }
+
+        return savedCV;    }
 
     /**
      * Retrieves all CVs from the repository.
@@ -76,5 +88,12 @@ public class CVService {
     @Transactional
     public void deleteCVById(Long id) {
         cvRepository.deleteById(id);
+    }
+
+    @Transactional
+    public CV getCvByPersonId(Long personId) {
+        // Recherche du CV par l'ID de la personne
+        Optional<CV> cvOptional = cvRepository.findByPersonId(personId);
+        return cvOptional.orElseThrow(() -> new EntityNotFoundException("CV non trouvé pour l'ID de la personne : " + personId));
     }
 }

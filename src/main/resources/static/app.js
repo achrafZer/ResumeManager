@@ -9,6 +9,8 @@ import UserProfileComponent from './UserProfileComponent.js';
 import EditActivitiesComponent from './EditActivitiesComponent.js';
 import EditActivityComponent from './EditActivityComponent.js'; // Supposons que vous créez ce composant
 import CreateUserComponent from './CreateUserComponent.js';
+import CreateActivityComponent from './createActivityComponent.js';
+
 
 function userGuard(to, from, next) {
     const loggedInUserId = localStorage.getItem('userId');
@@ -31,7 +33,10 @@ const routes = [
     { path: '/app/users/:id/edit-profile', component: EditProfileComponent, beforeEnter: userGuard},
     { path: '/app/users/:id/edit-activities', component: EditActivitiesComponent, beforeEnter: userGuard},
     { path: '/app/users/:userId/edit-activities/:activityId', component: EditActivityComponent, beforeEnter: userGuard},
-    { path: '/app/create-user', component: CreateUserComponent }
+    { path: '/app/create-user', component: CreateUserComponent, beforeEnter: userGuard },
+    { path: '/app/users/:userId/create-activity', component: CreateActivityComponent, beforeEnter: userGuard}
+
+
 
 ];
 

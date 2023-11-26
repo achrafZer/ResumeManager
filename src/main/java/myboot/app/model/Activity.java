@@ -50,8 +50,7 @@ public class Activity {
     /**
      * The nature or type of the activity, such as a professional experience or education.
      */
-    @NotNull(message = "Une activité doit obligatoirement avoir une nature")
-    @Column(nullable = false)
+    @Column(nullable = true)
     private ActivityNature nature; //Ex : Expérience pro / Formation...
 
     /**

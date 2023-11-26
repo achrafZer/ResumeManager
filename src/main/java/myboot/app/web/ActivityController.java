@@ -3,8 +3,11 @@ package myboot.app.web;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import myboot.app.dao.CVRepository;
 import myboot.app.model.Activity;
+import myboot.app.model.CV;
 import myboot.app.service.ActivityService;
+import myboot.app.service.CVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +34,9 @@ public class ActivityController {
 
     @Autowired
     private ActivityService activityService;
+
+    @Autowired
+    private CVService cvService;
 
 
     @PostMapping
@@ -105,6 +111,23 @@ public class ActivityController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/user/{userId}")
+    public ResponseEntity<Activity> addActivityToUserCV(@PathVariable Long userId, @Valid @RequestBody Activity activity) {
+        try {
+            Activity savedActivity = activityService.saveActivity(activity);
+
+            // Récupération du CV de l'utilisateur et ajout de l'activité
+            CV userCv = cvService.getCvByPersonId(userId);
+            userCv.getActivities().add(savedActivity);
+            savedActivity.setCv(userCv);
+            cvService.saveCV(userCv);
+
+            return new ResponseEntity<>(savedActivity, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -73,10 +73,18 @@ public class JwtWebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Déclaration des end-points
         http.authorizeRequests()
                 // Routes publiques
-                .antMatchers("/secu-users/login").permitAll().antMatchers("/secu-users/signup").permitAll()
+                .antMatchers("/secu-users/login").permitAll()
+                .antMatchers("/secu-users/signup").permitAll()
 
                 // Routes protégées nécessitant une authentification
-                .antMatchers(HttpMethod.GET, "/secu-users", "/secu-users/me", "/secu-users/refresh", "/secu-users/**").authenticated().antMatchers(HttpMethod.DELETE, "/secu-users/**").authenticated().antMatchers(HttpMethod.POST, "/api/persons").authenticated().antMatchers(HttpMethod.PUT, "/api/persons/**").authenticated().antMatchers(HttpMethod.DELETE, "/api/persons/**").authenticated().antMatchers(HttpMethod.POST, "/api/activities").authenticated().antMatchers(HttpMethod.PUT, "/api/activities/**").authenticated().antMatchers(HttpMethod.DELETE, "/api/activities/**").authenticated()
+                .antMatchers(HttpMethod.GET, "/secu-users", "/secu-users/me", "/secu-users/refresh", "/secu-users/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/secu-users/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/persons").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/persons/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/persons/**").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/activities").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/activities/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/activities/**").authenticated()
 
                 // Autoriser le reste...
                 .anyRequest().permitAll();

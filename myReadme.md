@@ -103,6 +103,7 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 
 - - Suppression d'une activité
+- - Ajout d'une activié
 - - Demander à GPT de m'aider à trouver des failles de sécurité
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
@@ -119,7 +120,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 # REPRISE :
 
-L'authentification marche, mais on n'est pas redirigé à la page home après s'être connecté
 
 # A NE PAS OUBLIER DANS LE CAHIER DES CHARGES OU/ET LE RAPPORT, LA SOUTENANCE
 - Je me suis inspiré totalement de linkedin, c'est par rapport à ça que j'ai mis en place mes "@NotNull" par exemple

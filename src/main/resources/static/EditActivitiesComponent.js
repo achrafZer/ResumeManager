@@ -14,7 +14,7 @@ export default {
                                     {{ activity.title }}
                                     <button class="btn btn-secondary float-end" @click="editActivity(activity.id)">Modifier</button>
                                 </li>
-
+                                <button class="btn btn-secondary float-end btn-success" @click="goToCreateActivity()">Ajouter une Activité</button>
                             </ul>
                         </div>
                     </div>
@@ -38,6 +38,8 @@ export default {
         async fetchActivities() {
             try {
                 const userId = this.$route.params.id; // Récupérer l'ID de l'utilisateur depuis les paramètres de route
+                console.log(userId);
+
                 const response = await axios.get(`http://localhost:8081/api/activities/search-by-person-id`, {
                     params: {id: userId}
                 });
@@ -47,6 +49,11 @@ export default {
             }
         }, editActivity(activityId) {
             this.$router.push(`/app/users/${this.$route.params.id}/edit-activities/${activityId}`);
+        },
+        goToCreateActivity() {
+            const userId = this.$route.params.id;
+            console.log(userId);
+            this.$router.push(`/app/users/${userId}/create-activity`);
         }
     }
 };
