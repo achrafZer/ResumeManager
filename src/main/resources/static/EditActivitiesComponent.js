@@ -1,15 +1,29 @@
 // EditActivitiesComponent.js
 export default {
     template: `
-      <div class="container mt-5">
-        <h2>Modifier vos Activités</h2>
-        <ul>
-          <li v-for="activity in activities" :key="activity.id">
-            {{ activity.title }}
-            <button class="btn btn-secondary" @click="editActivity(activity.id)">Modifier</button>
-          </li>
-        </ul>
-      </div>
+      <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <h2 class="fw-bold mb-2 text-uppercase">Modifier vos Activités</h2>
+                            <ul class="list-group">
+                                <li v-for="activity in activities" :key="activity.id" class="list-group-item list-group-item-dark mb-2">
+                                    {{ activity.title }}
+                                    <button class="btn btn-secondary float-end" @click="editActivity(activity.id)">Modifier</button>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     `,
 
     data() {

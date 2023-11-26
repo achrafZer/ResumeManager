@@ -2,38 +2,52 @@ import axios from './axios-config.js';
 export default {
   template: `
 
-      <div class="container mt-5">
-        <h2>Modifier le profil</h2>
-        <form @submit.prevent="updateProfile">
-          <!-- Champs du formulaire pour modifier le profil -->
-          <div class="mb-3">
-            <label for="firstName">Modifier votre prénom</label>
-            <input type="text" id="firstName" v-model="user.firstName">
-            <span class="text-danger">{{ errors.firstName }}</span>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Modifier le profil</h2>
+              <p class="text-white-50 mb-5">Mettre à jour vos informations personnelles</p>
+
+              <form @submit.prevent="updateProfile">
+                <div class="form-outline form-white mb-4">
+                  <label for="firstName" class="form-label">Prénom</label>
+                  <input type="text" id="firstName" class="form-control form-control-lg" v-model="user.firstName">
+                  <span class="text-danger">{{ errors.firstName }}</span>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="lastName" class="form-label">Nom</label>
+                  <input type="text" id="lastName" class="form-control form-control-lg" v-model="user.lastName">
+                  <span class="text-danger">{{ errors.lastName }}</span>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="website" class="form-label">Site Web</label>
+                  <input type="text" id="website" class="form-control form-control-lg" v-model="user.website">
+                  <span class="text-danger">{{ errors.website }}</span>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="birthDate" class="form-label">Date de Naissance</label>
+                  <input type="date" id="birthDate" class="form-control form-control-lg" v-model="user.birthDate">
+                  <span class="text-danger">{{ errors.birthDate }}</span>
+                </div>
+
+                <button type="submit" class="btn btn-outline-light btn-lg px-5">Appliquer les modifications</button>
+              </form>
+            </div>
           </div>
-
-          <div class="mb-3">
-            <label for="lastName">Modifier votre nom</label>
-            <input type="text" id="lastName" v-model="user.lastName">
-            <span class="text-danger">{{ errors.lastName }}</span>
-          </div>
-
-          <div class="mb-3">
-            <label for="website">Modifier votre site web</label>
-            <input type="text" id="website" v-model="user.website">
-            <span class="text-danger">{{ errors.website }}</span>
-          </div>
-
-          <div class="mb-3">
-            <label for="birthDate">Modifier votre date de naissance</label>
-            <input type="date" id="birthDate" v-model="user.birthDate">
-            <span class="text-danger">{{ errors.birthDate }}</span>
-
-          </div>
-
-          <button type="submit" class="btn btn-success">Appliquer les modifications</button>
-        </form>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
     `, data() {
     return {
       user: {
