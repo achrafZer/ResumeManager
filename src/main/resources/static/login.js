@@ -55,11 +55,7 @@ export default {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log('Login Successful', response.data);
-                console.log('userId', response.data.userId)
-
                 localStorage.setItem('user-token', response.data.jwt);
-                console.log(localStorage.getItem('user-token'));
                 localStorage.setItem('userId', response.data.userId);
                 this.$router.push(`/app/users/${response.data.userId}/profile`).then(() => window.location.reload());
 

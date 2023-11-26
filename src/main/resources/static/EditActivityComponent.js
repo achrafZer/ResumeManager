@@ -60,7 +60,6 @@ export default {
                 const activityId = this.$route.params.activityId;
                 const response = await axios.get(`http://localhost:8081/api/activities/${activityId}`);
                 this.activity = response.data;
-                console.log("activity : ", response);
             } catch (error) {
                 console.error("Erreur lors de la récupération des détails de l'activité", error);
             }
@@ -76,7 +75,7 @@ export default {
 
             } catch (error) {
                 if (error.response) {
-                    console.log("response");
+                    console.log("nous avons réceptionné une erreur");
                 }
                 if (error.response && error.response.status === 400) {
                     this.errors = error.response.data;

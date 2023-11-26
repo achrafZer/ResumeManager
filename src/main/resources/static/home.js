@@ -62,7 +62,6 @@ export default {
 
 
 `, data() {
-        console.log("data");
         return {
             allPersons: [], persons: [], axios: null, searchQuery: '', currentPage: 1, pageSize: 6, totalPersons: 0
         }
@@ -110,7 +109,6 @@ export default {
         },
 
         goToResume(id) {
-            console.log("je suis goToResume");
             this.$router.push(`/app/users/${id}`)
         },
 

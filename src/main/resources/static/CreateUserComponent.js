@@ -81,7 +81,7 @@ export default {
         this.$router.push(`/app/users/${localStorage.getItem('userId')}/profile`);
       } catch (error) {
         if (error.response) {
-          console.log("response");
+          console.log("Nous avons réceptionné une erreur ");
         }
         if (error.response && (error.response.status === 500)) {
           this.errorMessage = "L'adresse mail existe déjà";

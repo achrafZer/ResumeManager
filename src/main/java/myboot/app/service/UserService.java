@@ -58,7 +58,7 @@ public class UserService {
             throw new MyJwtException("Email is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
         }
 
-        //When a new person is registered, we create at the same time an insance of Person and another one of XUser
+        //When a new person is registered, we create at the same time an instance of Person and another one of XUser
 
         Person person = new Person();
         person.setFirstName(registrationDTO.getFirstName());

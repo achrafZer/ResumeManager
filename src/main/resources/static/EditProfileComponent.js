@@ -71,8 +71,6 @@ export default {
         const response = await axios.get(`http://localhost:8081/api/persons/${userId}`);
         this.user = response.data;
         this.user.birthDate = this.user.birthDate.split('T')[0];
-
-        console.log("fetchUserProfile userId : ", userId, " - user ", this.user);
       } catch (error) {
         console.error('Erreur lors de la récupération du profil utilisateur', error);
       }
@@ -95,7 +93,7 @@ export default {
 
       } catch (error) {
         if (error.response) {
-          console.log("response");
+          console.log("nous avons réceptionné une erreur");
         }
         if (error.response && error.response.status === 400) {
 

@@ -95,37 +95,26 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + - Réorganiser totalement le application.properties
 + - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
 + - - - Un tour bootstrap sur l'ensemble des pages
-
-
-
-
-
-
-
-
-- - Faire une gestion des erreurs pour les formulaires
++ - README
++ - - Faire une gestion des erreurs pour les formulaires
++ - - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
++ - - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
++ - - Nettoyer les console.log
 
 
 - - Suppression d'une activité
-- README
 - - Demander à GPT de m'aider à trouver des failles de sécurité
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
 - Ajouter des éléments à la BDD (exemple ajouter "lieu" dans activities)
 - - Mettre en place des DTO plutôt que de mettre les entités en paramètre dans les controller api
-- Ajouter un controller pour chacune des erreur HTTP
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
 - Demander à GPT les diagrams qu'il estime importants dans le rapport 
 - - - Rédiger le cahier des charges
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
 - Ajouter des photos sur les profils 
-- - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
-- - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
 - - - Mettre en place 1000 entités
-- - Nettoyer les console.log
-- Comparer tous les formulaires de l'application avec les classes dans model pour être sûr qu'aucun champ n'a été oublié
-- Faire en sorte que tous les controller en cas de paramètre non valide, ils retournent une erreur 400 et non pas 500 comme c'est le cas maintenant
 - - Mettre en place des * sur les éléments nécessaires dans les formulaires
 
 # REPRISE :

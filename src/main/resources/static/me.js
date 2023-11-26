@@ -36,7 +36,6 @@ export default {
 
       </div>`,
     data() {
-        console.log("data");
         return {
             persons: [], axios: null, searchQuery: ''
         }
@@ -69,7 +68,6 @@ export default {
         },
 
         goToResume(id) {
-            console.log("je suis goToResume");
             this.$router.push(`/app/users/${id}`)
         },
 
