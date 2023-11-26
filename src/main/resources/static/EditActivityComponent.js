@@ -38,6 +38,8 @@ export default {
 
                                 <span class="text-danger">{{ errors.startYearBeforeEndYear }}</span>
                                 <button type="submit" class="btn btn-outline-light btn-lg px-5">Sauvegarder les modifications</button>
+                                <button class="btn btn-danger" @click="confirmDeletion">Supprimer l'activité</button>
+
                             </form>
                         </div>
                     </div>
@@ -55,6 +57,24 @@ export default {
     }, created() {
         this.fetchActivityDetails();
     }, methods: {
+
+        confirmDeletion() {
+            if (confirm("Êtes-vous sûr de vouloir supprimer cette activité ?")) {
+                this.deleteActivity();
+            }
+        },
+
+        async deleteActivity() {
+            try {
+                const activityId = this.$route.params.activityId;
+                await axios.delete(`http://localhost:8081/api/activities/${activityId}`);
+                alert("L'activité a été supprimée avec succès.");
+                this.$router.push(`/app/users/${localStorage.getItem('userId')}/profile`);
+            } catch (error) {
+                console.error("Erreur lors de la suppression de l'activité", error);
+            }
+        },
+
         async fetchActivityDetails() {
             try {
                 const activityId = this.$route.params.activityId;

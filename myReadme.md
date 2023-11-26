@@ -100,10 +100,14 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + - - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 + - - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
 + - - Nettoyer les console.log
++ - - Ajout d'une activié
++ - - - Rédiger le cahier des charges
+
+
 
 
 - - Suppression d'une activité
-- - Ajout d'une activié
+- - Tour sur les alert
 - - Demander à GPT de m'aider à trouver des failles de sécurité
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
@@ -111,7 +115,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - - Mettre en place des DTO plutôt que de mettre les entités en paramètre dans les controller api
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
 - Demander à GPT les diagrams qu'il estime importants dans le rapport 
-- - - Rédiger le cahier des charges
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
 - Ajouter des photos sur les profils 
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
