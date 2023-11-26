@@ -11,7 +11,7 @@
 <c:url var="bootstrap_js"
        value="/webjars/bootstrap/4.6.0-1/js/bootstrap.min.js" />
 <c:url var="jquery_js" value="/webjars/jquery/3.5.1/jquery.min.js" />
-<c:url var="css" value="/style.css" />
+<c:url var="css" value="/login.css" />
 <c:url var="axios_js" value="/webjars/axios/0.22.0/dist/axios.min.js" />
 
 <script src="${vue_js}"></script>
