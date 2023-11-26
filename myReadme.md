@@ -92,6 +92,12 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 + - - - Lors de la recherche, la deuxième page des résultats n'est pas incluses dans le tri
 + - - Supprimer les package json qui se trouvent dans le répertoire parent et vérifier que tout marche bien quand même
 + - Faire en sorte que entrée marche comme un appui sur le bouton rechercher
++ - - Faire un tour de code pour éliminer toutes les import avec '*'
++ - Réorganiser totalement le application.properties
++ - Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
+
+
+
 
 
 
@@ -102,7 +108,6 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 
 - - Suppression d'une activité
 - - Demander à GPT de m'aider à trouver des failles de sécurité
-- - Faire un tour de code pour éliminer toutes les import avec '*'
 - Tests fonctionnels avec un outil de QL
 - Enlever les warning affichés dans la console
 - Ajouter des éléments à la BDD (exemple ajouter "lieu" dans activities)
@@ -111,19 +116,13 @@ devons-nous à chaque test lui créer ses propres éléments de test ?
 - Prendre un ordi de la fac et tester les fichiers du rendu avec
 - Demander à GPT les diagrams qu'il estime importants dans le rapport 
 - - - Rédiger le cahier des charges
-- Recherche Outil pour savoir les éléments du pom.xml qui ne sont pas utilisés
-- Pour le JwtProvider, demander à gpt "selon toi quelle clé secrète devrais-je choisir ?"
-- Changer secu-user par autre chose
-- Réorganiser totalement le application.properties
 - Faire en sorte qu'après chaque recherche, les éléments affichés aient le mots cléf surligné pour afficher pourquoi l'élément a été choisi
 - Ajouter des photos sur les profils 
-- Faire en sorte que si je fais une recherche et qu'après je rend la barre de recherche à vide, toutes les personnes s'affichent
 - - Faire un tour pour appliquer la règle : tout ce qu'on peut faire en SQL faisons le en SQL
 - Mettre en place un petit texte qui s'affiche quand le curseur est sur un élément
 - - Faire une comparaison de toutes les routes avec celle de linkedin et rédiger une liste de modifications à faire pour être user friendly
 - - - Mettre en place 1000 entités
 - - Nettoyer les console.log
-- Echanger localStorage en SessionStorage
 - Comparer tous les formulaires de l'application avec les classes dans model pour être sûr qu'aucun champ n'a été oublié
 - Faire en sorte que tous les controller en cas de paramètre non valide, ils retournent une erreur 400 et non pas 500 comme c'est le cas maintenant
 - - Mettre en place des * sur les éléments nécessaires dans les formulaires
