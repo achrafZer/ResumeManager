@@ -35,6 +35,27 @@ This project is built using a variety of tools and technologies, including:
 - **Bootstrap**: For styling and creating responsive web pages.
 - **Axios**: For making HTTP requests from the frontend to the backend.
 
+## Screenshots
+
+Here are some screenshots from the Resume Manager application to give you a glimpse of its user interface and functionalities:
+
+### Home Page
+This is the landing page where users start their interaction with the application.
+![Home Page](./screenshots/home.png)
+
+### User Resume Information
+This page displays detailed information about a user's resume, including education and work experience.
+![Resume Information Page](./screenshots/user_details.png)
+
+### Login Page
+Users need to log in to access their personal and secure resume management space.
+![Login Page](./screenshots/login.png)
+
+### Modify Activity
+This page allows users to edit or update their activities in the resume.
+![Modify Activity Page](./screenshots/edit_activity.png)
+
+
 ## Version
 
 This is the initial version (1.0.0) of the project, marking the first major release with complete basic functionalities.
