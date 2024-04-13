@@ -107,6 +107,124 @@ public class DataInitializer {
         activityService.saveActivity(activity4);
 
 
+        Person maxime = new Person();
+        maxime.setFirstName("Maxime");
+        maxime.setLastName("GUILIANI");
+        Date maximeBirthday = sdf.parse("1999-07-04");
+        maxime.setBirthDate(maximeBirthday);
+        maxime.setEmail("maxime.guiliani@univ-amu.fr");
+        maxime.setPassword("MaximePassword");
+        personService.savePerson(maxime);
+
+        XUser maximeUser = new XUser();
+        maximeUser.setUserName("maxime.guiliani@univ-amu.fr");
+        maximeUser.setPassword("MaximePassword");
+        maximeUser.setRoles(new HashSet<>());
+        maximeUser.getRoles().add("USER");
+        userService.saveUser(maximeUser);
+
+        CV cvMaxime = new CV();
+        cvMaxime.setPerson(maxime);
+        cvService.saveCV(cvMaxime);
+
+        Activity mactivity1 = new Activity();
+        mactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity1.setTitle("Apprenti Java Full-stack");
+        mactivity1.setDescription("Thales · Contrat en alternance");
+        mactivity1.setStartYear(2023);
+        mactivity1.setEndYear(2024);
+        mactivity1.setCv(cvMaxime);
+        activityService.saveActivity(mactivity1);
+
+        Activity mactivity2 = new Activity();
+        mactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity2.setTitle("Vacataire");
+        mactivity2.setDescription("Direction générale des Finances publiques · Intérimaire");
+        mactivity2.setStartYear(2023);
+        mactivity2.setEndYear(2024);
+        mactivity2.setCv(cvMaxime);
+
+        activityService.saveActivity(mactivity2);
+
+        Activity mactivity3 = new Activity();
+        mactivity3.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        mactivity3.setTitle("Développeur junior");
+        mactivity3.setDescription("NetCeler · Stage");
+        mactivity3.setStartYear(2019);
+        mactivity3.setEndYear(2022);
+        mactivity3.setCv(cvMaxime);
+
+        activityService.saveActivity(mactivity3);
+
+        Person diego = new Person();
+        diego.setFirstName("Diego");
+        diego.setLastName("IMBERT");
+        Date diegoBirthday = sdf.parse("2001-08-04");
+        diego.setBirthDate(diegoBirthday);
+        diego.setEmail("diego.imbert@univ-amu.fr");
+        diego.setPassword("DiegoPassword");
+        personService.savePerson(diego);
+
+        XUser diegoUser = new XUser();
+        diegoUser.setUserName("diego.imbert@univ-amu.fr");
+        diegoUser.setPassword("DiegoPassword");
+        diegoUser.setRoles(new HashSet<>());
+        diegoUser.getRoles().add("USER");
+        userService.saveUser(diegoUser);
+
+        CV cvDiego = new CV();
+        cvDiego.setPerson(diego);
+        cvService.saveCV(cvDiego);
+
+        Activity dactivity1 = new Activity();
+        dactivity1.setNature(ActivityNature.EDUCATION);
+        dactivity1.setTitle("Bachelor of Science");
+        dactivity1.setDescription("BS, Computer Software Engineering");
+        dactivity1.setStartYear(2019);
+        dactivity1.setEndYear(2022);
+        dactivity1.setCv(cvDiego);
+        activityService.saveActivity(dactivity1);
+
+        Activity dactivity2 = new Activity();
+        dactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
+        dactivity2.setTitle("Software Engineer");
+        dactivity2.setDescription("KANSO - Agence Digitale · Contrat en alternance");
+        dactivity2.setStartYear(2023);
+        dactivity2.setEndYear(2024);
+        dactivity2.setCv(cvDiego);
+
+        activityService.saveActivity(dactivity2);
+
+        
+
+
+        Person elie = new Person();
+        elie.setFirstName("Elie");
+        elie.setLastName("NICOLAS");
+        Date elieBirthday = sdf.parse("1996-05-04");
+        elie.setBirthDate(elieBirthday);
+        elie.setEmail("elie.nicolas@univ-amu.fr");
+        elie.setPassword("EliePassword");
+        personService.savePerson(elie);
+
+        Person juba = new Person();
+        juba.setFirstName("Juba");
+        juba.setLastName("OUARAB");
+        Date jubaBirthday = sdf.parse("2000-04-04");
+        juba.setBirthDate(jubaBirthday);
+        juba.setEmail("juba.ouarab@univ-amu.fr");
+        juba.setPassword("JubaPassword");
+        personService.savePerson(juba);
+
+        Person manal = new Person();
+        manal.setFirstName("Manal");
+        manal.setLastName("STIHI");
+        Date manalBirthday = sdf.parse("2000-06-04");
+        manal.setBirthDate(manalBirthday);
+        manal.setEmail("manal.stihi@univ-amu.fr");
+        manal.setPassword("ManalPassword");
+        personService.savePerson(manal);
+
         Person heba = new Person();
         heba.setFirstName("Heba");
         heba.setLastName("ABU RABIA");
@@ -267,94 +385,6 @@ public class DataInitializer {
 
         activityService.saveActivity(ractivity2);
 
-        Person maxime = new Person();
-        maxime.setFirstName("Maxime");
-        maxime.setLastName("GUILIANI");
-        Date maximeBirthday = sdf.parse("1999-07-04");
-        maxime.setBirthDate(maximeBirthday);
-        maxime.setEmail("maxime.guiliani@univ-amu.fr");
-        maxime.setPassword("MaximePassword");
-        personService.savePerson(maxime);
-
-        XUser maximeUser = new XUser();
-        maximeUser.setUserName("maxime.guiliani@univ-amu.fr");
-        maximeUser.setPassword("MaximePassword");
-        maximeUser.setRoles(new HashSet<>());
-        maximeUser.getRoles().add("USER");
-        userService.saveUser(maximeUser);
-
-        CV cvMaxime = new CV();
-        cvMaxime.setPerson(maxime);
-        cvService.saveCV(cvMaxime);
-
-        Activity mactivity1 = new Activity();
-        mactivity1.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
-        mactivity1.setTitle("Apprenti Java Full-stack");
-        mactivity1.setDescription("Thales · Contrat en alternance");
-        mactivity1.setStartYear(2023);
-        mactivity1.setEndYear(2024);
-        mactivity1.setCv(cvMaxime);
-        activityService.saveActivity(mactivity1);
-
-        Activity mactivity2 = new Activity();
-        mactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
-        mactivity2.setTitle("Vacataire");
-        mactivity2.setDescription("Direction générale des Finances publiques · Intérimaire");
-        mactivity2.setStartYear(2023);
-        mactivity2.setEndYear(2024);
-        mactivity2.setCv(cvMaxime);
-
-        activityService.saveActivity(mactivity2);
-
-        Activity mactivity3 = new Activity();
-        mactivity3.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
-        mactivity3.setTitle("Développeur junior");
-        mactivity3.setDescription("NetCeler · Stage");
-        mactivity3.setStartYear(2019);
-        mactivity3.setEndYear(2022);
-        mactivity3.setCv(cvMaxime);
-
-        activityService.saveActivity(mactivity3);
-
-        Person diego = new Person();
-        diego.setFirstName("Diego");
-        diego.setLastName("IMBERT");
-        Date diegoBirthday = sdf.parse("2001-08-04");
-        diego.setBirthDate(diegoBirthday);
-        diego.setEmail("diego.imbert@univ-amu.fr");
-        diego.setPassword("DiegoPassword");
-        personService.savePerson(diego);
-
-        XUser diegoUser = new XUser();
-        diegoUser.setUserName("diego.imbert@univ-amu.fr");
-        diegoUser.setPassword("DiegoPassword");
-        diegoUser.setRoles(new HashSet<>());
-        diegoUser.getRoles().add("USER");
-        userService.saveUser(diegoUser);
-
-        CV cvDiego = new CV();
-        cvDiego.setPerson(diego);
-        cvService.saveCV(cvDiego);
-
-        Activity dactivity1 = new Activity();
-        dactivity1.setNature(ActivityNature.EDUCATION);
-        dactivity1.setTitle("Bachelor of Science");
-        dactivity1.setDescription("BS, Computer Software Engineering");
-        dactivity1.setStartYear(2019);
-        dactivity1.setEndYear(2022);
-        dactivity1.setCv(cvDiego);
-        activityService.saveActivity(dactivity1);
-
-        Activity dactivity2 = new Activity();
-        dactivity2.setNature(ActivityNature.PROFESSIONAL_EXPERIENCE);
-        dactivity2.setTitle("Software Engineer");
-        dactivity2.setDescription("KANSO - Agence Digitale · Contrat en alternance");
-        dactivity2.setStartYear(2023);
-        dactivity2.setEndYear(2024);
-        dactivity2.setCv(cvDiego);
-
-        activityService.saveActivity(dactivity2);
-
         Person kpotivi = new Person();
         kpotivi.setFirstName("Kpotivi");
         kpotivi.setLastName("KPOTY");
@@ -405,52 +435,6 @@ public class DataInitializer {
 
         activityService.saveActivity(kactivity3);
 
-
-        Person elie = new Person();
-        elie.setFirstName("Elie");
-        elie.setLastName("NICOLAS");
-        Date elieBirthday = sdf.parse("1996-05-04");
-        elie.setBirthDate(elieBirthday);
-        elie.setEmail("elie.nicolas@univ-amu.fr");
-        elie.setPassword("EliePassword");
-        personService.savePerson(elie);
-
-        Person juba = new Person();
-        juba.setFirstName("Juba");
-        juba.setLastName("OUARAB");
-        Date jubaBirthday = sdf.parse("2000-04-04");
-        juba.setBirthDate(jubaBirthday);
-        juba.setEmail("juba.ouarab@univ-amu.fr");
-        juba.setPassword("JubaPassword");
-        personService.savePerson(juba);
-
-        Person manal = new Person();
-        manal.setFirstName("Manal");
-        manal.setLastName("STIHI");
-        Date manalBirthday = sdf.parse("2000-06-04");
-        manal.setBirthDate(manalBirthday);
-        manal.setEmail("manal.stihi@univ-amu.fr");
-        manal.setPassword("ManalPassword");
-        personService.savePerson(manal);
-
-    }
-
-//    @PostConstruct
-    public void initOneThousandUsers() throws ParseException {
-        if (!personService.getAllPersons().isEmpty()) return;
-
-        for (int i = 1; i <= 1000; i++) {
-            Person person = new Person();
-            person.setFirstName("Nom");
-            person.setLastName("Prenom");
-            person.setEmail("email" + i + "@example.com");
-            person.setPassword("Password" + i);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date birthday = sdf.parse("2000-12-25");
-            person.setBirthDate(birthday);
-            personService.savePerson(person);
-            System.out.println(i + '\n');
-        }
     }
 
 }

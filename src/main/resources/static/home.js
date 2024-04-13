@@ -6,7 +6,7 @@ export default {
       
             <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
-        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+        <div class="card bg-dark text-white" style="border-radius: 1rem; margin-top: 40px;">
             <div class="card-body text-center">
                 <h1 class="fw-bold mb-3 text-uppercase">Gestionnaire de CV</h1>
                 <h2 class="mb-4">Liste des Personnes avec CV</h2>
