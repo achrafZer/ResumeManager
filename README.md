@@ -8,7 +8,7 @@ This project is a comprehensive web application designed for managing resumes (C
 
 To run this project, you need to have the following installed:
 
-- Java (Recommended version: 18)
+- Java (Version: 18)
 
 ## Running Tests
 
