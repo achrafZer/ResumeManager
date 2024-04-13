@@ -18,6 +18,29 @@ mvn test
 ```
 
 
+## Quick Start
+
+To get started with the Resume Manager application, follow these simple steps:
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/achrafZer/ResumeManager.git
+cd ResumeManager
+```
+2. **Install Dependencies**
+```bash
+mvn install
+```
+
+3. **Run the application**
+```bash
+mvn spring-boot:run
+```
+
+4. **Access the application**
+The application is avaible at http://localhost:8081
+
+
 This command will trigger all the unit and integration tests in the project, ensuring that all functionalities are working as expected.
 
 ## Tools and Technologies
